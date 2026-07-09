@@ -1,10 +1,11 @@
 import Link from "next/link";
 import { siteConfig } from "@/data/site";
 import Container from "@/components/ui/Container";
+import MobileMenu from "./MobileMenu";
 
 export default function Navbar() {
   return (
-    <header className="sticky top-0 z-50 border-b border-gray-200 bg-white/80 backdrop-blur-md">
+    <header className="sticky top-0 z-50 border-b border-slate-200 bg-white/70 backdrop-blur-xl shadow-sm">
       <Container>
         <div className="flex h-16 items-center justify-between">
           {/* Logo */}
@@ -33,6 +34,18 @@ export default function Navbar() {
           >
             GitHub
           </Link>
+        </div>
+        {/* Mobile / small screen actions */}
+        <div className="flex items-center gap-4 md:hidden">
+          <Link
+            href={siteConfig.github}
+            target="_blank"
+            className="rounded-lg bg-blue-600 px-4 py-2 text-sm font-semibold text-white transition hover:bg-blue-700"
+          >
+            GitHub
+          </Link>
+
+          <MobileMenu />
         </div>
       </Container>
     </header>
