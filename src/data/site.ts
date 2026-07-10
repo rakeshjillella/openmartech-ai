@@ -7,6 +7,7 @@ export const siteConfig = {
     "Transform Enterprise Marketing Data into AI-powered Decision Intelligence using Enterprise Data Engineering, Lakehouse Architecture, Machine Learning, Responsible AI, Explainable AI, Generative AI, and AI Agents.",
 
   github: "https://github.com/rakeshjillella/openmartech-ai",
+  linkedin: "https://www.linkedin.com/in/rakesh-jillella/",
 
   navigation: [
     {
