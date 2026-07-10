@@ -1,21 +1,17 @@
-import Container from "@/components/ui/Container";
+import AIPlatformHero from "@/components/ai-platform/AIPlatformHero";
+import PlatformPipeline from "@/components/ai-platform/PlatformPipeline";
+import EnterpriseCapabilities from "@/components/ai-platform/EnterpriseCapabilities";
+import ProductionReadiness from "@/components/ai-platform/ProductionReadiness";
+import DeploymentLifecycle from "@/components/ai-platform/DeploymentLifecycle";
 
-export default function Page() {
+export default function AIPlatformPage() {
   return (
-    <>
-
-      <main className="py-24">
-
-        <Container>
-
-          <h1 className="text-6xl font-bold">
-            Coming Soon
-          </h1>
-
-        </Container>
-
-      </main>
-
-    </>
+    <main>
+      <AIPlatformHero />
+      <PlatformPipeline />
+      <EnterpriseCapabilities />
+      <ProductionReadiness />
+      <DeploymentLifecycle />
+    </main>
   );
 }

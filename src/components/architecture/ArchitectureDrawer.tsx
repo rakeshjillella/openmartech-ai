@@ -1,57 +1,132 @@
 "use client";
 
-import SlideDrawer from "@/components/animation/SlideDrawer";
+import Link from "next/link";
+import { ArchitectureNode } from "@/data/architecture";
 
-type Props={
+type Props = {
 
-nodeId:string|null;
+  node: ArchitectureNode | null;
 
-onClose:()=>void;
+  onClose: () => void;
 
 };
 
 export default function ArchitectureDrawer({
 
-nodeId,
+  node,
 
-onClose,
+  onClose,
 
-}:Props){
+}: Props) {
 
-return(
+  if (!node) return null;
 
-<SlideDrawer open={!!nodeId}>
+  return (
 
-<div className="p-8">
+    <div className="fixed inset-0 z-50 flex">
 
-<button
+      {/* Overlay */}
 
-onClick={onClose}
+      <div
 
-className="mb-8"
+        className="flex-1 bg-black/40"
 
->
+        onClick={onClose}
 
-✕
+      />
 
-</button>
+      {/* Drawer */}
 
-<h2 className="text-3xl font-bold">
+      <div className="w-full max-w-lg overflow-y-auto bg-white p-8 shadow-2xl">
 
-{nodeId}
+        <button
 
-</h2>
+          onClick={onClose}
 
-<p className="mt-6">
+          className="mb-6 rounded-lg border px-4 py-2"
 
-Technology information will appear here.
+        >
 
-</p>
+          Close
 
-</div>
+        </button>
 
-</SlideDrawer>
+        <div className="text-5xl">
 
-);
+          {node.icon}
+
+        </div>
+
+        <h2 className="mt-5 text-3xl font-black">
+
+          {node.title}
+
+        </h2>
+
+        <p className="mt-3 text-slate-500">
+
+          {node.subtitle}
+
+        </p>
+
+        <p className="mt-8 leading-8 text-slate-700">
+
+          {node.description}
+
+        </p>
+
+        <div className="mt-10">
+
+          <h3 className="mb-4 font-bold">
+
+            Technologies
+
+          </h3>
+
+          <div className="flex flex-wrap gap-2">
+
+            {node.technologies.map((tech) => (
+
+              <span
+
+                key={tech}
+
+                className="rounded-full bg-blue-100 px-3 py-1 text-sm"
+
+              >
+
+                {tech}
+
+              </span>
+
+            ))}
+
+          </div>
+
+        </div>
+
+        <div className="mt-10">
+
+          <Link
+
+            href={node.documentation}
+
+            target="_blank"
+
+            className="font-semibold text-blue-600"
+
+          >
+
+            Official Documentation →
+
+          </Link>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  );
 
 }

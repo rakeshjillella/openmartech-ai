@@ -35,6 +35,10 @@ export const siteConfig = {
       href: "/responsible-ai",
     },
     {
+    title: "Dashboard",
+    href: "/dashboard",
+    },
+    {
       title: "Case Study",
       href: "/case-study",
     },

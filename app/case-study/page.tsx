@@ -1,21 +1,20 @@
 import Container from "@/components/ui/Container";
+import SectionHeading from "@/components/ui/SectionHeading";
 
-export default function Page() {
+export default function CaseStudyPage() {
   return (
-    <>
+    <main className="py-24">
 
-      <main className="py-24">
+      <Container>
 
-        <Container>
+        <SectionHeading
+          badge="Enterprise Case Study"
+          title="Responsible AI-Driven Autonomous Marketing Intelligence Platform"
+          description="A production-inspired enterprise platform demonstrating modern Data Engineering, AI Platform Engineering, Responsible AI, MLOps and Executive Decision Intelligence."
+        />
 
-          <h1 className="text-6xl font-bold">
-            Coming Soon
-          </h1>
+      </Container>
 
-        </Container>
-
-      </main>
-
-    </>
+    </main>
   );
 }

@@ -1,33 +1,30 @@
 import Container from "@/components/ui/Container";
-import ArchitectureCanvas from "@/components/architecture/canvas/ArchitectureCanvas";
+import ArchitectureExplorer from "@/components/architecture/ArchitectureExplorer";
 
 export default function ArchitecturePage() {
   return (
-    <>
+    <main className="py-24">
 
-      <main className="py-24">
+      <Container>
 
-        <Container>
+        <div className="mb-20 text-center">
 
-          <div className="mb-20 text-center">
+          <h1 className="text-6xl font-bold text-slate-900">
+            Enterprise Architecture
+          </h1>
 
-            <h1 className="text-6xl font-bold">
-              Enterprise Architecture
-            </h1>
+          <p className="mx-auto mt-6 max-w-3xl text-lg leading-8 text-slate-600">
+            Explore the end-to-end architecture powering OpenMarTech AI,
+            from enterprise data ingestion through AI Platform Engineering
+            to Executive Decision Intelligence.
+          </p>
 
-            <p className="mt-6 text-lg text-slate-600">
-              Production-inspired enterprise architecture powering
-              OpenMarTech AI.
-            </p>
+        </div>
 
-          </div>
+        <ArchitectureExplorer />
 
-          <ArchitectureCanvas />
+      </Container>
 
-        </Container>
-
-      </main>
-
-    </>
+    </main>
   );
 }

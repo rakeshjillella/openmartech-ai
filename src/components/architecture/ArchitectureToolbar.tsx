@@ -1,41 +1,103 @@
-"use client";
+type Props = {
+  query: string;
+  setQuery: (value: string) => void;
 
-export default function ArchitectureToolbar() {
+  activeLayer: string;
 
-    return (
+  setActiveLayer: (layer: string) => void;
+};
 
-        <div className="flex flex-wrap items-center justify-between gap-4">
+const filters = [
+  "All",
+  "Data Sources",
+  "Ingestion",
+  "Processing",
+  "Storage",
+  "AI Platform",
+  "Consumption",
+];
 
-            <input
+export default function ArchitectureToolbar({
 
-                placeholder="Search architecture..."
+  query,
 
-                className="rounded-xl border border-slate-300 px-4 py-3 w-72"
+  setQuery,
 
-            />
+  activeLayer,
 
-            <div className="flex gap-3">
+  setActiveLayer,
 
-                <button className="rounded-lg border px-4 py-2">
-                    All
-                </button>
+}: Props) {
 
-                <button className="rounded-lg border px-4 py-2">
-                    Data
-                </button>
+  return (
 
-                <button className="rounded-lg border px-4 py-2">
-                    ML
-                </button>
+    <div className="mb-12 space-y-8">
 
-                <button className="rounded-lg border px-4 py-2">
-                    AI
-                </button>
+      <input
 
-            </div>
+        type="text"
 
-        </div>
+        placeholder="Search technologies..."
 
-    );
+        value={query}
+
+        onChange={(e) => setQuery(e.target.value)}
+
+        className="
+          w-full
+          rounded-2xl
+          border
+          border-slate-300
+          px-5
+          py-4
+          text-lg
+          shadow-sm
+          focus:border-blue-600
+          focus:outline-none
+        "
+
+      />
+
+      <div className="flex flex-wrap gap-3">
+
+        {filters.map((filter) => (
+
+          <button
+
+            key={filter}
+
+            onClick={() => setActiveLayer(filter)}
+
+            className={`
+              rounded-full
+              px-5
+              py-2
+              text-sm
+              font-semibold
+              transition
+
+              ${
+                activeLayer === filter
+
+                  ? "bg-blue-600 text-white"
+
+                  : "bg-slate-100 text-slate-700 hover:bg-blue-100"
+
+              }
+            `}
+
+          >
+
+            {filter}
+
+          </button>
+
+        ))}
+
+      </div>
+
+    </div>
+
+  );
 
 }

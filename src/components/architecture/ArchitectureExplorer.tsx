@@ -2,32 +2,80 @@
 
 import { useState } from "react";
 
-import ArchitectureCanvas from "./canvas/ArchitectureCanvas";
+import {
+  architectureNodes,
+  ArchitectureNode as Node,
+} from "@/data/architecture";
+
+import useSearch from "@/hooks/useSearch";
 import ArchitectureToolbar from "./ArchitectureToolbar";
+import ArchitectureCanvas from "./canvas/ArchitectureCanvas";
 import ArchitectureDrawer from "./ArchitectureDrawer";
 
 export default function ArchitectureExplorer() {
 
-    const [selectedNode, setSelectedNode] = useState<string | null>(null);
+  const [selected, setSelected] =
+    useState<Node | null>(null);
 
-    return (
+  const {
+  query,
+  setQuery,
+  filteredItems: filteredNodes,
+} = useSearch(
+  architectureNodes,
+  [
+    "title",
+    "subtitle",
+    "category",
+    "technologies",
+  ]
+);
 
-        <div className="space-y-10">
+const [activeLayer, setActiveLayer] =
+  useState("All");
 
-            <ArchitectureToolbar />
+const visibleNodes =
+  activeLayer === "All"
 
-            <ArchitectureCanvas
-                selectedNode={selectedNode}
-                onSelectNode={setSelectedNode}
-            />
+    ? filteredNodes
 
-            <ArchitectureDrawer
-                nodeId={selectedNode}
-                onClose={() => setSelectedNode(null)}
-            />
+    : filteredNodes.filter(
+        (node) => node.layer === activeLayer
+      );
 
-        </div>
+  return (
+    <>
 
-    );
+      <ArchitectureToolbar
 
+  query={query}
+
+  setQuery={setQuery}
+
+  activeLayer={activeLayer}
+
+  setActiveLayer={setActiveLayer}
+
+/>
+
+      <ArchitectureCanvas
+
+  nodes={visibleNodes}
+
+  selected={selected}
+
+  onSelect={setSelected}
+
+/>
+
+      <ArchitectureDrawer
+
+        node={selected}
+
+        onClose={() => setSelected(null)}
+
+      />
+
+    </>
+  );
 }

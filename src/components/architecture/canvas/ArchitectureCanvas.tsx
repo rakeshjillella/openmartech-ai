@@ -1,57 +1,50 @@
-import ArchitectureBox from "./ArchitectureBox";
-import ConnectionLine from "./ConnectionLine";
+"use client";
 
-export default function ArchitectureCanvas() {
+import ArchitectureNode from "./ArchitectureNode";
+import { ArchitectureNode as Node } from "@/data/architecture";
+
+type Props = {
+
+  nodes: Node[];
+
+  selected: Node | null;
+
+  onSelect: (node: Node) => void;
+
+};
+
+export default function ArchitectureCanvas({
+
+  nodes,
+
+  selected,
+
+  onSelect,
+
+}: Props) {
+
   return (
-    <div className="mx-auto max-w-6xl">
 
-      <ArchitectureBox
-        title="Enterprise Data Sources"
-        subtitle="CRM • ERP • Marketing • Analytics"
-      />
+    <div className="grid gap-8 md:grid-cols-2 xl:grid-cols-4">
 
-      <ConnectionLine />
+      {nodes.map((node) => (
 
-      <ArchitectureBox
-        title="Streaming Layer"
-        subtitle="Kafka • CDC • Airbyte"
-      />
+        <ArchitectureNode
 
-      <ConnectionLine />
+          key={node.id}
 
-      <ArchitectureBox
-        title="Processing Layer"
-        subtitle="Spark • Flink • dbt"
-      />
+          node={node}
 
-      <ConnectionLine />
+          active={selected?.id === node.id}
 
-      <ArchitectureBox
-        title="Enterprise Lakehouse"
-        subtitle="Iceberg • MinIO"
-      />
+          onClick={() => onSelect(node)}
 
-      <div className="my-12 grid gap-12 md:grid-cols-2">
-
-        <ArchitectureBox
-          title="Machine Learning"
-          subtitle="Spark ML • MLflow"
         />
 
-        <ArchitectureBox
-          title="Generative AI"
-          subtitle="LangChain • RAG • AI Agents"
-        />
-
-      </div>
-
-      <ConnectionLine />
-
-      <ArchitectureBox
-        title="Decision Intelligence"
-        subtitle="Power BI • Executive Dashboards"
-      />
+      ))}
 
     </div>
+
   );
+
 }

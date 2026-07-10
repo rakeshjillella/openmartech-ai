@@ -1,11 +1,12 @@
-import TechnologyStack from "@/components/technology/TechnologyStack";
+import Container from "@/components/ui/Container";
+import TechnologyExplorer from "@/components/technology/TechnologyExplorer";
 
 export default function TechnologyPage() {
   return (
-    <>
-
-      <TechnologyStack />
-
-    </>
+    <main className="py-24">
+      <Container>
+        <TechnologyExplorer />
+      </Container>
+    </main>
   );
 }

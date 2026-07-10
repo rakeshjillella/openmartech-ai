@@ -1,5 +1,4 @@
 import Container from "@/components/ui/Container";
-import ArchitectureCanvas from "./canvas/ArchitectureCanvas";
 import ArchitectureExplorer from "./ArchitectureExplorer";
 
 export default function ArchitectureSection() {

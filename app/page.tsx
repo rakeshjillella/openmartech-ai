@@ -1,4 +1,3 @@
-import Navbar from "@/components/layout/Navbar";
 import Hero from "@/components/home/Hero";
 import TechnologyStack from "@/components/technology/TechnologyStack";
 import PlatformOverview from "@/components/home/PlatformOverview";
@@ -10,24 +9,13 @@ import GithubCTA from "@/components/cta/GithubCTA";
 export default function Home() {
   return (
     <>
-
-<main>
-
-  <Hero />
-
-  <TechnologyStack />
-
-  <PlatformOverview />
-
-  <ArchitectureSection />
-
-  <Workflow />
-
-  <Statistics />
-
-  <GithubCTA />
-
-</main>
+      <Hero />
+      <TechnologyStack />
+      <PlatformOverview />
+      <ArchitectureSection />
+      <Workflow />
+      <Statistics />
+      <GithubCTA />
     </>
   );
 }

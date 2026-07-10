@@ -5,7 +5,7 @@ type Props = {
   logo: string;
 };
 
-export default function TechnologyBadge({
+export default function TechnologyLogo({
   name,
   logo,
 }: Props) {

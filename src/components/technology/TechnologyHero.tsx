@@ -1,31 +1,20 @@
-import Container from "@/components/ui/Container";
-
 export default function TechnologyHero() {
   return (
-    <section className="bg-gradient-to-br from-slate-50 via-white to-blue-50 py-24">
+    <div className="mb-16 text-center">
 
-      <Container>
+      <span className="rounded-full bg-blue-100 px-4 py-2 text-sm font-semibold text-blue-700">
+        Enterprise Stack
+      </span>
 
-        <div className="mx-auto max-w-4xl text-center">
+      <h1 className="mt-6 text-5xl font-bold">
+        Technology Explorer
+      </h1>
 
-          <h1 className="text-6xl font-bold">
-            Enterprise Technology Stack
-          </h1>
+      <p className="mx-auto mt-6 max-w-3xl text-xl text-slate-600">
+        Explore the production-inspired technology stack
+        powering OpenMarTech AI.
+      </p>
 
-          <p className="mt-8 text-xl leading-9 text-slate-600">
-            OpenMarTech AI combines modern Data Engineering,
-            AI Platform Engineering,
-            Responsible AI,
-            Machine Learning,
-            Generative AI,
-            and Decision Intelligence
-            using enterprise-grade open source technologies.
-          </p>
-
-        </div>
-
-      </Container>
-
-    </section>
+    </div>
   );
 }

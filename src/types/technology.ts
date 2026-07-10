@@ -1,18 +1,19 @@
 export interface Technology {
+  id: string;
+
   name: string;
-  logo: string;
 
   category: string;
-  layer: string;
-  role: string;
+
+  logo: string;
 
   description: string;
 
-  github: string;
+  maturity: string;
+
+  website: string;
+
   documentation: string;
 
-  usedIn: string[];
-  advantages: string[];
-
-  enterpriseUse: string;
+  github: string;
 }
