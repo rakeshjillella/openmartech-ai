@@ -15,7 +15,9 @@ export const technologyData: Technology[] = [
 
     github: "https://github.com/apache/kafka",
 
-    documentation: "https://kafka.apache.org"
+    documentation: "https://kafka.apache.org",
+
+    logo: ""
 
   },
 
@@ -32,7 +34,9 @@ export const technologyData: Technology[] = [
 
     github: "https://github.com/apache/flink",
 
-    documentation: "https://flink.apache.org"
+    documentation: "https://flink.apache.org",
+
+    logo: ""
 
   }
 

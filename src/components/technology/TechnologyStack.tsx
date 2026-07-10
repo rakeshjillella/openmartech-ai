@@ -1,6 +1,6 @@
 import Container from "@/components/ui/Container";
 import TechnologyBadge from "./TechnologyBadge";
-import { technologies } from "@/data/technologies";
+import { technologies } from "@/data/technologyList";
 
 export default function TechnologyStack() {
   return (
