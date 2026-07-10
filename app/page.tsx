@@ -10,7 +10,6 @@ import GithubCTA from "@/components/cta/GithubCTA";
 export default function Home() {
   return (
     <>
-      <Navbar />
 
 <main>
 

@@ -1,43 +1,73 @@
 import { Technology } from "@/types/technology";
 
 export const technologyData: Technology[] = [
-
   {
-
     name: "Apache Kafka",
+    logo: "/logos/kafka.svg",
 
-    category: "Event Streaming",
+    category: "Streaming",
+    layer: "Event Streaming",
 
-    role: "Real-Time Event Streaming",
+    role: "Enterprise Event Bus",
 
     description:
-      "Streams enterprise events from CDC, marketing platforms, CRM and operational systems.",
+      "Streams real-time events from CRM, marketing platforms, databases and enterprise applications.",
 
     github: "https://github.com/apache/kafka",
 
     documentation: "https://kafka.apache.org",
 
-    logo: ""
+    usedIn: [
+      "CDC",
+      "Real-time Analytics",
+      "Spark Streaming",
+      "Apache Flink",
+    ],
 
+    advantages: [
+      "Fault Tolerant",
+      "High Throughput",
+      "Distributed",
+      "Scalable",
+    ],
+
+    enterpriseUse:
+      "Acts as the central event backbone of the OpenMarTech AI platform.",
   },
 
   {
+    name: "Apache Spark",
 
-    name: "Apache Flink",
+    logo: "/logos/spark.svg",
 
-    category: "Real-Time Processing",
+    category: "Data Engineering",
 
-    role: "Stream Processing",
+    layer: "Real-Time Processing",
+
+    role: "Distributed Compute Engine",
 
     description:
-      "Processes Kafka streams in real time for analytics and AI pipelines.",
+      "Processes enterprise-scale batch and streaming workloads for AI pipelines.",
 
-    github: "https://github.com/apache/flink",
+    github: "https://github.com/apache/spark",
 
-    documentation: "https://flink.apache.org",
+    documentation: "https://spark.apache.org",
 
-    logo: ""
+    usedIn: [
+      "ETL",
+      "Machine Learning",
+      "Streaming",
+      "Feature Engineering",
+    ],
 
-  }
+    advantages: [
+      "Fast",
+      "Distributed",
+      "Scalable",
+      "Production Ready",
+    ],
 
+    enterpriseUse:
+      "Runs large-scale data engineering and machine learning workloads.",
+  },
 ];

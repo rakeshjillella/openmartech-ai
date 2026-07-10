@@ -1,11 +1,9 @@
-import Navbar from "@/components/layout/Navbar";
 import Container from "@/components/ui/Container";
 import ArchitectureCanvas from "@/components/architecture/canvas/ArchitectureCanvas";
 
 export default function ArchitecturePage() {
   return (
     <>
-      <Navbar />
 
       <main className="py-24">
 

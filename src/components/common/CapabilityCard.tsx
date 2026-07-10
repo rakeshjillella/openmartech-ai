@@ -1,21 +1,13 @@
-type CapabilityCardProps = {
-  title: string;
-  description: string;
+type Props = {
+  children: React.ReactNode;
 };
 
-export default function CapabilityCard({
-  title,
-  description,
-}: CapabilityCardProps) {
+export default function Card({
+  children,
+}: Props) {
   return (
-    <div className="rounded-2xl border border-gray-200 bg-white p-6 shadow-sm transition hover:-translate-y-1 hover:shadow-lg">
-      <h3 className="mb-3 text-xl font-semibold">
-        {title}
-      </h3>
-
-      <p className="text-gray-600">
-        {description}
-      </p>
+    <div className="rounded-3xl border border-slate-200 bg-white p-8 shadow-lg">
+      {children}
     </div>
   );
 }

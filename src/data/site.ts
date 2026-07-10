@@ -47,20 +47,20 @@ export const siteConfig = {
 
 export const heroStats = [
   {
-    number: "7+",
+    number: "15+",
+    label: "Enterprise Technologies",
+  },
+  {
+    number: "7",
     label: "Platform Modules",
   },
   {
-    number: "15+",
-    label: "Open Source Technologies",
+    number: "20+",
+    label: "Production Components",
   },
   {
     number: "100%",
     label: "Open Source",
-  },
-  {
-    number: "Enterprise",
-    label: "Production Inspired",
   },
 ];
 

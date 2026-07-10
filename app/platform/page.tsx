@@ -1,10 +1,8 @@
-import Navbar from "@/components/layout/Navbar";
 import Container from "@/components/ui/Container";
 
 export default function PlatformPage() {
   return (
     <>
-      <Navbar />
 
       <main className="py-24">
 

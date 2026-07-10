@@ -4,64 +4,130 @@ import HeroStat from "./HeroStat";
 
 export default function Hero() {
   return (
-    /* 1. Added explicit z-0 to the section wrapper */
-    <section className="relative z-0 overflow-hidden bg-gradient-to-br from-slate-50 via-white to-blue-50 py-28">
+    <section className="relative overflow-hidden bg-gradient-to-br from-slate-50 via-white to-blue-50 py-32">
 
-      {/* Background Glows */}
-      {/* 2. Added -z-10 to both glow wrappers to forcefully lock them behind your text and stats */}
-      <div className="absolute -z-10 left-20 top-20 h-72 w-72 rounded-full bg-blue-400/20 blur-3xl"></div>
-      <div className="absolute -z-10 right-20 bottom-10 h-72 w-72 rounded-full bg-cyan-400/20 blur-3xl"></div>
+      {/* Background Glow */}
+      <div className="absolute left-0 top-0 h-96 w-96 rounded-full bg-blue-300/20 blur-3xl" />
+      <div className="absolute bottom-0 right-0 h-96 w-96 rounded-full bg-cyan-300/20 blur-3xl" />
 
       <Container>
-        <div className="relative z-10 max-w-4xl">
+        <div className="relative z-10 mx-auto max-w-6xl text-center">
+
           {/* Badge */}
-          <span className="rounded-full bg-blue-100 px-4 py-2 text-sm font-semibold text-blue-700">
-            Enterprise AI Platform
+
+          <span
+            className="
+              inline-flex
+              items-center
+              rounded-full
+              border
+              border-blue-200
+              bg-blue-50
+              px-5
+              py-2
+              text-sm
+              font-semibold
+              text-blue-700
+              shadow-sm
+            "
+          >
+            🚀 Enterprise AI Engineering Portfolio
           </span>
 
-          {/* Heading */}
-          <h1 className="mt-6 text-6xl font-bold tracking-tight text-slate-900">
+          {/* Title */}
+
+          <h1
+            className="
+              mt-8
+              text-5xl
+              font-black
+              leading-tight
+              tracking-tight
+              text-slate-900
+              md:text-6xl
+              lg:text-7xl
+            "
+          >
             {siteConfig.name}
           </h1>
 
-          {/* Tagline */}
-          <h2 className="mt-6 text-2xl font-medium text-slate-700">
+          {/* Subtitle */}
+
+          <h2 className="mt-6 text-2xl font-semibold text-slate-700 lg:text-3xl">
             {siteConfig.tagline}
           </h2>
 
           {/* Description */}
-          <p className="mt-8 max-w-2xl text-lg leading-8 text-slate-600">
+
+          <p className="mx-auto mt-8 max-w-3xl text-lg leading-9 text-slate-600 lg:text-xl">
             {siteConfig.description}
           </p>
 
-          {/* Buttons */}
-          <div className="mt-10 flex flex-wrap gap-4">
+          {/* CTA */}
+
+          <div className="mt-12 flex flex-wrap justify-center gap-5">
+
             <a
               href="#platform"
-              className="rounded-xl bg-blue-600 px-6 py-3 font-semibold text-white transition duration-300 hover:bg-blue-700 hover:shadow-lg"
+              className="
+                inline-flex
+                items-center
+                rounded-xl
+                bg-blue-600
+                px-8
+                py-4
+                font-semibold
+                text-white
+                transition-all
+                duration-300
+                hover:-translate-y-1
+                hover:bg-blue-700
+                hover:shadow-xl
+              "
             >
-              Explore Platform
+              Explore Platform →
             </a>
 
             <a
-              href={siteConfig.github}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="rounded-xl border border-slate-300 bg-white px-6 py-3 font-semibold text-slate-700 transition duration-300 hover:bg-slate-100 hover:shadow-lg"
+              href="/architecture"
+              className="
+                inline-flex
+                items-center
+                rounded-xl
+                border
+                border-slate-300
+                bg-white
+                px-8
+                py-4
+                font-semibold
+                text-slate-700
+                transition-all
+                duration-300
+                hover:-translate-y-1
+                hover:border-blue-500
+                hover:bg-slate-50
+                hover:shadow-xl
+              "
             >
-              View on GitHub
+              View Architecture
             </a>
+
           </div>
 
-          {/* Hero Statistics */}
-          <div className="mt-20 grid grid-cols-2 gap-8 md:grid-cols-4">
+          {/* Statistics */}
+
+          <div className="mt-24 grid gap-8 sm:grid-cols-2 lg:grid-cols-4">
+
             {heroStats.map((stat) => (
               <HeroStat
                 key={stat.label}
-                {...stat}
+                number={stat.number}
+                label={stat.label}
               />
             ))}
+
           </div>
+
         </div>
       </Container>
     </section>
