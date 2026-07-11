@@ -1,38 +1,60 @@
 @import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
-  --font-sans: Arial, Helvetica, sans-serif;
-  --font-mono: monospace;
+/* ---------- Theme ---------- */
+
+html {
+  scroll-behavior: smooth;
 }
 
-@theme {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-sans);
-  --font-mono: var(--font-mono);
+body {
+  @apply bg-slate-50 text-slate-900 transition-colors duration-300;
 }
 
-/* 1. FORCE LIGHT THEME ONLY (Remove or comment out the prefers-color-scheme: dark block) */
-/* @media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+.dark body {
+  @apply bg-slate-950 text-slate-100;
 }
-*/
 
-/* 2. Map the base styles explicitly using Tailwind v4 syntax */
-@layer base {
-  body {
-    background-color: var(--background);
-    color: var(--foreground);
-    font-family: var(--font-sans);
-  }
-  
-  /* Prevent links and headings from losing contrast */
-  a, h1, h2, h3, p {
-    color: currentColor;
-  }
+/* ---------- Selection ---------- */
+
+::selection {
+  @apply bg-blue-600 text-white;
+}
+
+/* ---------- Scrollbar ---------- */
+
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: #e2e8f0;
+}
+
+.dark ::-webkit-scrollbar-track {
+  background: #020617;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #2563eb;
+  border-radius: 999px;
+}
+
+/* ---------- Section ---------- */
+
+.section-light {
+  @apply bg-white dark:bg-slate-950;
+}
+
+.section-muted {
+  @apply bg-slate-50 dark:bg-slate-900;
+}
+
+/* ---------- Card ---------- */
+
+.card {
+  @apply rounded-3xl border border-slate-200 bg-white shadow-lg transition-all duration-300 hover:-translate-y-1 hover:shadow-xl;
+}
+
+.dark .card {
+  @apply border-slate-800 bg-slate-900;
 }

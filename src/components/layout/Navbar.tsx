@@ -1,84 +1,124 @@
 "use client";
 
 import Link from "next/link";
-import { usePathname } from "next/navigation";
-import { siteConfig } from "@/data/site";
-import Container from "@/components/ui/Container";
+import { useEffect, useState } from "react";
+
+import DesktopMenu from "./DesktopMenu";
 import MobileMenu from "./MobileMenu";
+import ThemeToggle from "./ThemeToggle";
+
+import {
+  BrainCircuit,
+  Search,
+  FaGithub,
+} from "@/lib/icons";
 
 export default function Navbar() {
-  const pathname = usePathname();
+  const [scrolled, setScrolled] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      setScrolled(window.scrollY > 10);
+    };
+
+    handleScroll();
+
+    window.addEventListener("scroll", handleScroll);
+
+    return () =>
+      window.removeEventListener(
+        "scroll",
+        handleScroll
+      );
+  }, []);
 
   return (
-    <header className="sticky top-0 z-50 border-b border-slate-200/70 bg-white/80 backdrop-blur-xl">
+    <header
+      className={`sticky top-0 z-50 transition-all duration-300 ${
+        scrolled
+          ? "border-b border-slate-200 bg-white/90 shadow-lg backdrop-blur-xl"
+          : "bg-white/70 backdrop-blur-md"
+      }`}
+    >
+      <div className="mx-auto flex h-20 max-w-7xl items-center justify-between px-6">
 
-      <Container>
+        {/* Logo */}
+        <Link
+          href="/"
+          className="flex items-center gap-3"
+        >
+          <div className="flex h-12 w-12 items-center justify-center rounded-2xl bg-gradient-to-br from-blue-600 to-indigo-600 text-white shadow-lg">
+            <BrainCircuit size={24} />
+          </div>
 
-        <div className="flex h-20 items-center justify-between">
+          <div>
+            <h1 className="text-xl font-black tracking-tight">
+              OpenMarTech
+            </h1>
+            <p className="-mt-1 text-xs text-slate-500">
+              Enterprise AI Platform
+            </p>
+          </div>
+        </Link>
 
-          <Link
-            href="/"
-            className="text-2xl font-black tracking-tight text-slate-900"
+        {/* Main Desktop Navigation */}
+        <DesktopMenu />
+
+        {/* Right Side Controls */}
+        <div className="hidden items-center gap-3 lg:flex">
+          {/* Search */}
+          <button
+            className="
+              flex
+              h-11
+              w-11
+              items-center
+              justify-center
+              rounded-xl
+              border
+              border-slate-200
+              bg-white
+              transition
+              hover:border-blue-300
+              hover:text-blue-600
+            "
           >
-            OpenMarTech
-            <span className="text-blue-600"> AI</span>
-          </Link>
+            <Search size={18} />
+          </button>
 
-          {/* Desktop Navigation */}
-
-          <nav className="hidden md:flex items-center gap-8">
-
-            {siteConfig.navigation.map((item) => {
-
-              const active = pathname === item.href;
-
-              return (
-
-                <Link
-                  key={item.title}
-                  href={item.href}
-                  className={`relative text-sm font-semibold transition
-
-                  ${
-                    active
-                      ? "text-blue-600"
-                      : "text-slate-600 hover:text-blue-600"
-                  }`}
-                >
-                  {item.title}
-
-                  {active && (
-                    <span className="absolute -bottom-2 left-0 h-[3px] w-full rounded-full bg-blue-600" />
-                  )}
-
-                </Link>
-
-              );
-
-            })}
-
-          </nav>
-
-          {/* Desktop GitHub */}
-
+          {/* GitHub */}
           <Link
-            href={siteConfig.github}
+            href="https://github.com/rakeshjillella/openmartech-ai"
             target="_blank"
-            className="hidden md:inline-flex rounded-xl bg-blue-600 px-5 py-2.5 text-sm font-semibold text-white hover:bg-blue-700 transition"
+            rel="noopener noreferrer"
+            className="
+              flex
+              items-center
+              gap-2
+              rounded-xl
+              bg-slate-900
+              px-5
+              py-3
+              font-semibold
+              text-white
+              transition
+              hover:bg-black
+            "
           >
+            <FaGithub size={18} />
             GitHub
           </Link>
 
-          {/* Mobile Menu */}
-
-          <div className="md:hidden">
-            <MobileMenu />
-          </div>
-
+          {/* Theme Switcher Only */}
+          <ThemeToggle />
         </div>
 
-      </Container>
+        {/* Mobile Navigation */}
+        <div className="lg:hidden">
+          <MobileMenu />
+        </div>
 
+      </div>
     </header>
   );
 }

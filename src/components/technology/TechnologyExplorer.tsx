@@ -2,47 +2,34 @@
 
 import { useState } from "react";
 
-import { technologyData } from "@/data/technologyData";
-import { Technology } from "@/types/technology";
-
-import useSearch from "@/hooks/useSearch";
-
-import TechnologyHero from "./TechnologyHero";
-import TechnologyToolbar from "./TechnologyToolbar";
+import TechnologySearch from "./TechnologySearch";
+import TechnologyCategories from "./TechnologyCategories";
 import TechnologyGrid from "./TechnologyGrid";
-//import TechnologyDrawer from "./TechnologyDrawer";
+import TechnologyStats from "./TechnologyStats";
 
 export default function TechnologyExplorer() {
-  const [, setSelected] =
-    useState<Technology | null>(null);
-
-  const {
-    query,
-    setQuery,
-    filteredItems,
-  } = useSearch(
-    technologyData,
-    [
-      "name",
-      "category",
-      "description",
-      "maturity",
-    ]
-  );
+  const [search, setSearch] = useState("");
+  const [category, setCategory] = useState("All");
 
   return (
-    <>
-      <TechnologyHero />
+    <div className="space-y-8">
 
-      <TechnologyToolbar
-        query={query}
-        setQuery={setQuery}
+      <TechnologyStats />
+
+      <TechnologySearch
+        search={search}
+        setSearch={setSearch}
+      />
+
+      <TechnologyCategories
+        category={category}
+        setCategory={setCategory}
       />
 
       <TechnologyGrid
-        technologies={filteredItems}
-        onSelect={setSelected}
+        search={search}
       />
-    </>
+
+    </div>
   );
 }

@@ -1,38 +1,36 @@
 "use client";
 
 import { useEffect, useState } from "react";
+
 import Link from "next/link";
-import { usePathname } from "next/navigation";
 
 import {
   Menu,
   X,
-  House,
-  Boxes,
-  Cpu,
-  ShieldCheck,
-  BrainCircuit,
-  LayoutDashboard,
-} from "lucide-react";
-import { FaGithub } from "react-icons/fa";
+  ChevronDown,
+} from "@/lib/icons";
 
-import { siteConfig } from "@/data/site";
-
-const icons: Record<string, React.ReactNode> = {
-  "/": <House size={20} />,
-  "/architecture": <Boxes size={20} />,
-  "/technology": <Cpu size={20} />,
-  "/responsible-ai": <ShieldCheck size={20} />,
-  "/ai-platform": <BrainCircuit size={20} />,
-  "/dashboard": <LayoutDashboard size={20} />,
-};
+import {
+  PlatformMenu,
+  ArchitectureMenu,
+  ResourceMenu,
+} from "./MegaMenu";
 
 export default function MobileMenu() {
-  const pathname = usePathname();
   const [open, setOpen] = useState(false);
+
+  const [platformOpen, setPlatformOpen] =
+    useState(false);
+
+  const [architectureOpen, setArchitectureOpen] =
+    useState(false);
+
+  const [resourcesOpen, setResourcesOpen] =
+    useState(false);
 
   useEffect(() => {
     document.body.style.overflow = open ? "hidden" : "auto";
+
     return () => {
       document.body.style.overflow = "auto";
     };
@@ -40,12 +38,16 @@ export default function MobileMenu() {
 
   return (
     <>
+      {/* Menu Button */}
+
       <button
         onClick={() => setOpen(true)}
-        className="rounded-xl border border-slate-200 bg-white p-2 shadow-sm"
+        className="rounded-xl border border-slate-200 bg-white p-2 shadow-sm lg:hidden"
       >
         <Menu size={24} />
       </button>
+
+      {/* Overlay */}
 
       <div
         className={`fixed inset-0 z-50 transition-all duration-300 ${
@@ -55,10 +57,14 @@ export default function MobileMenu() {
         }`}
         onClick={() => setOpen(false)}
       >
+        {/* Drawer */}
+
         <aside
           onClick={(e) => e.stopPropagation()}
-          className={`absolute right-0 top-0 h-full w-80 bg-white shadow-2xl transition-transform duration-300 ${
-            open ? "translate-x-0" : "translate-x-full"
+          className={`absolute right-0 top-0 h-full w-80 overflow-y-auto bg-white shadow-2xl transition-transform duration-300 ${
+            open
+              ? "translate-x-0"
+              : "translate-x-full"
           }`}
         >
           {/* Header */}
@@ -88,54 +94,165 @@ export default function MobileMenu() {
 
           {/* Navigation */}
 
-          <nav className="p-5">
+          <nav className="p-5 space-y-3">
 
-            <div className="space-y-2">
+            {/* Platform */}
 
-              {siteConfig.navigation.map((item) => {
+            <Accordion
+              title="Platform"
+              open={platformOpen}
+              onToggle={() =>
+                setPlatformOpen(!platformOpen)
+              }
+            >
+              {PlatformMenu.map((item) => (
+                <MobileLink
+                  key={item.href}
+                  href={item.href}
+                  title={item.title}
+                  close={() => setOpen(false)}
+                />
+              ))}
+            </Accordion>
 
-                const active = pathname === item.href;
+            {/* Architecture */}
 
-                return (
-                  <Link
-                    key={item.title}
-                    href={item.href}
-                    onClick={() => setOpen(false)}
-                    className={`flex items-center gap-4 rounded-xl px-4 py-4 font-medium transition
+            <Accordion
+              title="Architecture"
+              open={architectureOpen}
+              onToggle={() =>
+                setArchitectureOpen(
+                  !architectureOpen
+                )
+              }
+            >
+              {ArchitectureMenu.map((item) => (
+                <MobileLink
+                  key={item.href}
+                  href={item.href}
+                  title={item.title}
+                  close={() => setOpen(false)}
+                />
+              ))}
+            </Accordion>
 
-                    ${
-                      active
-                        ? "bg-blue-600 text-white shadow-lg"
-                        : "hover:bg-slate-100"
-                    }`}
-                  >
-                    {icons[item.href]}
+            {/* Resources */}
 
-                    {item.title}
+            <Accordion
+              title="Resources"
+              open={resourcesOpen}
+              onToggle={() =>
+                setResourcesOpen(!resourcesOpen)
+              }
+            >
+              {ResourceMenu.map((item) => (
+                <MobileLink
+                  key={item.href}
+                  href={item.href}
+                  title={item.title}
+                  close={() => setOpen(false)}
+                />
+              ))}
+            </Accordion>
 
-                  </Link>
-                );
+            <div className="border-t pt-4">
 
-              })}
+              <MobileLink
+                href="/about"
+                title="About"
+                close={() => setOpen(false)}
+              />
 
-            </div>
-
-            <div className="mt-10 border-t pt-8">
-
-              <Link
-                href={siteConfig.github}
-                target="_blank"
-                className="flex items-center justify-center gap-3 rounded-xl bg-slate-900 px-5 py-4 font-semibold text-white transition hover:bg-black"
-              >
-                <FaGithub size={20} />
-                GitHub
-              </Link>
+              <MobileLink
+                href="/contact"
+                title="Contact"
+                close={() => setOpen(false)}
+              />
 
             </div>
 
           </nav>
+
         </aside>
+
       </div>
+
     </>
+  );
+}
+
+/* ---------------- Accordion ---------------- */
+
+type AccordionProps = {
+  title: string;
+  open: boolean;
+  onToggle: () => void;
+  children: React.ReactNode;
+};
+
+function Accordion({
+  title,
+  open,
+  onToggle,
+  children,
+}: AccordionProps) {
+  return (
+    <div className="rounded-xl border">
+
+      <button
+        onClick={onToggle}
+        className="flex w-full items-center justify-between p-4 font-semibold"
+      >
+        {title}
+
+        <ChevronDown
+          size={18}
+          className={`transition ${
+            open ? "rotate-180" : ""
+          }`}
+        />
+      </button>
+
+      {open && (
+        <div className="border-t bg-slate-50 p-2">
+          {children}
+        </div>
+      )}
+
+    </div>
+  );
+}
+
+/* ---------------- Mobile Link ---------------- */
+
+type MobileLinkProps = {
+  href: string;
+  title: string;
+  close: () => void;
+};
+
+function MobileLink({
+  href,
+  title,
+  close,
+}: MobileLinkProps) {
+  return (
+    <Link
+      href={href}
+      onClick={close}
+      target={
+        href.startsWith("http")
+          ? "_blank"
+          : undefined
+      }
+      rel={
+        href.startsWith("http")
+          ? "noopener noreferrer"
+          : undefined
+      }
+      className="block rounded-lg px-4 py-3 text-sm transition hover:bg-white hover:text-blue-600"
+    >
+      {title}
+    </Link>
   );
 }

@@ -8,10 +8,10 @@ export default function CaseStudyPage() {
       <Container>
 
         <SectionHeading
-          badge="Enterprise Case Study"
-          title="Responsible AI-Driven Autonomous Marketing Intelligence Platform"
-          description="A production-inspired enterprise platform demonstrating modern Data Engineering, AI Platform Engineering, Responsible AI, MLOps and Executive Decision Intelligence."
-        />
+  eyebrow="Enterprise Case Study"
+  title="Responsible AI-Driven Autonomous Marketing Intelligence Platform"
+  description="A production-inspired enterprise platform demonstrating modern Data Engineering, AI Platform Engineering, Responsible AI, MLOps and Executive Decision Intelligence."
+/>
 
       </Container>
 

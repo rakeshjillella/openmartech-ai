@@ -13,11 +13,14 @@ export {
   FileText,
   ExternalLink,
   ChevronRight,
+  ChevronDown,
   ArrowRight,
   Settings,
   Database,
   Server,
   Workflow,
+  Moon, // Added
+  Sun,  // Added
 } from "lucide-react";
 
 // Brand Icons

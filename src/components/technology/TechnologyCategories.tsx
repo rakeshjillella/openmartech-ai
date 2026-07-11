@@ -1,40 +1,38 @@
 "use client";
 
-const filters = [
+const categories = [
   "All",
+  "Data",
   "Streaming",
-  "Lakehouse",
-  "Processing",
   "AI",
+  "Cloud",
   "Monitoring",
 ];
 
 type Props = {
-  filter: string;
-  setFilter: (value: string) => void;
+  category: string;
+  setCategory: (value: string) => void;
 };
 
-export default function ArchitectureFilters({
-  filter,
-  setFilter,
+export default function TechnologyCategories({
+  category,
+  setCategory,
 }: Props) {
   return (
     <div className="flex flex-wrap gap-3">
-
-      {filters.map((item) => (
+      {categories.map((item) => (
         <button
           key={item}
-          onClick={() => setFilter(item)}
+          onClick={() => setCategory(item)}
           className={`rounded-full px-5 py-2 transition ${
-            filter === item
+            category === item
               ? "bg-blue-600 text-white"
-              : "border bg-white hover:bg-slate-100"
+              : "border bg-white"
           }`}
         >
           {item}
         </button>
       ))}
-
     </div>
   );
 }

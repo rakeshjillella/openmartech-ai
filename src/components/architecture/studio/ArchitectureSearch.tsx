@@ -1,32 +1,31 @@
 "use client";
 
+import { Search } from "@/lib/icons";
+
 type Props = {
-  value: string;
-  onChange: (value: string) => void;
+  search: string;
+  setSearch: (value: string) => void;
 };
 
 export default function ArchitectureSearch({
-  value,
-  onChange,
+  search,
+  setSearch,
 }: Props) {
   return (
-    <input
-      value={value}
-      onChange={(e) => onChange(e.target.value)}
-      placeholder="Search architecture..."
-      className="
-        w-full
-        rounded-2xl
-        border
-        border-slate-200
-        bg-white
-        px-5
-        py-3
-        text-sm
-        shadow-sm
-        focus:border-blue-500
-        focus:outline-none
-      "
-    />
+    <div className="relative">
+
+      <Search
+        size={18}
+        className="absolute left-4 top-4 text-slate-400"
+      />
+
+      <input
+        value={search}
+        onChange={(e) => setSearch(e.target.value)}
+        placeholder="Search technologies..."
+        className="w-full rounded-2xl border bg-white py-4 pl-12 pr-4"
+      />
+
+    </div>
   );
 }

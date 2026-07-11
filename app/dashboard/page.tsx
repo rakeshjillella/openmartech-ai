@@ -1,38 +1,26 @@
 import Container from "@/components/ui/Container";
 
 import DashboardHero from "@/components/dashboard/DashboardHero";
-import DashboardKPIs from "@/components/dashboard/DashboardKPIs";
-import RevenueTrend from "@/components/dashboard/RevenueTrend";
-import MarketingPerformance from "@/components/dashboard/MarketingPerformance";
-import AIInsightCards from "@/components/dashboard/AIInsightCards";
-import ExecutiveSummary from "@/components/dashboard/ExecutiveSummary";
-import PlatformHealth from "@/components/dashboard/PlatformHealth";
-import GovernanceStatus from "@/components/dashboard/GovernanceStatus";
+import KPICards from "@/components/dashboard/KPICards";
+import SystemStatus from "@/components/dashboard/SystemStatus";
+import ResponsibleAIStatus from "@/components/dashboard/ResponsibleAIStatus";
 
 export default function DashboardPage() {
   return (
-    <main className="py-24">
+    <Container>
 
-      <Container>
+      <div className="space-y-10 py-20">
 
         <DashboardHero />
 
-<DashboardKPIs />
+        <KPICards />
 
-<RevenueTrend />
+        <SystemStatus />
 
-<MarketingPerformance />
+        <ResponsibleAIStatus />
 
-<AIInsightCards />
+      </div>
 
-<PlatformHealth />
-
-<GovernanceStatus />
-
-<ExecutiveSummary />
-
-      </Container>
-
-    </main>
+    </Container>
   );
 }

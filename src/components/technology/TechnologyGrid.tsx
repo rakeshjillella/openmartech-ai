@@ -1,24 +1,37 @@
+import { architecture } from "@/data/architecture";
 import TechnologyCard from "./TechnologyCard";
-import { Technology } from "@/types/technology";
 
 type Props = {
-  technologies: Technology[];
-  onSelect: (technology: Technology) => void;
+  search: string;
 };
 
 export default function TechnologyGrid({
-  technologies,
-  onSelect,
+  search,
 }: Props) {
+  const filtered = architecture.filter((item) =>
+    item.title
+      .toLowerCase()
+      .includes(search.toLowerCase())
+  );
+
   return (
-    <div className="grid gap-8 md:grid-cols-2 xl:grid-cols-3">
-      {technologies.map((technology) => (
+    <div className="grid gap-8 lg:grid-cols-2">
+
+      {filtered.map((item) => (
+
         <TechnologyCard
-          key={technology.id}
-          technology={technology}
-          onClick={() => onSelect(technology)}
+          key={item.id}
+          technology={{
+            name: item.title,
+            category: item.layer,
+            description: item.description,
+            docs: item.docs,
+            github: item.github,
+          }}
         />
+
       ))}
+
     </div>
   );
 }
