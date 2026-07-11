@@ -13,8 +13,8 @@ import {
   ShieldCheck,
   BrainCircuit,
   LayoutDashboard,
-  ExternalLink,
 } from "lucide-react";
+import { FaGithub } from "react-icons/fa";
 
 import { siteConfig } from "@/data/site";
 
@@ -127,7 +127,7 @@ export default function MobileMenu() {
                 target="_blank"
                 className="flex items-center justify-center gap-3 rounded-xl bg-slate-900 px-5 py-4 font-semibold text-white transition hover:bg-black"
               >
-                <ExternalLink size={20} />
+                <FaGithub size={20} />
                 GitHub
               </Link>
 

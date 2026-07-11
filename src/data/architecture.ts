@@ -1,257 +1,239 @@
-export type ArchitectureLayer =
-  | "Data Sources"
-  | "Ingestion"
-  | "Processing"
-  | "Storage"
-  | "AI Platform"
-  | "Consumption";
+import { ArchitectureNode } from "@/types/architecture";
 
-export interface ArchitectureNode {
-
-  id: string;
-
-  title: string;
-
-  subtitle: string;
-
-  layer: ArchitectureLayer;
-
-  category: string;
-
-  description: string;
-
-  icon: string;
-
-  technologies: string[];
-
-  documentation: string;
-
-  connections: string[];
-
-}
-
-export const architectureNodes: ArchitectureNode[] = [
-
+export const architecture: ArchitectureNode[] = [
   {
-    id: "crm",
-
-    title: "Marketing Systems",
-
-    subtitle: "CRM • Ads • Web Analytics",
-
+    id: "postgres",
+    title: "PostgreSQL",
+    subtitle: "Operational Database",
     layer: "Data Sources",
-
-    category: "Source",
-
-    icon: "📊",
-
     description:
-      "Marketing platforms generating customer, campaign and engagement data.",
-
-    technologies: [
-      "Salesforce",
-      "Google Analytics",
-      "Meta Ads",
-    ],
-
-    documentation: "#",
-
-    connections: ["kafka"],
-  },
-
-  {
-    id: "kafka",
-
-    title: "Kafka + CDC",
-
-    subtitle: "Real-Time Ingestion",
-
-    layer: "Ingestion",
-
-    category: "Streaming",
-
-    icon: "⚡",
-
-    description:
-      "Captures streaming events and Change Data Capture from operational systems.",
-
-    technologies: [
-      "Apache Kafka",
-      "Debezium",
-    ],
-
-    documentation: "https://kafka.apache.org/",
-
-    connections: [
-      "airflow",
-      "spark",
-    ],
+      "Stores transactional business data used for ingestion into the analytics platform.",
+    x: 80,
+    y: 120,
+    technologies: ["PostgreSQL", "SQL"],
+    inputs: [],
+    outputs: ["Kafka", "Airflow"],
+    website: "https://www.postgresql.org",
+    docs: "https://www.postgresql.org/docs/",
+    github: "https://github.com/postgres/postgres",
   },
 
   {
     id: "airflow",
-
     title: "Apache Airflow",
-
     subtitle: "Workflow Orchestration",
-
-    layer: "Processing",
-
-    category: "Orchestration",
-
-    icon: "🛠",
-
+    layer: "Streaming",
     description:
-      "Schedules and orchestrates enterprise ETL and ML pipelines.",
+      "Schedules and orchestrates ETL, ML pipelines and enterprise workflows.",
+    x: 320,
+    y: 60,
+    technologies: ["Airflow", "Python", "DAGs"],
+    inputs: ["PostgreSQL"],
+    outputs: ["Spark", "dbt", "MLflow"],
+    website: "https://airflow.apache.org",
+    docs: "https://airflow.apache.org/docs/",
+    github: "https://github.com/apache/airflow",
+  },
 
-    technologies: [
-      "Apache Airflow",
-    ],
-
-    documentation: "https://airflow.apache.org/",
-
-    connections: [
-      "spark",
-    ],
+  {
+    id: "kafka",
+    title: "Apache Kafka",
+    subtitle: "Event Streaming Platform",
+    layer: "Streaming",
+    description:
+      "Captures CDC events and streams enterprise data in real time.",
+    x: 320,
+    y: 200,
+    technologies: ["Kafka", "CDC", "Streaming"],
+    inputs: ["PostgreSQL"],
+    outputs: ["Spark"],
+    website: "https://kafka.apache.org",
+    docs: "https://kafka.apache.org/documentation/",
+    github: "https://github.com/apache/kafka",
   },
 
   {
     id: "spark",
-
     title: "Apache Spark",
-
-    subtitle: "Distributed Compute",
-
+    subtitle: "Distributed Processing Engine",
     layer: "Processing",
-
-    category: "Processing",
-
-    icon: "🔥",
-
     description:
-      "Distributed data engineering and machine learning platform.",
-
+      "Processes batch and streaming data while powering feature engineering and machine learning.",
+    x: 620,
+    y: 180,
     technologies: [
-      "Spark SQL",
-      "Spark ML",
       "PySpark",
+      "Spark SQL",
+      "Spark Streaming",
+      "MLlib",
     ],
-
-    documentation: "https://spark.apache.org/",
-
-    connections: [
-      "iceberg",
-      "mlflow",
-    ],
+    inputs: ["Kafka", "Airflow"],
+    outputs: ["Iceberg", "MLflow"],
+    website: "https://spark.apache.org",
+    docs: "https://spark.apache.org/docs/latest/",
+    github: "https://github.com/apache/spark",
   },
 
   {
     id: "iceberg",
-
-    title: "Iceberg Lakehouse",
-
-    subtitle: "Enterprise Storage",
-
-    layer: "Storage",
-
-    category: "Lakehouse",
-
-    icon: "🧊",
-
+    title: "Apache Iceberg",
+    subtitle: "Enterprise Lakehouse",
+    layer: "Lakehouse",
     description:
-      "ACID-compliant enterprise data lake built on MinIO.",
+      "Stores versioned analytical datasets with ACID transactions and schema evolution.",
+    x: 930,
+    y: 180,
+    technologies: ["Iceberg", "Parquet"],
+    inputs: ["Spark"],
+    outputs: ["dbt", "DuckDB"],
+    website: "https://iceberg.apache.org",
+    docs: "https://iceberg.apache.org/docs/latest/",
+    github: "https://github.com/apache/iceberg",
+  },
 
-    technologies: [
-      "Apache Iceberg",
-      "MinIO",
-    ],
+  {
+    id: "minio",
+    title: "MinIO",
+    subtitle: "Object Storage",
+    layer: "Lakehouse",
+    description:
+      "S3-compatible object storage hosting Iceberg tables, ML artifacts and datasets.",
+    x: 930,
+    y: 60,
+    technologies: ["MinIO", "S3"],
+    inputs: ["Spark"],
+    outputs: ["Iceberg", "MLflow"],
+    website: "https://min.io",
+    docs: "https://min.io/docs/",
+    github: "https://github.com/minio/minio",
+  },
 
-    documentation: "https://iceberg.apache.org/",
+  {
+    id: "dbt",
+    title: "dbt",
+    subtitle: "Data Transformation",
+    layer: "Processing",
+    description:
+      "Builds reusable SQL transformation models and enterprise semantic layers.",
+    x: 1230,
+    y: 180,
+    technologies: ["dbt", "SQL"],
+    inputs: ["Iceberg", "Airflow"],
+    outputs: ["DuckDB", "Power BI"],
+    website: "https://www.getdbt.com",
+    docs: "https://docs.getdbt.com",
+    github: "https://github.com/dbt-labs/dbt-core",
+  },
 
-    connections: [
-      "powerbi",
-      "dify",
-    ],
+  {
+    id: "duckdb",
+    title: "DuckDB",
+    subtitle: "Analytical Database",
+    layer: "Visualization",
+    description:
+      "High-performance OLAP engine serving dashboards and ad-hoc analytics.",
+    x: 1520,
+    y: 180,
+    technologies: ["DuckDB", "SQL"],
+    inputs: ["dbt", "Iceberg"],
+    outputs: ["Power BI"],
+    website: "https://duckdb.org",
+    docs: "https://duckdb.org/docs/",
+    github: "https://github.com/duckdb/duckdb",
   },
 
   {
     id: "mlflow",
-
     title: "MLflow",
-
-    subtitle: "Model Lifecycle",
-
-    layer: "AI Platform",
-
-    category: "MLOps",
-
-    icon: "🤖",
-
+    subtitle: "MLOps Platform",
+    layer: "AI",
     description:
-      "Tracks experiments, model versions and production deployments.",
+      "Tracks experiments, registers models and manages the complete ML lifecycle.",
+    x: 930,
+    y: 380,
+    technologies: ["MLflow", "Model Registry"],
+    inputs: ["Spark", "Airflow", "MinIO"],
+    outputs: ["Responsible AI"],
+    website: "https://mlflow.org",
+    docs: "https://mlflow.org/docs/latest/",
+    github: "https://github.com/mlflow/mlflow",
+  },
 
-    technologies: [
-      "MLflow",
-    ],
-
-    documentation: "https://mlflow.org/",
-
-    connections: [
-      "dify",
-    ],
+  {
+    id: "langfuse",
+    title: "Langfuse",
+    subtitle: "LLM Observability",
+    layer: "Monitoring",
+    description:
+      "Monitors prompts, traces, latency and costs for enterprise AI applications.",
+    x: 1230,
+    y: 380,
+    technologies: ["Langfuse", "LLM Monitoring"],
+    inputs: ["Dify"],
+    outputs: ["Power BI"],
+    website: "https://langfuse.com",
+    docs: "https://langfuse.com/docs",
+    github: "https://github.com/langfuse/langfuse",
   },
 
   {
     id: "dify",
-
-    title: "Dify AI",
-
-    subtitle: "GenAI Agents",
-
-    layer: "AI Platform",
-
-    category: "LLM",
-
-    icon: "🧠",
-
+    title: "Dify",
+    subtitle: "Enterprise LLM Platform",
+    layer: "AI",
     description:
-      "Enterprise AI Agents powered by Retrieval-Augmented Generation.",
+      "Develops AI assistants, RAG workflows and enterprise GenAI applications.",
+    x: 620,
+    y: 380,
+    technologies: ["Dify", "LLM", "RAG"],
+    inputs: ["MLflow"],
+    outputs: ["Langfuse"],
+    website: "https://dify.ai",
+    docs: "https://docs.dify.ai",
+    github: "https://github.com/langgenius/dify",
+  },
 
+  {
+    id: "responsible-ai",
+    title: "Responsible AI",
+    subtitle: "Governance & Explainability",
+    layer: "Monitoring",
+    description:
+      "Provides bias monitoring, explainability, drift detection and governance controls.",
+    x: 1520,
+    y: 380,
     technologies: [
-      "Dify",
-      "LLMs",
+      "SHAP",
+      "Bias Detection",
+      "Drift Monitoring",
+      "Governance",
     ],
-
-    documentation: "https://dify.ai",
-
-    connections: [
-      "powerbi",
-    ],
+    inputs: ["MLflow"],
+    outputs: ["Power BI"],
+    website: "https://learn.microsoft.com/azure/machine-learning/concept-responsible-ai",
+    docs: "https://learn.microsoft.com/azure/machine-learning/concept-responsible-ai",
+    github: "",
   },
 
   {
     id: "powerbi",
-
     title: "Power BI",
-
-    subtitle: "Executive Dashboards",
-
-    layer: "Consumption",
-
-    category: "Visualization",
-
-    icon: "📈",
-
+    subtitle: "Executive Dashboard",
+    layer: "Visualization",
     description:
-      "Executive dashboards delivering marketing decision intelligence.",
-
-    technologies: [
-      "Power BI",
+      "Interactive business dashboards providing executive insights across the enterprise.",
+    x: 1820,
+    y: 280,
+    technologies: ["Power BI", "DAX", "Business Intelligence"],
+    inputs: [
+      "DuckDB",
+      "Responsible AI",
+      "Langfuse",
+      "dbt",
     ],
-
-    documentation: "https://powerbi.microsoft.com/",
-
-    connections: [],
+    outputs: [],
+    website: "https://powerbi.microsoft.com",
+    docs: "https://learn.microsoft.com/power-bi/",
+    github: "",
   },
-
 ];

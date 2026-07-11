@@ -13,7 +13,7 @@ import TechnologyGrid from "./TechnologyGrid";
 //import TechnologyDrawer from "./TechnologyDrawer";
 
 export default function TechnologyExplorer() {
-  const [selected, setSelected] =
+  const [, setSelected] =
     useState<Technology | null>(null);
 
   const {

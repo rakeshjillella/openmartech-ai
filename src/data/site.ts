@@ -46,6 +46,11 @@ export const siteConfig = {
       title: "About",
       href: "/about",
     },
+
+    {
+  title: "Contact",
+  href: "/contact",
+},
   ],
 };
 

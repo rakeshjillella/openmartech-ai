@@ -1,77 +1,50 @@
-import Container from "@/components/ui/Container";
 import Link from "next/link";
+import Container from "@/components/ui/Container";
 import { siteConfig } from "@/data/site";
 
-const technologies = [
-  "Apache Spark",
-  "Kafka",
-  "Airflow",
-  "Flink",
-  "Iceberg",
-  "MLflow",
-];
-
 export default function Footer() {
+  const year = new Date().getFullYear();
+
   return (
-    <footer className="border-t border-slate-200 bg-slate-950 text-slate-300">
+    <footer className="mt-24 border-t border-slate-200 bg-slate-50">
 
       <Container>
 
-        <div className="grid gap-14 py-16 md:grid-cols-4">
+        <div className="grid gap-12 py-16 md:grid-cols-4">
 
-          {/* Company */}
+          {/* Brand */}
 
           <div>
 
-            <h3 className="text-2xl font-black text-white">
-              {siteConfig.name}
-            </h3>
+            <h2 className="text-2xl font-black">
+              OpenMarTech
+              <span className="text-blue-600"> AI</span>
+            </h2>
 
-            <p className="mt-5 leading-7 text-slate-400">
-              Enterprise Marketing Decision Intelligence Platform powered by
-              modern Data Engineering, Responsible AI, Generative AI and
-              Executive Analytics.
+            <p className="mt-4 leading-7 text-slate-600">
+              Enterprise AI Platform demonstrating modern Data Engineering,
+              Responsible AI, MLOps and Business Intelligence.
             </p>
-
-            <div className="mt-6 flex gap-4">
-
-              <Link
-                href={siteConfig.github}
-                target="_blank"
-                className="text-sm transition hover:text-blue-400"
-              >
-                GitHub
-              </Link>
-
-              <Link
-                href={siteConfig.linkedin}
-                target="_blank"
-                className="text-sm transition hover:text-blue-400"
-              >
-                LinkedIn
-              </Link>
-
-            </div>
 
           </div>
 
-          {/* Navigation */}
+          {/* Platform */}
 
           <div>
 
-            <h4 className="mb-5 font-semibold text-white">
+            <h3 className="font-bold text-slate-900">
               Platform
-            </h4>
+            </h3>
 
-            <ul className="space-y-3">
+            <ul className="mt-5 space-y-3">
 
               {siteConfig.navigation.map((item) => (
 
-                <li key={item.title}>
+                <li key={item.href}>
 
                   <Link
                     href={item.href}
-                    className="transition hover:text-blue-400"
+                    className="text-slate-600 transition hover:text-blue-600"
                   >
                     {item.title}
                   </Link>
@@ -84,65 +57,83 @@ export default function Footer() {
 
           </div>
 
-          {/* Technologies */}
+          {/* Resources */}
 
           <div>
 
-            <h4 className="mb-5 font-semibold text-white">
-              Technologies
-            </h4>
+            <h3 className="font-bold text-slate-900">
+              Resources
+            </h3>
 
-            <ul className="space-y-3">
+            <ul className="mt-5 space-y-3">
 
-              {technologies.map((tech) => (
+              <li>
+                <Link
+                  href={siteConfig.github}
+                  target="_blank"
+                  className="text-slate-600 hover:text-blue-600"
+                >
+                  GitHub
+                </Link>
+              </li>
 
-                <li key={tech}>
-                  {tech}
-                </li>
+              <li>
+                <Link href="/contact">
+                  Contact
+              </Link>
+              </li>
 
-              ))}
+              <li>
+                <Link
+                  href="/dashboard"
+                  className="text-slate-600 hover:text-blue-600"
+                >
+                  Executive Dashboard
+                </Link>
+              </li>
 
             </ul>
 
           </div>
 
-          {/* Contact */}
+          {/* Tech Stack */}
 
           <div>
 
-            <h4 className="mb-5 font-semibold text-white">
-              About
-            </h4>
+            <h3 className="font-bold text-slate-900">
+              Enterprise Stack
+            </h3>
 
-            <p className="leading-7 text-slate-400">
+            <div className="mt-5 flex flex-wrap gap-2">
 
-              Built as an enterprise portfolio demonstrating
-              Data Engineering,
-              AI Platform Engineering,
-              Responsible AI,
-              Generative AI,
-              and Executive Decision Intelligence.
+              {[
+                "Airflow",
+                "Kafka",
+                "Spark",
+                "Iceberg",
+                "MLflow",
+                "Trino",
+                "Power BI",
+              ].map((tech) => (
 
-            </p>
+                <span
+                  key={tech}
+                  className="rounded-full bg-white px-3 py-1 text-sm shadow-sm"
+                >
+                  {tech}
+                </span>
+
+              ))}
+
+            </div>
 
           </div>
 
         </div>
 
-        <div className="flex flex-col items-center justify-between gap-4 border-t border-slate-800 py-8 text-sm text-slate-500 md:flex-row">
+        <div className="border-t py-6 text-center text-sm text-slate-500">
 
-          <p>
-
-            © {new Date().getFullYear()} OpenMarTech AI
-
-          </p>
-
-          <p>
-
-            Built with ❤️ by <span className="font-semibold text-white">Rakesh Jillella</span>
-
-          </p>
-
+          © {year} OpenMarTech AI • Built with ❤️ by Rakesh Jillella
         </div>
 
       </Container>

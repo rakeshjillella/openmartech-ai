@@ -1,24 +1,36 @@
 export interface ArchitectureNode {
+
   id: string;
 
   title: string;
 
   subtitle: string;
 
-  category:
-    | "source"
-    | "streaming"
-    | "processing"
-    | "lakehouse"
-    | "ml"
-    | "genai"
-    | "visualization";
-
-  technologies: string[];
+  layer:
+    | "Data Sources"
+    | "Streaming"
+    | "Processing"
+    | "Lakehouse"
+    | "AI"
+    | "Monitoring"
+    | "Visualization";
 
   description: string;
 
-  github?: string;
+  x: number;
 
-  documentation?: string;
+  y: number;
+
+  technologies: string[];
+
+  inputs: string[];
+
+  outputs: string[];
+
+  website: string;
+
+  docs: string;
+
+  github: string;
+
 }

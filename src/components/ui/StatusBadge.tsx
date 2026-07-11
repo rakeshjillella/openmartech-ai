@@ -1,23 +1,26 @@
 type Props = {
-  label: string;
-  color?: "green" | "blue" | "yellow";
+  status:
+    | "Healthy"
+    | "Warning"
+    | "Critical"
+    | "Production"
+    | "Experimental";
 };
 
-export default function StatusBadge({
-  label,
-  color = "green",
-}: Props) {
-  const colors = {
-    green: "bg-green-100 text-green-700",
-    blue: "bg-blue-100 text-blue-700",
-    yellow: "bg-yellow-100 text-yellow-700",
-  };
+const styles = {
+  Healthy: "bg-emerald-100 text-emerald-700",
+  Warning: "bg-yellow-100 text-yellow-700",
+  Critical: "bg-red-100 text-red-700",
+  Production: "bg-blue-100 text-blue-700",
+  Experimental: "bg-purple-100 text-purple-700",
+};
 
+export default function StatusBadge({ status }: Props) {
   return (
     <span
-      className={`rounded-full px-3 py-1 text-xs font-semibold ${colors[color]}`}
+      className={`rounded-full px-3 py-1 text-xs font-bold ${styles[status]}`}
     >
-      {label}
+      {status}
     </span>
   );
 }
