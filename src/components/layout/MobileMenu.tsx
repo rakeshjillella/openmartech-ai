@@ -13,7 +13,7 @@ import {
   ShieldCheck,
   BrainCircuit,
   LayoutDashboard,
-  GitHub,
+  ExternalLink,
 } from "lucide-react";
 
 import { siteConfig } from "@/data/site";
@@ -127,7 +127,7 @@ export default function MobileMenu() {
                 target="_blank"
                 className="flex items-center justify-center gap-3 rounded-xl bg-slate-900 px-5 py-4 font-semibold text-white transition hover:bg-black"
               >
-                <GitHub size={20} />
+                <ExternalLink size={20} />
                 GitHub
               </Link>
 
