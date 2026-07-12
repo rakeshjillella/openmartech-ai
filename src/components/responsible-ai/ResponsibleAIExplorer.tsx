@@ -1,34 +1,71 @@
-import ResponsibleAIHero from "./ResponsibleAIHero";
 import ResponsibleAICard from "./ResponsibleAICard";
-import ResponsibleAIDashboard from "./ResponsibleAIDashboard";
-import GovernanceChecklist from "./GovernanceChecklist";
-import ComplianceSection from "./ComplianceSection";
 
-import { responsibleAI } from "@/data/responsibleAI";
+const capabilities = [
+  {
+    title: "Fairness",
+    description:
+      "Continuous bias detection using SHAP and enterprise fairness metrics.",
+    color: "bg-green-500",
+  },
+  {
+    title: "Explainability",
+    description:
+      "Model predictions include SHAP explanations for executive transparency.",
+    color: "bg-blue-500",
+  },
+  {
+    title: "Governance",
+    description:
+      "MLflow Registry, approvals, audit trails and policy validation.",
+    color: "bg-purple-500",
+  },
+  {
+    title: "Observability",
+    description:
+      "Langfuse tracing, MLflow metrics and production monitoring.",
+    color: "bg-cyan-500",
+  },
+  {
+    title: "Compliance",
+    description:
+      "Enterprise AI aligned with NIST AI RMF, ISO 42001 and EU AI Act.",
+    color: "bg-orange-500",
+  },
+  {
+    title: "Human Oversight",
+    description:
+      "Critical AI decisions require governance approval before deployment.",
+    color: "bg-pink-500",
+  },
+];
 
 export default function ResponsibleAIExplorer() {
   return (
-    <div className="space-y-24">
-      <ResponsibleAIHero />
+    <section className="py-24">
 
-      <section>
-        <div className="grid gap-8 md:grid-cols-2 xl:grid-cols-4">
-          {responsibleAI.map((item) => (
-            <ResponsibleAICard
-              key={item.title}
-              title={item.title}
-              value={item.value}
-              description={item.description}
-            />
-          ))}
-        </div>
-      </section>
+      <div className="mb-16 text-center">
 
-      <ResponsibleAIDashboard />
+        <span className="font-semibold uppercase tracking-widest text-green-600">
+          Responsible AI
+        </span>
 
-      <GovernanceChecklist />
+        <h2 className="mt-5 text-5xl font-black dark:text-white">
+          Enterprise AI Governance Framework
+        </h2>
 
-      <ComplianceSection />
-    </div>
+      </div>
+
+      <div className="grid gap-8 md:grid-cols-2 xl:grid-cols-3">
+
+        {capabilities.map((item) => (
+          <ResponsibleAICard
+            key={item.title}
+            {...item}
+          />
+        ))}
+
+      </div>
+
+    </section>
   );
 }

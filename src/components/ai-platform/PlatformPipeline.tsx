@@ -1,37 +1,65 @@
-import Container from "@/components/ui/Container";
-import PlatformNode from "./PlatformNode";
-import { platformFlow } from "@/data/platformFlow";
+const pipeline = [
+  "Enterprise Data Sources",
+  "Apache Kafka",
+  "Apache Spark",
+  "Apache Iceberg",
+  "Machine Learning",
+  "Responsible AI",
+  "LLMs & RAG",
+  "Executive Dashboard",
+];
 
 export default function PlatformPipeline() {
   return (
-    <section className="py-28">
+    <section className="py-24">
 
-      <Container>
+      <div className="mb-16 text-center">
 
-        <div className="mb-16 text-center">
+        <span className="font-semibold uppercase tracking-widest text-blue-600">
+          Enterprise Workflow
+        </span>
 
-          <h2 className="text-5xl font-bold">
-            Enterprise Data & AI Pipeline
-          </h2>
+        <h2 className="mt-5 text-5xl font-black dark:text-white">
+          AI Platform Pipeline
+        </h2>
 
-          <p className="mt-6 text-xl text-slate-600">
-            End-to-end production workflow powering OpenMarTech AI.
-          </p>
+      </div>
 
-        </div>
+      <div className="flex flex-wrap items-center justify-center gap-6">
 
-        <div className="grid gap-8 md:grid-cols-2 xl:grid-cols-4">
+        {pipeline.map((step, index) => (
 
-          {platformFlow.map((node) => (
-            <PlatformNode
-              key={node.title}
-              {...node}
-            />
-          ))}
+          <div
+            key={step}
+            className="flex items-center gap-6"
+          >
+            <div
+              className="
+                rounded-2xl
+                border
+                border-slate-200
+                bg-white
+                px-7
+                py-5
+                font-semibold
+                shadow-sm
+                dark:border-slate-700
+                dark:bg-slate-900
+                dark:text-white
+              "
+            >
+              {step}
+            </div>
 
-        </div>
+            {index !== pipeline.length - 1 && (
+              <span className="text-3xl text-blue-500">→</span>
+            )}
 
-      </Container>
+          </div>
+
+        ))}
+
+      </div>
 
     </section>
   );

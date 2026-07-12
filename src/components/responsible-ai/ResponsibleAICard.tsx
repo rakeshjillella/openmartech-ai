@@ -1,29 +1,42 @@
 type Props = {
   title: string;
-  value: string;
   description: string;
+  color?: string;
 };
 
 export default function ResponsibleAICard({
   title,
-  value,
   description,
+  color = "bg-emerald-500",
 }: Props) {
   return (
-    <div className="rounded-3xl border border-slate-200 bg-white p-8 shadow-sm transition hover:-translate-y-2 hover:shadow-xl">
+    <div
+      className="
+        rounded-3xl
+        border
+        border-slate-200
+        bg-white
+        p-8
+        shadow-sm
+        transition
+        duration-300
+        hover:-translate-y-2
+        hover:shadow-2xl
+        dark:border-slate-700
+        dark:bg-slate-900
+      "
+    >
+      <div
+        className={`mb-6 h-3 w-20 rounded-full ${color}`}
+      />
 
-      <h3 className="text-lg font-bold">
+      <h3 className="text-2xl font-bold dark:text-white">
         {title}
       </h3>
 
-      <div className="mt-5 text-4xl font-black text-emerald-600">
-        {value}
-      </div>
-
-      <p className="mt-4 leading-7 text-slate-600">
+      <p className="mt-5 leading-8 text-slate-600 dark:text-slate-400">
         {description}
       </p>
-
     </div>
   );
 }

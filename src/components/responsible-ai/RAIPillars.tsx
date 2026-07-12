@@ -1,36 +1,80 @@
 const pillars = [
-  "Explainability",
-  "Fairness",
-  "Bias Detection",
-  "Model Drift",
-  "Governance",
-  "Compliance",
+  {
+    title: "Fairness",
+    description:
+      "Detect and reduce model bias across predictions.",
+  },
+  {
+    title: "Explainability",
+    description:
+      "SHAP-powered feature importance and decision transparency.",
+  },
+  {
+    title: "Accountability",
+    description:
+      "Model lineage, ownership and audit tracking.",
+  },
+  {
+    title: "Privacy",
+    description:
+      "Secure enterprise data governance.",
+  },
+  {
+    title: "Robustness",
+    description:
+      "Reliable model monitoring and drift detection.",
+  },
+  {
+    title: "Compliance",
+    description:
+      "Enterprise governance aligned with AI regulations.",
+  },
 ];
 
 export default function RAIPillars() {
   return (
-    <section>
+    <section className="py-24">
 
-      <h2 className="mb-10 text-4xl font-black">
+      <div className="mb-16 text-center">
 
-        Responsible AI Pillars
+        <span className="font-semibold uppercase tracking-widest text-green-600">
+          Six Principles
+        </span>
 
-      </h2>
+        <h2 className="mt-5 text-5xl font-black dark:text-white">
+          Responsible AI Pillars
+        </h2>
 
-      <div className="grid gap-6 md:grid-cols-2 xl:grid-cols-3">
+      </div>
+
+      <div className="grid gap-8 md:grid-cols-2 xl:grid-cols-3">
 
         {pillars.map((pillar) => (
 
           <div
-            key={pillar}
-            className="rounded-3xl border bg-white p-8 shadow-sm hover:shadow-lg"
+            key={pillar.title}
+            className="
+              rounded-3xl
+              border
+              border-slate-200
+              bg-white
+              p-8
+              shadow-sm
+              transition
+              hover:-translate-y-2
+              hover:border-green-500
+              hover:shadow-xl
+              dark:border-slate-700
+              dark:bg-slate-900
+            "
           >
-
-            <h3 className="text-2xl font-bold">
-
-              {pillar}
-
+            <h3 className="text-2xl font-bold dark:text-white">
+              {pillar.title}
             </h3>
+
+            <p className="mt-5 leading-8 text-slate-600 dark:text-slate-400">
+              {pillar.description}
+            </p>
 
           </div>
 

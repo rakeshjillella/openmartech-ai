@@ -1,29 +1,33 @@
-import Container from "@/components/ui/Container";
-
 const capabilities = [
   {
-    title: "Data Engineering",
-    description: "Kafka, Spark, Iceberg, dbt pipelines."
-  },
-  {
-    title: "AI Platform",
-    description: "ML lifecycle with MLflow and Feature Store."
-  },
-  {
-    title: "Responsible AI",
-    description: "Bias monitoring, explainability and governance."
+    title: "Machine Learning",
+    description:
+      "Spark ML pipelines with MLflow experiment tracking and automated model lifecycle.",
   },
   {
     title: "Generative AI",
-    description: "RAG, Dify, Groq and enterprise copilots."
+    description:
+      "Enterprise LLM orchestration using OpenAI, Ollama, Groq and Dify.",
   },
   {
-    title: "Executive Intelligence",
-    description: "Power BI dashboards and business insights."
+    title: "Responsible AI",
+    description:
+      "Fairness, explainability, governance and compliance integrated into every model.",
+  },
+  {
+    title: "RAG Platform",
+    description:
+      "Enterprise Retrieval-Augmented Generation using ChromaDB and semantic search.",
   },
   {
     title: "Observability",
-    description: "LangFuse, logging, monitoring and tracing."
+    description:
+      "Complete monitoring using Langfuse, MLflow and enterprise telemetry.",
+  },
+  {
+    title: "Executive Intelligence",
+    description:
+      "Power BI dashboards delivering real-time executive insights.",
   },
 ];
 
@@ -31,44 +35,52 @@ export default function EnterpriseCapabilities() {
   return (
     <section className="py-24">
 
-      <Container>
+      <div className="mb-16 text-center">
 
-        <div className="mb-14 text-center">
+        <span className="font-semibold uppercase tracking-widest text-indigo-600">
+          Enterprise Features
+        </span>
 
-          <h2 className="text-5xl font-bold">
-            Enterprise Platform Capabilities
-          </h2>
+        <h2 className="mt-5 text-5xl font-black dark:text-white">
+          Platform Capabilities
+        </h2>
 
-          <p className="mt-5 text-xl text-slate-600">
-            Everything required for a production-grade AI platform.
-          </p>
+      </div>
 
-        </div>
+      <div className="grid gap-8 md:grid-cols-2 xl:grid-cols-3">
 
-        <div className="grid gap-8 md:grid-cols-2 xl:grid-cols-3">
+        {capabilities.map((item) => (
 
-          {capabilities.map((item) => (
+          <div
+            key={item.title}
+            className="
+              rounded-3xl
+              border
+              border-slate-200
+              bg-white
+              p-8
+              shadow-sm
+              transition
+              hover:-translate-y-2
+              hover:border-indigo-500
+              hover:shadow-xl
+              dark:border-slate-700
+              dark:bg-slate-900
+            "
+          >
+            <h3 className="text-2xl font-bold dark:text-white">
+              {item.title}
+            </h3>
 
-            <div
-              key={item.title}
-              className="rounded-3xl border border-slate-200 bg-white p-8 shadow-sm transition hover:-translate-y-2 hover:border-blue-500 hover:shadow-xl"
-            >
+            <p className="mt-5 leading-8 text-slate-600 dark:text-slate-400">
+              {item.description}
+            </p>
 
-              <h3 className="text-2xl font-bold">
-                {item.title}
-              </h3>
+          </div>
 
-              <p className="mt-4 leading-8 text-slate-600">
-                {item.description}
-              </p>
+        ))}
 
-            </div>
-
-          ))}
-
-        </div>
-
-      </Container>
+      </div>
 
     </section>
   );

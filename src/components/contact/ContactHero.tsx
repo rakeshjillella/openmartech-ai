@@ -1,20 +1,32 @@
 export default function ContactHero() {
   return (
-    <section className="text-center">
-      <span className="rounded-full bg-blue-100 px-4 py-2 text-sm font-semibold text-blue-700">
-        Let&apos;s Connect
+    <section
+      className="
+        rounded-[36px]
+        bg-gradient-to-r
+        from-blue-700
+        via-indigo-700
+        to-slate-900
+        p-14
+        text-white
+      "
+    >
+      <span className="rounded-full bg-white/20 px-4 py-2 text-sm font-semibold">
+        Contact
       </span>
 
-      <h1 className="mt-8 text-5xl font-black md:text-6xl">
+      <h1 className="mt-8 text-6xl font-black">
         Let&apos;s Build Enterprise AI Together
       </h1>
 
-      <p className="mx-auto mt-8 max-w-3xl text-xl leading-8 text-slate-600">
-        Thank you for exploring OpenMarTech AI.
-        <br />
-        I&apos;m passionate about Enterprise AI, Data Engineering,
-        Responsible AI, MLOps, and modern cloud-native data platforms.
+      <p className="mt-8 max-w-4xl text-xl leading-9 text-blue-100">
+        Open to opportunities in Data Engineering,
+        AI Platform Engineering,
+        Machine Learning,
+        Enterprise Architecture,
+        and Responsible AI.
       </p>
+
     </section>
   );
 }

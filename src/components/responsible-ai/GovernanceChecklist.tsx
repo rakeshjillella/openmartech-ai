@@ -1,41 +1,47 @@
 const checklist = [
-  "Model Versioning (MLflow)",
-  "Feature Lineage",
-  "Explainability (SHAP)",
-  "Bias Monitoring",
-  "Data Validation",
-  "Drift Detection",
-  "Human Approval Workflow",
-  "Audit Logging",
-  "Role-Based Access Control",
-  "Continuous Monitoring",
+  "Bias Detection",
+  "SHAP Explainability",
+  "Model Registry",
+  "Version Control",
+  "Human Review",
+  "Policy Enforcement",
+  "Monitoring",
+  "Audit Logs",
 ];
 
 export default function GovernanceChecklist() {
   return (
-    <section className="mt-24">
+    <section
+      className="
+        rounded-[36px]
+        bg-slate-900
+        p-14
+        text-white
+      "
+    >
+      <span className="font-semibold uppercase tracking-widest text-green-400">
+        Governance
+      </span>
 
-      <h2 className="mb-8 text-3xl font-bold">
-        Governance Checklist
+      <h2 className="mt-6 text-5xl font-black">
+        Enterprise Governance Checklist
       </h2>
 
-      <div className="grid gap-5 md:grid-cols-2">
+      <div className="mt-14 grid gap-6 md:grid-cols-2">
 
         {checklist.map((item) => (
 
           <div
             key={item}
-            className="flex items-center gap-4 rounded-2xl border border-slate-200 bg-white p-5 shadow-sm"
+            className="
+              rounded-2xl
+              border
+              border-white/10
+              bg-white/5
+              p-6
+            "
           >
-
-            <div className="flex h-10 w-10 items-center justify-center rounded-full bg-emerald-100 text-xl text-emerald-600">
-              ✓
-            </div>
-
-            <span className="font-medium text-slate-700">
-              {item}
-            </span>
-
+            ✅ {item}
           </div>
 
         ))}

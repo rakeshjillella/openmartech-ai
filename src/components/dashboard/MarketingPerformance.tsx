@@ -1,60 +1,64 @@
 import EnterpriseCard from "@/components/ui/EnterpriseCard";
 
-const channels = [
+const metrics = [
   {
-    channel: "Google Ads",
-    roi: "486%",
+    label: "Campaign ROI",
+    value: "312%",
   },
   {
-    channel: "Meta Ads",
-    roi: "352%",
+    label: "Customer Growth",
+    value: "+28%",
   },
   {
-    channel: "Email",
-    roi: "621%",
+    label: "Conversion Rate",
+    value: "14.2%",
   },
   {
-    channel: "Organic",
-    roi: "728%",
+    label: "Revenue Impact",
+    value: "$4.8M",
   },
 ];
 
 export default function MarketingPerformance() {
   return (
-    <section className="mt-24">
+    <EnterpriseCard>
 
-      <div className="mb-10">
+      <h2 className="text-3xl font-black dark:text-white">
+        Marketing Performance
+      </h2>
 
-        <h2 className="text-3xl font-bold">
-          Marketing Performance
-        </h2>
+      <div className="mt-10 grid gap-6 md:grid-cols-2">
 
-      </div>
+        {metrics.map((item) => (
 
-      <div className="grid gap-6 md:grid-cols-2 xl:grid-cols-4">
+          <div
+            key={item.label}
+            className="
+              rounded-2xl
+              border
+              border-slate-200
+              p-6
+              transition
+              hover:border-blue-500
+              hover:shadow-lg
+              dark:border-slate-700
+            "
+          >
 
-        {channels.map((channel) => (
-
-          <EnterpriseCard key={channel.channel}>
-
-            <p className="text-slate-500">
-              {channel.channel}
+            <p className="text-sm uppercase tracking-wide text-slate-500">
+              {item.label}
             </p>
 
-            <h2 className="mt-4 text-4xl font-black text-blue-600">
-              {channel.roi}
-            </h2>
+            <h3 className="mt-4 text-4xl font-black text-blue-600">
+              {item.value}
+            </h3>
 
-            <p className="mt-3 text-sm font-semibold uppercase tracking-wide text-slate-500">
-              ROI
-            </p>
-
-          </EnterpriseCard>
+          </div>
 
         ))}
 
       </div>
 
-    </section>
+    </EnterpriseCard>
   );
 }

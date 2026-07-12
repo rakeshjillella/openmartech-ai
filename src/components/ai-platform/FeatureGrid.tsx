@@ -2,51 +2,70 @@ import FeatureCard from "./FeatureCard";
 
 const features = [
   {
-    title: "Workflow Orchestration",
-    description:
-      "Apache Airflow schedules and manages enterprise ETL and AI workflows.",
-  },
-  {
-    title: "Real-Time Streaming",
-    description:
-      "Kafka powers scalable event-driven streaming pipelines.",
-  },
-  {
     title: "Machine Learning",
     description:
-      "Spark MLlib and MLflow enable experiment tracking and model lifecycle management.",
+      "Spark ML pipelines with MLflow experiment tracking and model registry.",
+    color: "bg-blue-500",
   },
   {
     title: "Generative AI",
     description:
-      "Dify provides enterprise LLM applications with Retrieval-Augmented Generation.",
+      "LLM orchestration using Dify, OpenAI, Ollama and Groq.",
+    color: "bg-purple-500",
   },
   {
-    title: "Observability",
+    title: "RAG Pipeline",
     description:
-      "Langfuse monitors prompts, latency, token usage and AI quality.",
+      "Vector search with ChromaDB and enterprise knowledge retrieval.",
+    color: "bg-emerald-500",
   },
   {
     title: "Responsible AI",
     description:
-      "SHAP, model monitoring and governance ensure explainable and trustworthy AI.",
+      "SHAP explainability, governance and fairness monitoring.",
+    color: "bg-orange-500",
+  },
+  {
+    title: "Observability",
+    description:
+      "Langfuse tracing, MLflow metrics and enterprise monitoring.",
+    color: "bg-cyan-500",
+  },
+  {
+    title: "Production APIs",
+    description:
+      "FastAPI microservices exposing AI inference and analytics.",
+    color: "bg-pink-500",
   },
 ];
 
 export default function FeatureGrid() {
   return (
-    <div className="grid gap-8 lg:grid-cols-2">
+    <section className="py-24">
 
-      {features.map((feature) => (
+      <div className="mb-16 text-center">
 
-        <FeatureCard
-          key={feature.title}
-          title={feature.title}
-          description={feature.description}
-        />
+        <span className="font-semibold uppercase tracking-widest text-blue-600">
+          Enterprise Capabilities
+        </span>
 
-      ))}
+        <h2 className="mt-5 text-5xl font-black dark:text-white">
+          AI Platform Features
+        </h2>
 
-    </div>
+      </div>
+
+      <div className="grid gap-8 md:grid-cols-2 xl:grid-cols-3">
+
+        {features.map((feature) => (
+          <FeatureCard
+            key={feature.title}
+            {...feature}
+          />
+        ))}
+
+      </div>
+
+    </section>
   );
 }

@@ -8,14 +8,14 @@ type Props = {
 export default function TechnologyGrid({
   search,
 }: Props) {
+
   const filtered = architecture.filter((item) =>
-    item.title
-      .toLowerCase()
-      .includes(search.toLowerCase())
+    item.title.toLowerCase().includes(search.toLowerCase())
   );
 
   return (
-    <div className="grid gap-8 lg:grid-cols-2">
+
+    <div className="grid gap-8 md:grid-cols-2 xl:grid-cols-3">
 
       {filtered.map((item) => (
 
@@ -33,5 +33,7 @@ export default function TechnologyGrid({
       ))}
 
     </div>
+
   );
+
 }

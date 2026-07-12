@@ -13,17 +13,39 @@ export default function TechnologySearch({
 }: Props) {
   return (
     <div className="relative">
+
       <Search
-        className="absolute left-5 top-4 text-slate-400"
-        size={18}
+        size={20}
+        className="absolute left-6 top-1/2 -translate-y-1/2 text-slate-400"
       />
 
       <input
         value={search}
         onChange={(e) => setSearch(e.target.value)}
-        placeholder="Search technologies..."
-        className="w-full rounded-2xl border py-4 pl-12 pr-5"
+        placeholder="Search technologies, frameworks, tools..."
+        className="
+          w-full
+          rounded-3xl
+          border
+          border-slate-300
+          bg-white
+          py-5
+          pl-14
+          pr-6
+          text-lg
+          shadow-sm
+          transition
+          focus:border-blue-500
+          focus:outline-none
+          focus:ring-4
+          focus:ring-blue-100
+          dark:border-slate-700
+          dark:bg-slate-900
+          dark:text-white
+          dark:focus:ring-blue-900/40
+        "
       />
+
     </div>
   );
 }

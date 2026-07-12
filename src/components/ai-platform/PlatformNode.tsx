@@ -1,42 +1,41 @@
 type Props = {
   title: string;
-  icon: string;
-  description: string;
+  subtitle: string;
+  color?: string;
 };
 
 export default function PlatformNode({
   title,
-  icon,
-  description,
+  subtitle,
+  color = "bg-blue-500",
 }: Props) {
   return (
     <div
       className="
-      group
-      rounded-3xl
-      border
-      border-slate-200
-      bg-white
-      p-8
-      text-center
-      shadow-sm
-      transition
-      duration-300
-      hover:-translate-y-2
-      hover:border-blue-500
-      hover:shadow-2xl
-    "
+        rounded-3xl
+        border
+        border-slate-200
+        bg-white
+        p-8
+        text-center
+        shadow-sm
+        transition
+        hover:-translate-y-2
+        hover:shadow-xl
+        dark:border-slate-700
+        dark:bg-slate-900
+      "
     >
-      <div className="text-5xl transition group-hover:scale-110">
-        {icon}
-      </div>
+      <div
+        className={`mx-auto mb-6 h-5 w-20 rounded-full ${color}`}
+      />
 
-      <h3 className="mt-5 text-xl font-bold">
+      <h3 className="text-2xl font-bold dark:text-white">
         {title}
       </h3>
 
-      <p className="mt-3 text-sm leading-7 text-slate-600">
-        {description}
+      <p className="mt-4 text-slate-600 dark:text-slate-400">
+        {subtitle}
       </p>
     </div>
   );

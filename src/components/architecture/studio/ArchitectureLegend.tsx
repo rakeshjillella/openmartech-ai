@@ -1,49 +1,39 @@
 export default function ArchitectureLegend() {
   return (
 
-    <section className="rounded-3xl border bg-white p-8 shadow-sm">
+<section className="rounded-[30px] border border-slate-200 bg-white p-10 shadow-xl dark:border-slate-800 dark:bg-slate-900">
 
-      <h2 className="text-2xl font-bold">
-        Architecture Legend
-      </h2>
+<h2 className="text-3xl font-black dark:text-white">
+Architecture Legend
+</h2>
 
-      <div className="mt-8 grid gap-5 md:grid-cols-2">
+<div className="mt-10 grid gap-6 md:grid-cols-2">
 
-        <div className="flex items-center gap-4">
+{[
+["bg-blue-600","Compute Layer"],
+["bg-green-600","Storage Layer"],
+["bg-purple-600","AI / ML"],
+["bg-orange-500","Visualization"],
+].map(([color,label])=>(
 
-          <span className="h-4 w-4 rounded-full bg-blue-600"/>
+<div
+key={label}
+className="flex items-center gap-4"
+>
 
-          <span>Compute Layer</span>
+<div className={`h-5 w-5 rounded-full ${color}`} />
 
-        </div>
+<span className="text-lg dark:text-slate-300">
+{label}
+</span>
 
-        <div className="flex items-center gap-4">
+</div>
 
-          <span className="h-4 w-4 rounded-full bg-green-600"/>
+))}
 
-          <span>Storage Layer</span>
+</div>
 
-        </div>
+</section>
 
-        <div className="flex items-center gap-4">
-
-          <span className="h-4 w-4 rounded-full bg-purple-600"/>
-
-          <span>Machine Learning</span>
-
-        </div>
-
-        <div className="flex items-center gap-4">
-
-          <span className="h-4 w-4 rounded-full bg-orange-500"/>
-
-          <span>Visualization</span>
-
-        </div>
-
-      </div>
-
-    </section>
-
-  );
+);
 }

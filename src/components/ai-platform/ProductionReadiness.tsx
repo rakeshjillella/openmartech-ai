@@ -1,55 +1,55 @@
-import Container from "@/components/ui/Container";
-
-const services = [
-  "Docker",
-  "Apache Airflow",
-  "Apache Kafka",
-  "Apache Spark",
-  "Apache Iceberg",
-  "dbt",
-  "MLflow",
-  "Power BI",
-  "Dify",
-  "LangFuse",
-  "Monitoring",
-  "Governance",
+const checklist = [
+  "CI / CD Ready",
+  "Dockerized Services",
+  "Apache Airflow Orchestration",
+  "MLflow Model Registry",
+  "Responsible AI Monitoring",
+  "Enterprise Security",
+  "Observability",
+  "Executive Dashboards",
 ];
 
 export default function ProductionReadiness() {
   return (
-    <section className="bg-slate-50 py-24">
-      <Container>
-        <div className="mx-auto mb-16 max-w-3xl text-center">
-          <h2 className="text-5xl font-bold text-slate-900">
-            Production Readiness
-          </h2>
+    <section
+      className="
+        rounded-[36px]
+        bg-gradient-to-r
+        from-slate-900
+        to-slate-800
+        p-14
+        text-white
+      "
+    >
+      <span className="font-semibold uppercase tracking-widest text-green-400">
+        Production Ready
+      </span>
 
-          <p className="mt-6 text-xl text-slate-600">
-            Enterprise-grade technologies powering OpenMarTech AI.
-          </p>
-        </div>
+      <h2 className="mt-6 text-5xl font-black">
+        Enterprise Deployment Checklist
+      </h2>
 
-        <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
-          {services.map((service) => (
-            <div
-              key={service}
-              className="rounded-2xl border border-slate-200 bg-white p-6 shadow-sm transition hover:-translate-y-1 hover:border-blue-500 hover:shadow-xl"
-            >
-              <div className="mb-4 flex h-10 w-10 items-center justify-center rounded-full bg-green-100 text-lg font-bold text-green-600">
-                ✓
-              </div>
+      <div className="mt-14 grid gap-6 md:grid-cols-2">
 
-              <h3 className="text-lg font-bold text-slate-900">
-                {service}
-              </h3>
+        {checklist.map((item) => (
 
-              <p className="mt-2 text-sm text-slate-500">
-                Production Ready
-              </p>
-            </div>
-          ))}
-        </div>
-      </Container>
+          <div
+            key={item}
+            className="
+              rounded-2xl
+              border
+              border-white/10
+              bg-white/5
+              p-6
+            "
+          >
+            ✅ {item}
+          </div>
+
+        ))}
+
+      </div>
+
     </section>
   );
 }

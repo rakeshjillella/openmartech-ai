@@ -1,54 +1,91 @@
 import EnterpriseCard from "@/components/ui/EnterpriseCard";
-import { platformHealth } from "@/data/dashboard";
+
+const services = [
+  {
+    name: "Apache Airflow",
+    status: "Healthy",
+    color: "bg-green-500",
+  },
+  {
+    name: "Apache Kafka",
+    status: "Healthy",
+    color: "bg-green-500",
+  },
+  {
+    name: "Apache Spark",
+    status: "Healthy",
+    color: "bg-green-500",
+  },
+  {
+    name: "MLflow",
+    status: "Healthy",
+    color: "bg-green-500",
+  },
+  {
+    name: "Iceberg",
+    status: "Healthy",
+    color: "bg-green-500",
+  },
+  {
+    name: "Power BI",
+    status: "Healthy",
+    color: "bg-green-500",
+  },
+];
 
 export default function PlatformHealth() {
   return (
-    <section className="mt-24">
+    <EnterpriseCard>
 
-      <div className="mb-10">
+      <h2 className="text-3xl font-black dark:text-white">
+        Platform Health
+      </h2>
 
-        <h2 className="text-3xl font-bold">
-          Enterprise Platform Health
-        </h2>
+      <div className="mt-10 space-y-5">
 
-        <p className="mt-3 text-slate-600">
-          Real-time monitoring across the OpenMarTech AI platform.
-        </p>
+        {services.map((service) => (
 
-      </div>
+          <div
+            key={service.name}
+            className="
+              flex
+              items-center
+              justify-between
+              rounded-2xl
+              border
+              border-slate-200
+              p-5
+              transition
+              hover:border-blue-500
+              hover:shadow-md
+              dark:border-slate-700
+            "
+          >
 
-      <div className="grid gap-6 md:grid-cols-2 xl:grid-cols-4">
+            <div>
 
-        {platformHealth.map((service) => (
-
-          <EnterpriseCard key={service.service}>
-
-            <div className="flex items-center justify-between">
-
-              <h3 className="font-bold">
-                {service.service}
+              <h3 className="font-bold dark:text-white">
+                {service.name}
               </h3>
-
-              <div
-                className={`h-3 w-3 rounded-full ${service.color}`}
-              />
 
             </div>
 
-            <p className="mt-6 text-4xl font-black text-emerald-600">
-              {service.status}
-            </p>
+            <div className="flex items-center gap-3">
 
-            <p className="mt-3 text-slate-500">
-              Uptime: {service.uptime}
-            </p>
+              <span className={`h-3 w-3 rounded-full ${service.color}`} />
 
-          </EnterpriseCard>
+              <span className="font-semibold text-green-600 dark:text-green-400">
+                {service.status}
+              </span>
+
+            </div>
+
+          </div>
 
         ))}
 
       </div>
 
-    </section>
+    </EnterpriseCard>
   );
 }

@@ -1,57 +1,58 @@
-const metrics = [
+import EnterpriseCard from "@/components/ui/EnterpriseCard";
+
+const kpis = [
   {
-    title: "Pipelines",
-    value: "24",
-    change: "+12%",
+    title: "Pipeline Success",
+    value: "99.7%",
+    color: "text-green-600",
   },
   {
-    title: "ML Models",
-    value: "4",
-    change: "Healthy",
+    title: "Streaming Latency",
+    value: "180 ms",
+    color: "text-blue-600",
   },
   {
-    title: "AI Services",
-    value: "6",
-    change: "Running",
+    title: "Data Freshness",
+    value: "< 2 min",
+    color: "text-indigo-600",
   },
   {
-    title: "Responsible AI",
-    value: "100%",
-    change: "Compliant",
+    title: "Model Accuracy",
+    value: "94.8%",
+    color: "text-purple-600",
+  },
+  {
+    title: "Responsible AI Score",
+    value: "98%",
+    color: "text-emerald-600",
+  },
+  {
+    title: "Executive Health",
+    value: "Excellent",
+    color: "text-cyan-600",
   },
 ];
 
 export default function KPICards() {
   return (
-    <div className="grid gap-6 lg:grid-cols-4">
+    <section className="grid gap-6 md:grid-cols-2 xl:grid-cols-3">
 
-      {metrics.map((item) => (
+      {kpis.map((item) => (
 
-        <div
-          key={item.title}
-          className="rounded-3xl border bg-white p-8 shadow-sm"
-        >
+        <EnterpriseCard key={item.title}>
 
-          <p className="text-slate-500">
+          <p className="text-sm font-semibold uppercase tracking-wide text-slate-500 dark:text-slate-400">
             {item.title}
           </p>
 
-          <h2 className="mt-4 text-5xl font-black">
-
+          <h2 className={`mt-5 text-5xl font-black ${item.color}`}>
             {item.value}
-
           </h2>
 
-          <p className="mt-4 text-green-600">
-
-            {item.change}
-
-          </p>
-
-        </div>
+        </EnterpriseCard>
 
       ))}
 
-    </div>
+    </section>
   );
 }

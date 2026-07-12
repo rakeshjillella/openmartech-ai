@@ -1,64 +1,68 @@
-import Link from "next/link";
-
-import {
-  Mail,
-  FileText,
-  FaGithub,
-  FaLinkedin,
-} from "@/lib/icons";
-
 const contacts = [
   {
     title: "Email",
-    value: "rakeshjillella@gmail.com",
-    href: "mailto:rakeshjillella@gmail.com",
-    icon: Mail,
+    value: "rakesh@example.com",
+    link: "mailto:rakesh@example.com",
   },
   {
     title: "LinkedIn",
-    value: "linkedin.com/in/rakesh-jillella",
-    href: "https://linkedin.com/in/rakesh-jillella",
-    icon: FaLinkedin,
+    value: "linkedin.com/in/rakeshjillella",
+    link: "https://linkedin.com/in/rakeshjillella",
   },
   {
     title: "GitHub",
-    value: "github.com/rakeshjillella/openmartech-ai",
-    href: "https://github.com/rakeshjillella/openmartech-ai",
-    icon: FaGithub,
+    value: "github.com/rakeshjillella",
+    link: "https://github.com/rakeshjillella",
   },
   {
-    title: "Resume",
-    value: "Download Resume",
-    href: "/resume.pdf",
-    icon: FileText,
+    title: "Location",
+    value: "Hyderabad, India",
+    link: "#",
   },
 ];
 
 export default function ContactCards() {
   return (
-    <section className="mt-20 grid gap-8 md:grid-cols-2">
-      {contacts.map((item) => {
-        const Icon = item.icon;
+    <section className="py-24">
 
-        return (
-          <Link
+      <div className="grid gap-8 md:grid-cols-2 xl:grid-cols-4">
+
+        {contacts.map((item) => (
+
+          <a
             key={item.title}
-            href={item.href}
+            href={item.link}
             target="_blank"
-            className="rounded-3xl border border-slate-200 bg-white p-8 shadow-sm transition hover:-translate-y-2 hover:shadow-xl"
+            rel="noopener noreferrer"
+            className="
+              rounded-3xl
+              border
+              border-slate-200
+              bg-white
+              p-8
+              shadow-sm
+              transition
+              hover:-translate-y-2
+              hover:border-blue-500
+              hover:shadow-xl
+              dark:border-slate-700
+              dark:bg-slate-900
+            "
           >
-            <Icon className="text-blue-600" size={40} />
-
-            <h3 className="mt-6 text-2xl font-bold">
+            <p className="text-sm uppercase tracking-wide text-slate-500">
               {item.title}
-            </h3>
-
-            <p className="mt-3 break-all text-slate-600">
-              {item.value}
             </p>
-          </Link>
-        );
-      })}
+
+            <h2 className="mt-5 text-xl font-bold break-words dark:text-white">
+              {item.value}
+            </h2>
+
+          </a>
+
+        ))}
+
+      </div>
+
     </section>
   );
 }

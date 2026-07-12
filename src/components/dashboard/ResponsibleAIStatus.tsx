@@ -1,63 +1,68 @@
+import EnterpriseCard from "@/components/ui/EnterpriseCard";
+
+const checks = [
+  {
+    title: "Bias Detection",
+    value: "Passed",
+  },
+  {
+    title: "Explainability",
+    value: "100%",
+  },
+  {
+    title: "Fairness",
+    value: "Compliant",
+  },
+  {
+    title: "Transparency",
+    value: "Verified",
+  },
+  {
+    title: "Governance",
+    value: "Enabled",
+  },
+];
+
 export default function ResponsibleAIStatus() {
   return (
-    <section className="rounded-3xl border bg-white p-10">
+    <EnterpriseCard>
 
-      <h2 className="text-3xl font-black">
-
-        Responsible AI Overview
-
+      <h2 className="text-3xl font-black dark:text-white">
+        Responsible AI Status
       </h2>
 
-      <div className="mt-8 grid gap-6 md:grid-cols-2">
+      <div className="mt-10 space-y-5">
 
-        <Card
-          title="Bias Detection"
-          value="Passed"
-        />
+        {checks.map((item) => (
 
-        <Card
-          title="Model Drift"
-          value="Stable"
-        />
+          <div
+            key={item.title}
+            className="
+              flex
+              items-center
+              justify-between
+              rounded-2xl
+              border
+              border-slate-200
+              p-5
+              dark:border-slate-700
+            "
+          >
 
-        <Card
-          title="Explainability"
-          value="SHAP Enabled"
-        />
+            <span className="font-semibold dark:text-white">
+              {item.title}
+            </span>
 
-        <Card
-          title="Governance"
-          value="Compliant"
-        />
+            <span className="rounded-full bg-green-100 px-4 py-2 text-sm font-semibold text-green-700 dark:bg-green-900/30 dark:text-green-300">
+              {item.value}
+            </span>
+
+          </div>
+
+        ))}
 
       </div>
 
-    </section>
-  );
-}
-
-function Card({
-  title,
-  value,
-}: {
-  title: string;
-  value: string;
-}) {
-  return (
-    <div className="rounded-xl bg-slate-50 p-6">
-
-      <p className="text-slate-500">
-
-        {title}
-
-      </p>
-
-      <h3 className="mt-3 text-2xl font-bold">
-
-        {value}
-
-      </h3>
-
-    </div>
+    </EnterpriseCard>
   );
 }

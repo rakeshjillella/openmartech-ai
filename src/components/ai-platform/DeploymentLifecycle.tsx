@@ -1,65 +1,63 @@
-import Container from "@/components/ui/Container";
-
-const stages = [
-  {
-    title: "Development",
-    description:
-      "Build data pipelines, machine learning models, APIs and AI services.",
-  },
-  {
-    title: "Testing",
-    description:
-      "Validate data quality, model accuracy, Responsible AI and system reliability.",
-  },
-  {
-    title: "Production",
-    description:
-      "Deploy with monitoring, observability, governance and continuous improvement.",
-  },
+const lifecycle = [
+  "Develop",
+  "Train",
+  "Validate",
+  "Register",
+  "Deploy",
+  "Monitor",
+  "Retrain",
 ];
 
 export default function DeploymentLifecycle() {
   return (
-    <section className="py-24 bg-slate-50">
-      <Container>
-        <div className="mx-auto mb-16 max-w-3xl text-center">
-          <h2 className="text-5xl font-bold text-slate-900">
-            Deployment Lifecycle
-          </h2>
+    <section className="py-24">
 
-          <p className="mt-6 text-xl text-slate-600">
-            Enterprise AI systems evolve through a structured lifecycle to
-            ensure quality, governance and scalability.
-          </p>
-        </div>
+      <div className="mb-16 text-center">
 
-        <div className="grid gap-10 md:grid-cols-3">
-          {stages.map((stage, index) => (
+        <span className="font-semibold uppercase tracking-widest text-green-600">
+          MLOps
+        </span>
+
+        <h2 className="mt-5 text-5xl font-black dark:text-white">
+          Deployment Lifecycle
+        </h2>
+
+      </div>
+
+      <div className="flex flex-wrap justify-center gap-6">
+
+        {lifecycle.map((step, index) => (
+
+          <div
+            key={step}
+            className="flex items-center gap-5"
+          >
             <div
-              key={stage.title}
-              className="relative rounded-3xl border border-slate-200 bg-white p-8 shadow-sm transition hover:-translate-y-2 hover:shadow-xl"
+              className="
+                rounded-full
+                bg-gradient-to-r
+                from-blue-600
+                to-indigo-600
+                px-8
+                py-5
+                font-semibold
+                text-white
+                shadow-lg
+              "
             >
-              <div className="mb-6 flex h-14 w-14 items-center justify-center rounded-full bg-blue-600 text-xl font-bold text-white">
-                {index + 1}
-              </div>
-
-              <h3 className="text-2xl font-bold text-slate-900">
-                {stage.title}
-              </h3>
-
-              <p className="mt-4 leading-8 text-slate-600">
-                {stage.description}
-              </p>
-
-              {index !== stages.length - 1 && (
-                <div className="absolute -right-5 top-1/2 hidden -translate-y-1/2 text-4xl text-blue-500 md:block">
-                  →
-                </div>
-              )}
+              {step}
             </div>
-          ))}
-        </div>
-      </Container>
+
+            {index !== lifecycle.length - 1 && (
+              <span className="text-3xl text-blue-500">→</span>
+            )}
+
+          </div>
+
+        ))}
+
+      </div>
+
     </section>
   );
 }

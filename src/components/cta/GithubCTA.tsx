@@ -1,35 +1,48 @@
-import Container from "@/components/ui/Container";
-import { siteConfig } from "@/data/site";
+import Link from "next/link";
 
 export default function GithubCTA() {
   return (
-    <section className="bg-gradient-to-r from-blue-600 to-indigo-700 py-24 text-white">
+    <section
+      className="
+        rounded-[36px]
+        bg-gradient-to-r
+        from-slate-900
+        to-slate-800
+        p-14
+        text-center
+        text-white
+      "
+    >
+      <span className="font-semibold uppercase tracking-widest text-blue-400">
+        Open Source
+      </span>
 
-      <Container>
+      <h2 className="mt-6 text-5xl font-black">
+        Explore the Complete Source Code
+      </h2>
 
-        <div className="mx-auto max-w-4xl text-center">
+      <p className="mx-auto mt-8 max-w-3xl text-xl leading-9 text-slate-300">
+        Every component of OpenMarTech AI has been designed using
+        modern enterprise engineering practices.
+      </p>
 
-          <h2 className="text-5xl font-bold">
-            Explore the Complete Project
-          </h2>
-
-          <p className="mt-6 text-xl text-blue-100">
-            View the complete source code, enterprise architecture,
-            documentation, and implementation on GitHub.
-          </p>
-
-          <a
-            href={siteConfig.github}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="mt-10 inline-flex rounded-xl bg-white px-8 py-4 text-lg font-semibold text-blue-700 shadow-lg transition hover:scale-105"
-          >
-            View on GitHub
-          </a>
-
-        </div>
-
-      </Container>
+      <Link
+        href="https://github.com/rakeshjillella/openmartech-ai"
+        target="_blank"
+        className="
+          mt-10
+          inline-flex
+          rounded-2xl
+          bg-blue-600
+          px-8
+          py-4
+          font-semibold
+          transition
+          hover:bg-blue-700
+        "
+      >
+        View GitHub Repository
+      </Link>
 
     </section>
   );

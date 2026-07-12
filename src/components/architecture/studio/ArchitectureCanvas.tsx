@@ -77,18 +77,38 @@ export default function ArchitectureCanvas({
       <div className="h-[900px] overflow-hidden rounded-3xl border border-slate-200 bg-white">
 
         <ReactFlow
-          nodes={filteredNodes}
-          edges={architectureEdges}
-          nodeTypes={nodeTypes}
-          fitView
-          onNodeClick={(_, node) =>
-            setSelectedNode(node as ArchitectureFlowNode)
-          }
-        >
-          <MiniMap />
-          <Controls />
-          <Background />
-        </ReactFlow>
+  nodes={filteredNodes}
+  edges={architectureEdges}
+  nodeTypes={nodeTypes}
+  fitView
+  fitViewOptions={{
+    padding: 0.25,
+  }}
+  minZoom={0.4}
+  maxZoom={2}
+  attributionPosition="bottom-left"
+  onNodeClick={(_, node) =>
+    setSelectedNode(node as ArchitectureFlowNode)
+  }
+>
+
+  <MiniMap
+    pannable
+    zoomable
+    className="rounded-xl border"
+  />
+
+  <Controls
+    position="bottom-right"
+    showInteractive={false}
+  />
+
+  <Background
+    gap={20}
+    size={1}
+  />
+
+</ReactFlow>
 
       </div>
 

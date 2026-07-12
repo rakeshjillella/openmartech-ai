@@ -1,25 +1,43 @@
 type Props = {
   title: string;
   description: string;
+  color?: string;
 };
 
 export default function WorkflowCard({
   title,
   description,
+  color = "bg-blue-500",
 }: Props) {
   return (
-    <div className="relative rounded-2xl border border-slate-200 bg-white p-6 shadow-md transition-all duration-300 hover:-translate-y-2 hover:border-blue-500 hover:shadow-xl">
-      <div className="mb-4 flex h-10 w-10 items-center justify-center rounded-full bg-blue-600 font-bold text-white">
-        →
-      </div>
+    <div
+      className="
+        rounded-3xl
+        border
+        border-slate-200
+        bg-white
+        p-8
+        shadow-sm
+        transition
+        duration-300
+        hover:-translate-y-2
+        hover:shadow-2xl
+        dark:border-slate-700
+        dark:bg-slate-900
+      "
+    >
+      <div
+        className={`mb-6 h-3 w-20 rounded-full ${color}`}
+      />
 
-      <h3 className="text-xl font-semibold text-slate-900">
+      <h3 className="text-2xl font-bold dark:text-white">
         {title}
       </h3>
 
-      <p className="mt-3 leading-7 text-slate-600">
+      <p className="mt-5 leading-8 text-slate-600 dark:text-slate-400">
         {description}
       </p>
+
     </div>
   );
 }

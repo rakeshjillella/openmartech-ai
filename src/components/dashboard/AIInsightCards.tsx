@@ -1,42 +1,49 @@
 import EnterpriseCard from "@/components/ui/EnterpriseCard";
-import { aiInsights } from "@/data/dashboard";
+
+const insights = [
+  {
+    title: "Responsible AI",
+    value: "99.8%",
+    subtitle: "Compliance Score",
+    color: "text-green-600",
+  },
+  {
+    title: "Explainability",
+    value: "100%",
+    subtitle: "SHAP Coverage",
+    color: "text-blue-600",
+  },
+  {
+    title: "Model Drift",
+    value: "0.8%",
+    subtitle: "Current Drift",
+    color: "text-orange-500",
+  },
+];
 
 export default function AIInsightCards() {
   return (
-    <section className="mt-24">
+    <section className="py-10">
 
-      <div className="mb-10">
+      <div className="grid gap-8 lg:grid-cols-3">
 
-        <h2 className="text-3xl font-bold">
-          AI Executive Insights
-        </h2>
+        {insights.map((item) => (
 
-        <p className="mt-3 text-slate-600">
-          AI-generated recommendations based on the OpenMarTech platform.
-        </p>
+          <EnterpriseCard
+            key={item.title}
+            className="group hover:-translate-y-2 transition-all duration-300"
+          >
 
-      </div>
+            <p className="text-sm uppercase tracking-widest text-slate-500 dark:text-slate-400">
+              {item.title}
+            </p>
 
-      <div className="grid gap-6 md:grid-cols-2">
+            <h2 className={`mt-6 text-6xl font-black ${item.color}`}>
+              {item.value}
+            </h2>
 
-        {aiInsights.map((item) => (
-
-          <EnterpriseCard key={item.title}>
-
-            <div className="flex items-center gap-4">
-
-              <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-blue-100 text-2xl">
-                🤖
-              </div>
-
-              <h3 className="text-xl font-bold">
-                {item.title}
-              </h3>
-
-            </div>
-
-            <p className="mt-6 leading-8 text-slate-600">
-              {item.description}
+            <p className="mt-5 text-slate-500 dark:text-slate-400">
+              {item.subtitle}
             </p>
 
           </EnterpriseCard>

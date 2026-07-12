@@ -1,51 +1,31 @@
 export default function ArchitectureOverview() {
   return (
-    <section className="rounded-3xl border bg-slate-900 p-12 text-white">
+    <section className="py-24">
 
-      <h2 className="text-4xl font-black">
+      <div className="mb-16 text-center">
 
-        Enterprise AI Workflow
+        <span className="font-semibold uppercase tracking-widest text-blue-600">
+          Enterprise Architecture
+        </span>
 
-      </h2>
+        <h2 className="mt-5 text-5xl font-black dark:text-white">
+          Modern AI Platform Architecture
+        </h2>
 
-      <div className="mt-12 flex flex-wrap items-center justify-center gap-6 text-center">
-
-        <Step title="PostgreSQL" />
-        <Arrow />
-        <Step title="Kafka" />
-        <Arrow />
-        <Step title="Spark" />
-        <Arrow />
-        <Step title="Iceberg" />
-        <Arrow />
-        <Step title="MLflow" />
-        <Arrow />
-        <Step title="Responsible AI" />
-        <Arrow />
-        <Step title="Power BI" />
+        <p className="mx-auto mt-8 max-w-4xl text-xl leading-9 text-slate-600 dark:text-slate-400">
+          OpenMarTech AI combines Data Engineering,
+          Streaming Analytics,
+          Lakehouse,
+          Machine Learning,
+          Responsible AI,
+          Generative AI,
+          Observability,
+          and Executive Intelligence
+          into one production-inspired platform.
+        </p>
 
       </div>
 
     </section>
-  );
-}
-
-function Step({
-  title,
-}: {
-  title: string;
-}) {
-  return (
-    <div className="rounded-2xl bg-slate-800 px-6 py-4 font-semibold">
-      {title}
-    </div>
-  );
-}
-
-function Arrow() {
-  return (
-    <div className="text-3xl text-blue-400">
-      →
-    </div>
   );
 }

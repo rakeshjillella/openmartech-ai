@@ -1,51 +1,65 @@
+const workflow = [
+  "Data Validation",
+  "Bias Detection",
+  "Feature Engineering",
+  "Model Training",
+  "Explainability",
+  "Governance Review",
+  "MLflow Registry",
+  "Production Deployment",
+  "Continuous Monitoring",
+];
+
 export default function RAIWorkflow() {
   return (
-    <section className="rounded-3xl bg-slate-900 p-12 text-white">
+    <section className="py-24">
 
-      <h2 className="text-4xl font-black">
+      <div className="mb-16 text-center">
 
-        Responsible AI Lifecycle
+        <span className="font-semibold uppercase tracking-widest text-green-600">
+          Workflow
+        </span>
 
-      </h2>
+        <h2 className="mt-5 text-5xl font-black dark:text-white">
+          Responsible AI Lifecycle
+        </h2>
 
-      <div className="mt-12 flex flex-wrap items-center justify-center gap-5">
+      </div>
 
-        <Step title="Training" />
+      <div className="flex flex-wrap items-center justify-center gap-5">
 
-        →
+        {workflow.map((step, index) => (
 
-        <Step title="Validation" />
+          <div
+            key={step}
+            className="flex items-center gap-5"
+          >
+            <div
+              className="
+                rounded-full
+                bg-gradient-to-r
+                from-green-600
+                to-emerald-600
+                px-7
+                py-4
+                font-semibold
+                text-white
+                shadow-lg
+              "
+            >
+              {step}
+            </div>
 
-        →
+            {index !== workflow.length - 1 && (
+              <span className="text-3xl text-green-500">→</span>
+            )}
 
-        <Step title="Explainability" />
+          </div>
 
-        →
-
-        <Step title="Bias Detection" />
-
-        →
-
-        <Step title="Deployment" />
-
-        →
-
-        <Step title="Monitoring" />
+        ))}
 
       </div>
 
     </section>
-  );
-}
-
-function Step({
-  title,
-}: {
-  title: string;
-}) {
-  return (
-    <div className="rounded-xl bg-slate-800 px-6 py-4">
-      {title}
-    </div>
   );
 }

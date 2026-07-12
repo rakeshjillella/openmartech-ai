@@ -1,53 +1,44 @@
-import Image from "next/image";
-
 type Props = {
   title: string;
   subtitle: string;
-  logo: string;
+  color?: string;
 };
 
 export default function PipelineCard({
   title,
   subtitle,
-  logo,
+  color = "from-blue-600 to-indigo-600",
 }: Props) {
   return (
     <div
       className="
-        group
-        min-w-[210px]
+        w-64
         rounded-3xl
         border
         border-slate-200
         bg-white
-        p-6
-        shadow-md
-        transition-all
-        duration-300
+        p-8
+        text-center
+        shadow-lg
+        transition
         hover:-translate-y-2
-        hover:border-blue-600
         hover:shadow-2xl
+        dark:border-slate-700
+        dark:bg-slate-900
       "
     >
-      <div className="flex justify-center">
+      <div
+        className={`mx-auto mb-6 h-4 w-20 rounded-full bg-gradient-to-r ${color}`}
+      />
 
-        <Image
-          src={logo}
-          alt={title}
-          width={56}
-          height={56}
-          className="transition duration-300 group-hover:scale-110"
-        />
-
-      </div>
-
-      <h3 className="mt-6 text-center text-xl font-bold text-slate-900">
+      <h3 className="text-2xl font-bold dark:text-white">
         {title}
       </h3>
 
-      <p className="mt-2 text-center text-sm text-slate-500">
+      <p className="mt-4 text-slate-600 dark:text-slate-400">
         {subtitle}
       </p>
+
     </div>
   );
 }

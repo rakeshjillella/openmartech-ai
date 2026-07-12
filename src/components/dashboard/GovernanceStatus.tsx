@@ -2,55 +2,70 @@ import EnterpriseCard from "@/components/ui/EnterpriseCard";
 
 const governance = [
   {
-    title: "Bias Monitoring",
-    value: "Passed",
+    title: "Model Registry",
+    value: "Connected",
   },
   {
-    title: "Explainability",
-    value: "SHAP Enabled",
+    title: "Experiment Tracking",
+    value: "MLflow",
   },
   {
-    title: "Model Drift",
-    value: "No Drift",
+    title: "Audit Logs",
+    value: "Available",
   },
   {
-    title: "Compliance",
-    value: "ISO 42001",
+    title: "Data Lineage",
+    value: "Tracked",
+  },
+  {
+    title: "Monitoring",
+    value: "Realtime",
   },
 ];
 
 export default function GovernanceStatus() {
   return (
-    <section className="mt-24">
+    <EnterpriseCard>
 
-      <div className="mb-10">
+      <h2 className="text-3xl font-black dark:text-white">
+        AI Governance
+      </h2>
 
-        <h2 className="text-3xl font-bold">
-          Responsible AI Governance
-        </h2>
-
-      </div>
-
-      <div className="grid gap-6 md:grid-cols-2 xl:grid-cols-4">
+      <div className="mt-10 space-y-5">
 
         {governance.map((item) => (
 
-          <EnterpriseCard key={item.title}>
+          <div
+            key={item.title}
+            className="
+              flex
+              items-center
+              justify-between
+              rounded-2xl
+              border
+              border-slate-200
+              p-5
+              transition
+              hover:border-indigo-500
+              hover:shadow-md
+              dark:border-slate-700
+            "
+          >
 
-            <p className="text-sm uppercase tracking-wide text-slate-500">
+            <span className="font-semibold dark:text-white">
               {item.title}
-            </p>
+            </span>
 
-            <h3 className="mt-5 text-2xl font-bold text-blue-600">
+            <span className="font-bold text-indigo-600 dark:text-indigo-400">
               {item.value}
-            </h3>
+            </span>
 
-          </EnterpriseCard>
+          </div>
 
         ))}
 
       </div>
 
-    </section>
+    </EnterpriseCard>
   );
 }

@@ -1,57 +1,65 @@
 import EnterpriseCard from "@/components/ui/EnterpriseCard";
-import { revenueTrend } from "@/data/dashboard";
+
+const months = [
+  "Jan",
+  "Feb",
+  "Mar",
+  "Apr",
+  "May",
+  "Jun",
+];
+
+const revenue = [38, 52, 48, 70, 82, 100];
 
 export default function RevenueTrend() {
+  const max = Math.max(...revenue);
+
   return (
-    <section className="mt-24">
+    <EnterpriseCard>
 
-      <EnterpriseCard>
+      <h2 className="text-3xl font-black dark:text-white">
+        Revenue Trend
+      </h2>
 
-        <h2 className="text-3xl font-bold">
-          Revenue Trend
-        </h2>
+      <p className="mt-3 text-slate-500">
+        Executive business growth over six months
+      </p>
 
-        <p className="mt-3 text-slate-600">
-          Executive monthly revenue performance.
-        </p>
+      <div className="mt-12 flex h-72 items-end justify-between gap-5">
 
-        <div className="mt-10 space-y-6">
+        {revenue.map((value, index) => (
 
-          {revenueTrend.map((item) => (
+          <div
+            key={months[index]}
+            className="flex flex-1 flex-col items-center"
+          >
 
-            <div key={item.month}>
+            <div
+              className="
+                w-full
+                rounded-t-2xl
+                bg-gradient-to-t
+                from-blue-600
+                to-cyan-400
+                transition-all
+                duration-500
+                hover:scale-105
+              "
+              style={{
+                height: `${(value / max) * 220}px`,
+              }}
+            />
 
-              <div className="mb-2 flex justify-between">
+            <span className="mt-4 text-sm font-semibold text-slate-500">
+              {months[index]}
+            </span>
 
-                <span className="font-semibold">
-                  {item.month}
-                </span>
+          </div>
 
-                <span className="text-blue-600 font-bold">
-                  ${item.revenue}M
-                </span>
+        ))}
 
-              </div>
+      </div>
 
-              <div className="h-3 rounded-full bg-slate-200">
-
-                <div
-                  className="h-3 rounded-full bg-blue-600"
-                  style={{
-                    width: `${item.revenue * 40}%`,
-                  }}
-                />
-
-              </div>
-
-            </div>
-
-          ))}
-
-        </div>
-
-      </EnterpriseCard>
-
-    </section>
+    </EnterpriseCard>
   );
 }

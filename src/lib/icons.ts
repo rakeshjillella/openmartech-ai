@@ -42,3 +42,7 @@ export {
   SiPostgresql,
   SiGooglecloud,
 } from "react-icons/si";
+
+export {
+  RotateCcw,
+} from "lucide-react";

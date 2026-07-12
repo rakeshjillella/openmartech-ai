@@ -1,16 +1,14 @@
 export default function WorkflowArrow() {
   return (
-    <div className="flex justify-center py-5">
+    <div className="flex items-center">
 
-      <div className="flex flex-col items-center">
+      <div className="h-[3px] w-16 rounded-full bg-gradient-to-r from-blue-500 to-indigo-600" />
 
-        <div className="h-10 w-1 rounded-full bg-blue-400"></div>
-
-        <div className="text-3xl text-blue-600">
-          ↓
-        </div>
-
+      <div className="mx-2 text-3xl font-bold text-blue-600 dark:text-blue-400">
+        →
       </div>
+
+      <div className="h-[3px] w-16 rounded-full bg-gradient-to-r from-indigo-600 to-purple-600" />
 
     </div>
   );

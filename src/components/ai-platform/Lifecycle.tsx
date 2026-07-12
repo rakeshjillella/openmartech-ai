@@ -1,37 +1,81 @@
-const stages = [
-  "Ingestion",
-  "Streaming",
-  "Processing",
-  "Lakehouse",
-  "Machine Learning",
-  "Responsible AI",
-  "Visualization",
+const lifecycle = [
+  {
+    title: "Ingest",
+    description: "Kafka • CDC • APIs",
+  },
+  {
+    title: "Process",
+    description: "Spark • PySpark",
+  },
+  {
+    title: "Store",
+    description: "Iceberg • MinIO",
+  },
+  {
+    title: "Transform",
+    description: "dbt",
+  },
+  {
+    title: "Train",
+    description: "Spark ML",
+  },
+  {
+    title: "Govern",
+    description: "Responsible AI",
+  },
+  {
+    title: "Deploy",
+    description: "MLflow",
+  },
+  {
+    title: "Observe",
+    description: "Langfuse",
+  },
 ];
 
 export default function Lifecycle() {
   return (
-    <section>
+    <section className="py-24">
 
-      <h2 className="mb-10 text-4xl font-black">
+      <div className="mb-16 text-center">
 
-        AI Lifecycle
+        <span className="font-semibold uppercase tracking-widest text-green-600">
+          Lifecycle
+        </span>
 
-      </h2>
+        <h2 className="mt-5 text-5xl font-black dark:text-white">
+          AI Lifecycle
+        </h2>
 
-      <div className="grid gap-6 md:grid-cols-2 xl:grid-cols-4">
+      </div>
 
-        {stages.map((stage) => (
+      <div className="grid gap-8 md:grid-cols-2 xl:grid-cols-4">
+
+        {lifecycle.map((item) => (
 
           <div
-            key={stage}
-            className="rounded-2xl border bg-white p-8 shadow-sm"
+            key={item.title}
+            className="
+              rounded-3xl
+              border
+              border-slate-200
+              bg-white
+              p-8
+              shadow-sm
+              transition
+              hover:-translate-y-2
+              hover:shadow-xl
+              dark:border-slate-700
+              dark:bg-slate-900
+            "
           >
-
-            <h3 className="font-bold">
-
-              {stage}
-
+            <h3 className="text-2xl font-bold dark:text-white">
+              {item.title}
             </h3>
+
+            <p className="mt-5 text-slate-600 dark:text-slate-400">
+              {item.description}
+            </p>
 
           </div>
 

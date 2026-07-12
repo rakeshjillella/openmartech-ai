@@ -1,57 +1,64 @@
+import PipelineCard from "../PipelineCard";
 import WorkflowArrow from "./WorkflowArrow";
-import WorkflowNode from "./WorkflowNode";
+
+const pipeline = [
+  {
+    title: "Data Sources",
+    subtitle: "CRM • ERP • APIs",
+    color: "from-sky-500 to-blue-600",
+  },
+  {
+    title: "Kafka",
+    subtitle: "Streaming Platform",
+    color: "from-indigo-500 to-purple-600",
+  },
+  {
+    title: "Spark",
+    subtitle: "Distributed Processing",
+    color: "from-orange-500 to-red-500",
+  },
+  {
+    title: "Iceberg",
+    subtitle: "Lakehouse Storage",
+    color: "from-cyan-500 to-teal-600",
+  },
+  {
+    title: "ML + RAG",
+    subtitle: "Enterprise AI",
+    color: "from-emerald-500 to-green-600",
+  },
+  {
+    title: "Executive BI",
+    subtitle: "Power BI",
+    color: "from-pink-500 to-rose-600",
+  },
+];
 
 export default function WorkflowPipeline() {
   return (
-    <div className="mx-auto max-w-3xl">
+    <section className="overflow-x-auto py-12">
 
-      <WorkflowNode
-        title="Enterprise Sources"
-        subtitle="CRM • ERP • Marketing Platforms"
-      />
+      <div className="flex min-w-max items-center gap-8 px-4">
 
-      <WorkflowArrow />
+        {pipeline.map((node, index) => (
+          <div
+            key={node.title}
+            className="flex items-center gap-8"
+          >
+            <PipelineCard
+              title={node.title}
+              subtitle={node.subtitle}
+              color={node.color}
+            />
 
-      <WorkflowNode
-        title="Real-Time Streaming"
-        subtitle="Kafka • CDC • Airbyte"
-      />
+            {index !== pipeline.length - 1 && (
+              <WorkflowArrow />
+            )}
+          </div>
+        ))}
 
-      <WorkflowArrow />
+      </div>
 
-      <WorkflowNode
-        title="Processing"
-        subtitle="Spark • Flink • dbt"
-      />
-
-      <WorkflowArrow />
-
-      <WorkflowNode
-        title="Lakehouse"
-        subtitle="Apache Iceberg • MinIO"
-      />
-
-      <WorkflowArrow />
-
-      <WorkflowNode
-        title="Machine Learning"
-        subtitle="Spark ML • MLflow"
-      />
-
-      <WorkflowArrow />
-
-      <WorkflowNode
-        title="Generative AI"
-        subtitle="LangChain • RAG • AI Agents"
-      />
-
-      <WorkflowArrow />
-
-      <WorkflowNode
-        title="Executive Intelligence"
-        subtitle="Power BI Dashboards"
-      />
-
-    </div>
+    </section>
   );
 }
