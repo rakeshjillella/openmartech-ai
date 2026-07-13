@@ -1,7 +1,6 @@
 import {
   ShieldCheck,
   ClipboardCheck,
-  FileSearch,
   GitBranch,
   Lock,
   CheckCircle2,

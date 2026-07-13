@@ -20,9 +20,14 @@ import {
 import ArchitectureNode from "./ArchitectureNode";
 import ArchitectureDrawer from "./ArchitectureDrawer";
 
-import type {
-  ArchitectureFlowNode,
-} from "@/types/graph";
+import type { Node } from "@xyflow/react";
+
+type ArchitectureFlowNode = Node & {
+  data: {
+    title: string;
+    subtitle: string;
+  };
+};
 
 type Props = {
   search: string;

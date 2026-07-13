@@ -2,7 +2,6 @@ import {
   Activity,
   Gauge,
   Bell,
-  ShieldCheck,
   TrendingUp,
   CheckCircle2,
 } from "@/lib/icons";

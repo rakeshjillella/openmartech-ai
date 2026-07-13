@@ -1,7 +1,20 @@
-import {
-  ArchitectureFlowNode,
-  ArchitectureFlowEdge,
-} from "@/types/graph";
+interface ArchitectureFlowNode {
+  id: string;
+  position: { x: number; y: number };
+  data: {
+    title: string;
+    subtitle: string;
+    status: string;
+  };
+  type: string;
+}
+
+interface ArchitectureFlowEdge {
+  id: string;
+  source: string;
+  target: string;
+  animated: boolean;
+}
 
 export const architectureNodes: ArchitectureFlowNode[] = [
   {

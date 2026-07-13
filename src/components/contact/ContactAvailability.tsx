@@ -3,7 +3,6 @@
 import {
   BadgeCheck,
   Mail,
-  BrainCircuit,
 } from "@/lib/icons";
 
 const availability = [
@@ -27,11 +26,11 @@ export default function ContactAvailability() {
             </div>
 
             <h2 className="mt-6 text-4xl font-black tracking-tight text-slate-900 dark:text-white lg:text-5xl">
-              Let's Build Enterprise AI Together
+              Let&apos;s Build Enterprise AI Together
             </h2>
 
             <p className="mt-6 text-lg leading-8 text-slate-600 dark:text-slate-400">
-              I'm open to discussing Enterprise AI, Data Engineering,
+              I&apos;m open to discussing Enterprise AI, Data Engineering,
               Responsible AI, cloud-native architectures and modern analytics
               platforms.
             </p>

@@ -1,7 +1,6 @@
 import AboutHero from "./AboutHero";
 import AboutIntroduction from "./AboutIntroduction";
 import CareerTimeline from "./CareerTimeline";
-import SkillsGrid from "./SkillsGrid";
 import Vision from "./Vision";
 import Mission from "./Mission";
 import Stats from "./Stats";

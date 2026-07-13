@@ -31,15 +31,15 @@ export default function ContactForm() {
             </div>
 
             <h2 className="mt-6 text-4xl font-black tracking-tight text-slate-900 dark:text-white lg:text-5xl">
-              Let's Discuss Your Next Enterprise AI Project
+              Let&apos;s Discuss Your Next Enterprise AI Project
             </h2>
 
             <p className="mt-8 text-lg leading-8 text-slate-600 dark:text-slate-400">
-              Whether you're planning an Enterprise AI platform,
+              Whether you&apos;re planning an Enterprise AI platform,
               Data Engineering solution,
               Responsible AI implementation,
               or executive analytics dashboard,
-              I'd love to hear about your ideas.
+              I&apos;d love to hear about your ideas.
             </p>
 
             <div className="mt-10 rounded-3xl border border-slate-200 bg-white p-8 shadow-lg dark:border-slate-800 dark:bg-slate-900">
@@ -263,7 +263,7 @@ export default function ContactForm() {
 
                 <p className="mt-4 text-slate-600 dark:text-slate-400">
                   Your message has been received.
-                  I'll respond as soon as possible.
+                  I&apos;ll respond as soon as possible.
                 </p>
 
               </div>

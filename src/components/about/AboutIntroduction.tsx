@@ -51,7 +51,7 @@ export default function AboutIntroduction() {
             </h2>
 
             <p className="mt-8 text-lg leading-8 text-slate-600 dark:text-slate-400">
-              I'm Rakesh Jillella, a Data Engineering and Enterprise AI
+              I&apos;m Rakesh Jillella, a Data Engineering and Enterprise AI
               enthusiast focused on designing production-grade intelligent
               platforms that combine modern data engineering, Responsible AI,
               MLOps and executive analytics into a unified ecosystem.

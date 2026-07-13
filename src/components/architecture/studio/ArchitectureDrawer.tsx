@@ -4,8 +4,12 @@ import Link from "next/link";
 import { X, ExternalLink } from "lucide-react";
 import { FaGithub } from "@/lib/icons";
 
-import type { ArchitectureFlowNode } from "@/types/graph";
 import { architecture } from "@/data/architecture";
+
+type ArchitectureFlowNode = {
+  id: string;
+  [key: string]: any;
+};
 
 type Props = {
   node: ArchitectureFlowNode | null;
