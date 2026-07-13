@@ -83,7 +83,10 @@ export default function MobileMenu() {
         onClick={() => setOpen(false)}
         className={`
           fixed
-          inset-0
+          left-0
+          right-0
+          bottom-0
+          top-20
           z-[100]
 
           transition-all
@@ -103,12 +106,12 @@ export default function MobileMenu() {
           className={`
             absolute
             right-0
-            top-0
+            top-20
 
             flex
-            h-full
-            w-[340px]
-            max-w-[90vw]
+            h-[calc(100%-5rem)]
+            w-[380px]
+            max-w-[94vw]
             flex-col
 
             border-l
@@ -200,9 +203,9 @@ export default function MobileMenu() {
             className="
               flex-1
               overflow-y-auto
-              px-5
-              py-6
-              space-y-4
+              px-6
+              py-8
+              space-y-5
             "
           >            
           
@@ -385,7 +388,7 @@ function Accordion({
           justify-between
 
           px-5
-          py-4
+          py-5
 
           font-semibold
 
@@ -486,8 +489,8 @@ function MobileLink({
 
         rounded-xl
 
-        px-4
-        py-3
+        px-5
+        py-4
 
         transition-all
         duration-300

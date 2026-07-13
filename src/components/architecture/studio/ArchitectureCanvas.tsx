@@ -20,14 +20,7 @@ import {
 import ArchitectureNode from "./ArchitectureNode";
 import ArchitectureDrawer from "./ArchitectureDrawer";
 
-import type { Node } from "@xyflow/react";
-
-type ArchitectureFlowNode = Node & {
-  data: {
-    title: string;
-    subtitle: string;
-  };
-};
+import type { ArchitectureFlowNode } from "@/types/ArchitectureFlow";
 
 type Props = {
   search: string;
@@ -113,10 +106,8 @@ export default function ArchitectureCanvas({
           attributionPosition="bottom-left"
 
           onNodeClick={(_, node) =>
-            setSelectedNode(
-              node as ArchitectureFlowNode
-            )
-          }
+  setSelectedNode(node)
+}
 
           className="
             bg-slate-50

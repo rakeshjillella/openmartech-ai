@@ -1,20 +1,7 @@
-interface ArchitectureFlowNode {
-  id: string;
-  position: { x: number; y: number };
-  data: {
-    title: string;
-    subtitle: string;
-    status: string;
-  };
-  type: string;
-}
-
-interface ArchitectureFlowEdge {
-  id: string;
-  source: string;
-  target: string;
-  animated: boolean;
-}
+import type {
+  ArchitectureFlowNode,
+  ArchitectureFlowEdge,
+} from "@/types/ArchitectureFlow";
 
 export const architectureNodes: ArchitectureFlowNode[] = [
   {

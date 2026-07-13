@@ -5,11 +5,7 @@ import { X, ExternalLink } from "lucide-react";
 import { FaGithub } from "@/lib/icons";
 
 import { architecture } from "@/data/architecture";
-
-type ArchitectureFlowNode = {
-  id: string;
-  [key: string]: any;
-};
+import type { ArchitectureFlowNode } from "@/types/ArchitectureFlow";
 
 type Props = {
   node: ArchitectureFlowNode | null;
