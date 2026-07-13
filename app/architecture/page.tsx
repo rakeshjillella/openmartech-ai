@@ -1,12 +1,17 @@
-import Container from "@/components/ui/Container";
-import ArchitectureStudio from "@/components/architecture/studio/ArchitectureStudio";
+import ArchitectureSection from "@/components/architecture/ArchitectureSection";
 
 export default function ArchitecturePage() {
   return (
-    <main className="py-24">
-      <Container>
-        <ArchitectureStudio />
-      </Container>
+    <main
+      className="
+        bg-white
+        transition-colors
+        duration-300
+
+        dark:bg-slate-950
+      "
+    >
+      <ArchitectureSection />
     </main>
   );
 }

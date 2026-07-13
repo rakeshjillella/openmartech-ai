@@ -7,6 +7,7 @@ import {
   Controls,
   MiniMap,
   Background,
+  BackgroundVariant,
 } from "@xyflow/react";
 
 import "@xyflow/react/dist/style.css";
@@ -40,7 +41,6 @@ export default function ArchitectureCanvas({
   const [selectedNode, setSelectedNode] =
     useState<ArchitectureFlowNode | null>(null);
 
-  // ✅ Hook belongs HERE
   const filteredNodes = useMemo(() => {
 
     return architectureNodes.filter((node) => {
@@ -74,50 +74,107 @@ export default function ArchitectureCanvas({
 
   return (
     <>
-      <div className="h-[900px] overflow-hidden rounded-3xl border border-slate-200 bg-white">
+
+      <div
+        className="
+          h-[850px]
+          w-full
+
+          overflow-hidden
+
+          bg-white
+
+          transition-colors
+          duration-300
+
+          dark:bg-slate-950
+        "
+      >
 
         <ReactFlow
-  nodes={filteredNodes}
-  edges={architectureEdges}
-  nodeTypes={nodeTypes}
-  fitView
-  fitViewOptions={{
-    padding: 0.25,
-  }}
-  minZoom={0.4}
-  maxZoom={2}
-  attributionPosition="bottom-left"
-  onNodeClick={(_, node) =>
-    setSelectedNode(node as ArchitectureFlowNode)
-  }
->
+          nodes={filteredNodes}
+          edges={architectureEdges}
+          nodeTypes={nodeTypes}
 
-  <MiniMap
-    pannable
-    zoomable
-    className="rounded-xl border"
-  />
+          fitView
 
-  <Controls
-    position="bottom-right"
-    showInteractive={false}
-  />
+          fitViewOptions={{
+            padding: 0.35,
+          }}
 
-  <Background
-    gap={20}
-    size={1}
-  />
+          minZoom={0.45}
+          maxZoom={1.6}
 
-</ReactFlow>
+          attributionPosition="bottom-left"
+
+          onNodeClick={(_, node) =>
+            setSelectedNode(
+              node as ArchitectureFlowNode
+            )
+          }
+
+          className="
+            bg-slate-50
+
+            dark:bg-slate-950
+          "
+        >
+
+          <MiniMap
+            zoomable
+            pannable
+
+            className="
+              !rounded-2xl
+              !border
+              !border-slate-200
+              !bg-white
+
+              dark:!border-slate-700
+              dark:!bg-slate-900
+            "
+
+            nodeColor="#2563eb"
+
+            maskColor="rgba(0,0,0,0.08)"
+          />
+
+          <Controls
+            showInteractive={false}
+
+            className="
+              !rounded-2xl
+              !border
+              !border-slate-200
+              !bg-white
+
+              dark:!border-slate-700
+              dark:!bg-slate-900
+            "
+          />
+
+          <Background
+            variant={BackgroundVariant.Dots}
+            gap={24}
+            size={1.5}
+            color="#CBD5E1"
+          />
+
+        </ReactFlow>
 
       </div>
 
       {selectedNode && (
+
         <ArchitectureDrawer
           node={selectedNode}
-          onClose={() => setSelectedNode(null)}
+          onClose={() =>
+            setSelectedNode(null)
+          }
         />
+
       )}
+
     </>
   );
 }

@@ -7,8 +7,8 @@ import {
 } from "lucide-react";
 
 type Props = {
-  onFit: () => void;
-  onReset: () => void;
+  onFit: () =>void;
+  onReset: () =>void;
 };
 
 export default function ArchitectureToolbar({
@@ -16,32 +16,145 @@ export default function ArchitectureToolbar({
   onReset,
 }: Props) {
   return (
-    <div className="flex flex-wrap items-center gap-3">
+    <section>
 
-      <button
-        onClick={onFit}
-        className="flex items-center gap-2 rounded-xl border px-4 py-2 hover:bg-slate-50"
+      <div
+        className="
+          flex
+          flex-wrap
+          items-center
+          gap-4
+        "
       >
-        <Maximize size={18} />
-        Fit View
-      </button>
 
-      <button
-        onClick={onReset}
-        className="flex items-center gap-2 rounded-xl border px-4 py-2 hover:bg-slate-50"
-      >
-        <RotateCcw size={18} />
-        Reset
-      </button>
+        {/* Fit View */}
 
-      <div className="flex items-center gap-2 rounded-xl border px-4 py-2 text-slate-500">
+        <button
+          onClick={onFit}
+          className="
+            inline-flex
+            items-center
+            gap-2
 
-        <Search size={18} />
+            rounded-2xl
 
-        Ctrl + K
+            border
+            border-slate-300
+
+            bg-white
+
+            px-5
+            py-3
+
+            text-sm
+            font-semibold
+            text-slate-700
+
+            shadow-sm
+
+            transition-all
+            duration-300
+
+            hover:-translate-y-1
+            hover:border-blue-500
+            hover:bg-blue-50
+            hover:text-blue-600
+            hover:shadow-lg
+
+            dark:border-slate-700
+            dark:bg-slate-900
+            dark:text-slate-300
+            dark:hover:border-blue-500
+            dark:hover:bg-slate-800
+            dark:hover:text-blue-400
+          "
+        >
+          <Maximize size={18} />
+          Fit View
+        </button>
+
+        {/* Reset */}
+
+        <button
+          onClick={onReset}
+          className="
+            inline-flex
+            items-center
+            gap-2
+
+            rounded-2xl
+
+            border
+            border-slate-300
+
+            bg-white
+
+            px-5
+            py-3
+
+            text-sm
+            font-semibold
+            text-slate-700
+
+            shadow-sm
+
+            transition-all
+            duration-300
+
+            hover:-translate-y-1
+            hover:border-blue-500
+            hover:bg-blue-50
+            hover:text-blue-600
+            hover:shadow-lg
+
+            dark:border-slate-700
+            dark:bg-slate-900
+            dark:text-slate-300
+            dark:hover:border-blue-500
+            dark:hover:bg-slate-800
+            dark:hover:text-blue-400
+          "
+        >
+          <RotateCcw size={18} />
+          Reset
+        </button>
+
+        {/* Shortcut */}
+
+        <div
+          className="
+            ml-auto
+
+            inline-flex
+            items-center
+            gap-3
+
+            rounded-2xl
+
+            border
+            border-slate-300
+
+            bg-slate-50
+
+            px-5
+            py-3
+
+            text-sm
+            font-medium
+            text-slate-500
+
+            dark:border-slate-700
+            dark:bg-slate-800
+            dark:text-slate-400
+          "
+        >
+          <Search size={18} />
+
+          <span>Ctrl + K</span>
+        </div>
 
       </div>
 
-    </div>
+    </section>
   );
 }

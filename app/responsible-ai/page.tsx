@@ -1,29 +1,28 @@
 import Container from "@/components/ui/Container";
-
-import RAIHero from "@/components/responsible-ai/RAIHero";
-import RAIPillars from "@/components/responsible-ai/RAIPillars";
-import RAIMonitoring from "@/components/responsible-ai/RAIMonitoring";
-import RAIWorkflow from "@/components/responsible-ai/RAIWorkflow";
-import ComplianceCards from "@/components/responsible-ai/ComplianceCards";
+import ResponsibleAIExplorer from "@/components/responsible-ai/ResponsibleAIExplorer";
 
 export default function ResponsibleAIPage() {
   return (
-    <Container>
+    <main
+      className="
+        min-h-screen
 
-      <div className="space-y-12 py-20">
+        bg-gradient-to-b
+        from-white
+        via-slate-50
+        to-white
 
-        <RAIHero />
+        transition-colors
+        duration-300
 
-        <RAIPillars />
-
-        <RAIMonitoring />
-
-        <RAIWorkflow />
-
-        <ComplianceCards />
-
-      </div>
-
-    </Container>
+        dark:from-slate-950
+        dark:via-slate-900
+        dark:to-slate-950
+      "
+    >
+      <Container className="py-24 lg:py-32">
+        <ResponsibleAIExplorer />
+      </Container>
+    </main>
   );
 }

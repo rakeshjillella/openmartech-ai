@@ -1,7 +1,6 @@
 "use client";
 
 import { useEffect, useState } from "react";
-
 import Link from "next/link";
 
 import {
@@ -29,74 +28,185 @@ export default function MobileMenu() {
     useState(false);
 
   useEffect(() => {
-    document.body.style.overflow = open ? "hidden" : "auto";
+    document.body.style.overflow = open ? "hidden" : "";
 
     return () => {
-      document.body.style.overflow = "auto";
+      document.body.style.overflow = "";
     };
   }, [open]);
 
   return (
     <>
-      {/* Menu Button */}
+      {/* Mobile Menu Button */}
 
       <button
+        aria-label="Open navigation menu"
         onClick={() => setOpen(true)}
-        className="rounded-xl border border-slate-200 bg-white p-2 shadow-sm lg:hidden"
+        className="
+          flex
+          h-11
+          w-11
+          items-center
+          justify-center
+
+          rounded-xl
+
+          border
+          border-slate-200
+
+          bg-white
+
+          text-slate-700
+
+          shadow-sm
+
+          transition-all
+          duration-300
+
+          hover:border-blue-500
+          hover:text-blue-600
+          hover:shadow-lg
+
+          dark:border-slate-700
+          dark:bg-slate-900
+          dark:text-slate-200
+          dark:hover:border-blue-400
+          dark:hover:text-blue-400
+        "
       >
-        <Menu size={24} />
+        <Menu size={22} />
       </button>
 
       {/* Overlay */}
 
       <div
-        className={`fixed inset-0 z-50 transition-all duration-300 ${
-          open
-            ? "visible bg-black/40 backdrop-blur-sm"
-            : "invisible bg-transparent"
-        }`}
         onClick={() => setOpen(false)}
+        className={`
+          fixed
+          inset-0
+          z-[100]
+
+          transition-all
+          duration-300
+
+          ${
+            open
+              ? "visible bg-black/50 backdrop-blur-sm"
+              : "invisible bg-transparent"
+          }
+        `}
       >
         {/* Drawer */}
 
         <aside
           onClick={(e) => e.stopPropagation()}
-          className={`absolute right-0 top-0 h-full w-80 overflow-y-auto bg-white shadow-2xl transition-transform duration-300 ${
-            open
-              ? "translate-x-0"
-              : "translate-x-full"
-          }`}
+          className={`
+            absolute
+            right-0
+            top-0
+
+            flex
+            h-full
+            w-[340px]
+            max-w-[90vw]
+            flex-col
+
+            border-l
+            border-slate-200
+
+            bg-white
+
+            shadow-2xl
+
+            transition-transform
+            duration-300
+
+            dark:border-slate-800
+            dark:bg-slate-950
+
+            ${
+              open
+                ? "translate-x-0"
+                : "translate-x-full"
+            }
+          `}
         >
           {/* Header */}
 
-          <div className="flex items-center justify-between border-b p-6">
+          <div
+            className="
+              flex
+              items-center
+              justify-between
 
+              border-b
+              border-slate-200
+
+              px-6
+              py-5
+
+              dark:border-slate-800
+            "
+          >
             <div>
 
-              <h2 className="text-2xl font-black">
+              <h2
+                className="
+                  text-2xl
+                  font-black
+                  text-slate-900
+
+                  dark:text-white
+                "
+              >
                 OpenMarTech
               </h2>
 
-              <p className="text-sm text-blue-600">
+              <p
+                className="
+                  mt-1
+                  text-sm
+                  text-blue-600
+
+                  dark:text-blue-400
+                "
+              >
                 Enterprise AI Platform
               </p>
 
             </div>
 
             <button
+              aria-label="Close navigation menu"
               onClick={() => setOpen(false)}
-              className="rounded-lg p-2 hover:bg-slate-100"
-            >
-              <X />
-            </button>
+              className="
+                rounded-xl
+                p-2
 
+                transition
+
+                hover:bg-slate-100
+
+                dark:hover:bg-slate-800
+              "
+            >
+              <X size={22} />
+            </button>
           </div>
 
           {/* Navigation */}
 
-          <nav className="p-5 space-y-3">
-
-            {/* Platform */}
+          <nav
+            className="
+              flex-1
+              overflow-y-auto
+              px-5
+              py-6
+              space-y-4
+            "
+          >            
+          
+          {/* Platform */}
 
             <Accordion
               title="Platform"
@@ -110,6 +220,7 @@ export default function MobileMenu() {
                   key={item.href}
                   href={item.href}
                   title={item.title}
+                  description={item.description}
                   close={() => setOpen(false)}
                 />
               ))}
@@ -131,6 +242,7 @@ export default function MobileMenu() {
                   key={item.href}
                   href={item.href}
                   title={item.title}
+                  description={item.description}
                   close={() => setOpen(false)}
                 />
               ))}
@@ -150,28 +262,72 @@ export default function MobileMenu() {
                   key={item.href}
                   href={item.href}
                   title={item.title}
+                  description={item.description}
                   close={() => setOpen(false)}
                 />
               ))}
             </Accordion>
 
-            <div className="border-t pt-4">
+            {/* Divider */}
 
-              <MobileLink
-                href="/about"
-                title="About"
-                close={() => setOpen(false)}
-              />
+            <div className="my-4 border-t border-slate-200 dark:border-slate-800" />
 
-              <MobileLink
-                href="/contact"
-                title="Contact"
-                close={() => setOpen(false)}
-              />
+            {/* About */}
 
-            </div>
+            <MobileLink
+              href="/about"
+              title="About"
+              description="Professional profile, experience and vision."
+              close={() => setOpen(false)}
+            />
+
+            {/* Contact */}
+
+            <MobileLink
+              href="/contact"
+              title="Contact"
+              description="Let's connect and build Enterprise AI together."
+              close={() => setOpen(false)}
+            />
 
           </nav>
+
+          {/* Footer */}
+
+          <div
+            className="
+              border-t
+              border-slate-200
+
+              px-6
+              py-5
+
+              dark:border-slate-800
+            "
+          >
+            <p
+              className="
+                text-center
+                text-xs
+                text-slate-500
+
+                dark:text-slate-400
+              "
+            >
+              OpenMarTech AI
+            </p>
+
+            <p
+              className="
+                mt-1
+                text-center
+                text-xs
+                text-slate-400
+              "
+            >
+              Enterprise Decision Intelligence Platform
+            </p>
+          </div>
 
         </aside>
 
@@ -181,7 +337,9 @@ export default function MobileMenu() {
   );
 }
 
-/* ---------------- Accordion ---------------- */
+/* ============================================================
+   Accordion
+============================================================ */
 
 type AccordionProps = {
   title: string;
@@ -197,43 +355,114 @@ function Accordion({
   children,
 }: AccordionProps) {
   return (
-    <div className="rounded-xl border">
+    <div
+      className="
+        overflow-hidden
 
+        rounded-2xl
+
+        border
+        border-slate-200
+
+        bg-white
+
+        transition-all
+        duration-300
+
+        dark:border-slate-700
+        dark:bg-slate-900
+      "
+    >
       <button
         onClick={onToggle}
-        className="flex w-full items-center justify-between p-4 font-semibold"
+        aria-expanded={open}
+        aria-label={title}
+
+        className="
+          flex
+          w-full
+          items-center
+          justify-between
+
+          px-5
+          py-4
+
+          font-semibold
+
+          text-slate-900
+
+          transition-all
+          duration-300
+
+          hover:bg-blue-50
+          hover:text-blue-600
+
+          dark:text-white
+          dark:hover:bg-slate-800
+          dark:hover:text-blue-400
+        "
       >
-        {title}
+        <span>{title}</span>
 
         <ChevronDown
           size={18}
-          className={`transition ${
-            open ? "rotate-180" : ""
-          }`}
+          className={`
+            transition-transform
+            duration-300
+
+            ${open ? "rotate-180" : ""}
+          `}
         />
       </button>
 
-      {open && (
-        <div className="border-t bg-slate-50 p-2">
+      <div
+        className={`
+          overflow-hidden
+          transition-all
+          duration-300
+
+          ${
+            open
+              ? "max-h-[700px]"
+              : "max-h-0"
+          }
+        `}
+      >
+        <div
+          className="
+            border-t
+            border-slate-200
+
+            bg-slate-50
+
+            p-2
+
+            dark:border-slate-700
+            dark:bg-slate-950
+          "
+        >
           {children}
         </div>
-      )}
-
+      </div>
     </div>
   );
 }
 
-/* ---------------- Mobile Link ---------------- */
+/* ============================================================
+   Mobile Link
+============================================================ */
 
 type MobileLinkProps = {
   href: string;
   title: string;
+  description?: string;
   close: () => void;
 };
 
 function MobileLink({
   href,
   title,
+  description,
   close,
 }: MobileLinkProps) {
   return (
@@ -250,9 +479,60 @@ function MobileLink({
           ? "noopener noreferrer"
           : undefined
       }
-      className="block rounded-lg px-4 py-3 text-sm transition hover:bg-white hover:text-blue-600"
+      className="
+        group
+
+        block
+
+        rounded-xl
+
+        px-4
+        py-3
+
+        transition-all
+        duration-300
+
+        hover:-translate-y-0.5
+        hover:bg-white
+        hover:shadow-md
+
+        dark:hover:bg-slate-900
+      "
     >
-      {title}
+      <h4
+        className="
+          font-semibold
+
+          text-slate-900
+
+          transition-colors
+          duration-300
+
+          group-hover:text-blue-600
+
+          dark:text-white
+          dark:group-hover:text-blue-400
+        "
+      >
+        {title}
+      </h4>
+
+      {description && (
+        <p
+          className="
+            mt-1
+
+            text-sm
+            leading-6
+
+            text-slate-500
+
+            dark:text-slate-400
+          "
+        >
+          {description}
+        </p>
+      )}
     </Link>
   );
 }

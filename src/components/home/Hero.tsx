@@ -4,7 +4,7 @@ import HeroStat from "./HeroStat";
 
 export default function Hero() {
   return (
-    <section className="relative overflow-hidden bg-gradient-to-b from-white via-slate-50 to-white py-32 dark:from-slate-950 dark:via-slate-900 dark:to-slate-950">
+    <section className="relative overflow-hidden bg-gradient-to-b from-white via-slate-50 to-white py-24 lg:py-28 dark:from-slate-950 dark:via-slate-900 dark:to-slate-950">
 
       {/* Background */}
       <div className="absolute -left-32 top-0 h-[500px] w-[500px] rounded-full bg-blue-500/10 blur-[140px]" />
@@ -50,8 +50,8 @@ export default function Hero() {
               tracking-tight
               text-slate-900
               dark:text-white
-              md:text-7xl
-              lg:text-8xl
+              md:text-6xl
+              lg:text-7xl
             "
           >
             {siteConfig.name}
@@ -147,7 +147,7 @@ export default function Hero() {
 
           {/* Stats */}
 
-          <div className="mt-24 grid gap-8 sm:grid-cols-2 lg:grid-cols-4">
+          <div className="mt-20 grid gap-8 md:grid-cols-2 xl:grid-cols-4">
 
             {heroStats.map((stat) => (
 

@@ -1,60 +1,270 @@
 @import "tailwindcss";
 
-/* ---------- Theme ---------- */
+/* ==========================================================
+   ROOT
+========================================================== */
 
 html {
   scroll-behavior: smooth;
 }
 
 body {
-  @apply bg-slate-50 text-slate-900 transition-colors duration-300;
+  @apply bg-slate-50 text-slate-900 antialiased transition-colors duration-300;
 }
 
 .dark body {
   @apply bg-slate-950 text-slate-100;
 }
 
-/* ---------- Selection ---------- */
+/* ==========================================================
+   TYPOGRAPHY
+========================================================== */
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  @apply font-black tracking-tight text-slate-900;
+}
+
+.dark h1,
+.dark h2,
+.dark h3,
+.dark h4,
+.dark h5,
+.dark h6 {
+  @apply text-white;
+}
+
+p {
+  @apply leading-8 text-slate-600;
+}
+
+.dark p {
+  @apply text-slate-400;
+}
+
+/* ==========================================================
+   LINKS
+========================================================== */
+
+a {
+  @apply transition-colors duration-300;
+}
+
+a:hover {
+  @apply text-blue-600;
+}
+
+.dark a:hover {
+  @apply text-blue-400;
+}
+
+/* ==========================================================
+   SELECTION
+========================================================== */
 
 ::selection {
   @apply bg-blue-600 text-white;
 }
 
-/* ---------- Scrollbar ---------- */
+/* ==========================================================
+   SCROLLBAR
+========================================================== */
 
 ::-webkit-scrollbar {
   width: 10px;
+  height: 10px;
 }
 
 ::-webkit-scrollbar-track {
-  background: #e2e8f0;
+  @apply bg-slate-200;
 }
 
 .dark ::-webkit-scrollbar-track {
-  background: #020617;
+  @apply bg-slate-900;
 }
 
 ::-webkit-scrollbar-thumb {
-  background: #2563eb;
-  border-radius: 999px;
+  @apply rounded-full bg-blue-600;
 }
 
-/* ---------- Section ---------- */
+::-webkit-scrollbar-thumb:hover {
+  @apply bg-blue-500;
+}
+
+/* ==========================================================
+   SECTIONS
+========================================================== */
+
+section {
+  @apply transition-colors duration-300;
+}
 
 .section-light {
-  @apply bg-white dark:bg-slate-950;
+  @apply bg-white;
+}
+
+.dark .section-light {
+  @apply bg-slate-950;
 }
 
 .section-muted {
-  @apply bg-slate-50 dark:bg-slate-900;
+  @apply bg-slate-50;
 }
 
-/* ---------- Card ---------- */
+.dark .section-muted {
+  @apply bg-slate-900;
+}
+
+.section-dark {
+  @apply bg-slate-900 text-white;
+}
+
+.dark .section-dark {
+  @apply bg-slate-950;
+}
+
+/* ==========================================================
+   CARDS
+========================================================== */
 
 .card {
-  @apply rounded-3xl border border-slate-200 bg-white shadow-lg transition-all duration-300 hover:-translate-y-1 hover:shadow-xl;
+  @apply rounded-3xl border border-slate-200 bg-white shadow-sm transition-all duration-300;
+}
+
+.card:hover {
+  @apply -translate-y-1 border-blue-500 shadow-2xl;
 }
 
 .dark .card {
-  @apply border-slate-800 bg-slate-900;
+  @apply border-slate-700 bg-slate-900;
+}
+
+.dark .card:hover {
+  @apply border-blue-400;
+}
+
+/* ==========================================================
+   BUTTONS
+========================================================== */
+
+.btn-primary {
+  @apply rounded-2xl bg-blue-600 px-6 py-3 font-semibold text-white transition-all duration-300;
+}
+
+.btn-primary:hover {
+  @apply -translate-y-1 bg-blue-500 shadow-xl;
+}
+
+.btn-secondary {
+  @apply rounded-2xl border border-slate-300 bg-white px-6 py-3 font-semibold text-slate-700 transition-all duration-300;
+}
+
+.btn-secondary:hover {
+  @apply -translate-y-1 border-blue-500 shadow-lg;
+}
+
+.dark .btn-secondary {
+  @apply border-slate-700 bg-slate-900 text-slate-200;
+}
+
+/* ==========================================================
+   BADGES
+========================================================== */
+
+.badge {
+  @apply inline-flex items-center rounded-full border border-blue-200 bg-blue-50 px-4 py-2 text-xs font-bold uppercase tracking-widest text-blue-700;
+}
+
+.dark .badge {
+  @apply border-blue-800 bg-blue-900/30 text-blue-300;
+}
+
+/* ==========================================================
+   INPUTS
+========================================================== */
+
+input,
+textarea,
+select {
+  @apply rounded-2xl border border-slate-300 bg-white text-slate-900 transition-all duration-300;
+}
+
+input:focus,
+textarea:focus,
+select:focus {
+  @apply border-blue-500 ring-4 ring-blue-100 outline-none;
+}
+
+.dark input,
+.dark textarea,
+.dark select {
+  @apply border-slate-700 bg-slate-900 text-white;
+}
+
+.dark input:focus,
+.dark textarea:focus,
+.dark select:focus {
+  @apply ring-blue-900;
+}
+
+/* ==========================================================
+   FOCUS
+========================================================== */
+
+button:focus-visible,
+a:focus-visible,
+input:focus-visible,
+textarea:focus-visible,
+select:focus-visible {
+  @apply rounded-md outline-none ring-4 ring-blue-200;
+}
+
+.dark button:focus-visible,
+.dark a:focus-visible,
+.dark input:focus-visible,
+.dark textarea:focus-visible,
+.dark select:focus-visible {
+  @apply ring-blue-900;
+}
+
+/* ==========================================================
+   IMAGES
+========================================================== */
+
+img {
+  @apply transition-all duration-300;
+}
+
+/* ==========================================================
+   ANIMATIONS
+========================================================== */
+
+* {
+  @apply transition-colors duration-300;
+}
+
+/* ==========================================================
+   RESPONSIVE
+========================================================== */
+
+@media (max-width: 768px) {
+  h1 {
+    @apply text-4xl;
+  }
+
+  h2 {
+    @apply text-3xl;
+  }
+
+  h3 {
+    @apply text-2xl;
+  }
+
+  p {
+    @apply text-base leading-7;
+  }
 }

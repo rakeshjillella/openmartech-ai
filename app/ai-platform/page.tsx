@@ -1,29 +1,24 @@
 import Container from "@/components/ui/Container";
 
-import AIHero from "@/components/ai-platform/AIHero";
-import AIStats from "@/components/ai-platform/AIStats";
-import ArchitectureOverview from "@/components/ai-platform/ArchitectureOverview";
-import FeatureGrid from "@/components/ai-platform/FeatureGrid";
-import Lifecycle from "@/components/ai-platform/Lifecycle";
+import AIPlatformHero from "@/components/ai-platform/AIPlatformHero";
+import AIPlatformExplorer from "@/components/ai-platform/AIPlatformExplorer";
 
 export default function AIPlatformPage() {
   return (
-    <Container>
+    <main className="py-24">
 
-      <div className="space-y-12 py-20">
+      <Container>
 
-        <AIHero />
+        <AIPlatformHero />
 
-        <AIStats />
+        <div className="mt-20">
 
-        <ArchitectureOverview />
+          <AIPlatformExplorer />
 
-        <FeatureGrid />
+        </div>
 
-        <Lifecycle />
+      </Container>
 
-      </div>
-
-    </Container>
+    </main>
   );
 }

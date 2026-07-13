@@ -1,9 +1,11 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
-import Footer from "@/components/layout/Footer";
+
 import Navbar from "@/components/layout/Navbar";
-import "./globals.css";
+import Footer from "@/components/layout/Footer";
 import ThemeProvider from "@/components/providers/ThemeProvider";
+
+import "./globals.css";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -16,12 +18,15 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
+  metadataBase: new URL("https://openmartech.ai"),
+
   title: {
     default: "OpenMarTech AI",
     template: "%s | OpenMarTech AI",
   },
+
   description:
-    "OpenMarTech AI is a production-inspired Enterprise AI Platform showcasing modern Data Engineering, AI Platform Engineering, Responsible AI, Explainable AI, MLOps, Generative AI, and Executive Decision Intelligence.",
+    "Enterprise AI Platform showcasing Data Engineering, AI Platform Engineering, Responsible AI, Explainable AI, MLOps, Lakehouse Architecture, Streaming Analytics and Executive Decision Intelligence.",
 
   keywords: [
     "OpenMarTech AI",
@@ -30,13 +35,16 @@ export const metadata: Metadata = {
     "Machine Learning",
     "Responsible AI",
     "Explainable AI",
-    "Generative AI",
+    "MLOps",
     "Apache Spark",
     "Apache Kafka",
     "Apache Airflow",
+    "Apache Iceberg",
     "MLflow",
     "Power BI",
-    "Open Source",
+    "LangChain",
+    "Generative AI",
+    "Enterprise Architecture",
   ],
 
   authors: [
@@ -47,12 +55,23 @@ export const metadata: Metadata = {
 
   creator: "Rakesh Jillella",
 
+  applicationName: "OpenMarTech AI",
+
   openGraph: {
     title: "OpenMarTech AI",
     description:
-      "Enterprise Marketing Decision Intelligence Platform powered by modern Data Engineering and Responsible AI.",
+      "Enterprise Marketing Decision Intelligence Platform powered by modern Data Engineering, AI Platform Engineering and Responsible AI.",
     type: "website",
-    images: ["/og-image.png"],
+    locale: "en_US",
+    siteName: "OpenMarTech AI",
+    images: [
+      {
+        url: "/og-image.png",
+        width: 1200,
+        height: 630,
+        alt: "OpenMarTech AI",
+      },
+    ],
   },
 
   twitter: {
@@ -61,6 +80,11 @@ export const metadata: Metadata = {
     description:
       "Enterprise Marketing Decision Intelligence Platform",
     images: ["/og-image.png"],
+  },
+
+  robots: {
+    index: true,
+    follow: true,
   },
 };
 
@@ -72,16 +96,43 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${geistSans.variable} ${geistMono.variable}`}
       suppressHydrationWarning
+      className={`${geistSans.variable} ${geistMono.variable}`}
     >
-      <body className="min-h-screen flex flex-col bg-white text-slate-900 antialiased">
+      <body
+        className="
+          min-h-screen
+          bg-slate-50
+          text-slate-900
+          antialiased
+          transition-colors
+          duration-300
+
+          dark:bg-slate-950
+          dark:text-slate-100
+        "
+      >
         <ThemeProvider>
-          <Navbar />
-          <main className="flex-1">
-            {children}
-          </main>
-          <Footer />
+
+          <div className="flex min-h-screen flex-col">
+
+            <Navbar />
+
+            <main
+              className="
+                flex-1
+                pt-20
+                transition-colors
+                duration-300
+              "
+            >
+              {children}
+            </main>
+
+            <Footer />
+
+          </div>
+
         </ThemeProvider>
       </body>
     </html>

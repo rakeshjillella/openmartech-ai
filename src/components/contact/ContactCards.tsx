@@ -1,13 +1,13 @@
 const contacts = [
   {
     title: "Email",
-    value: "rakesh@example.com",
-    link: "mailto:rakesh@example.com",
+    value: "rakeshjillella@gmail.com",
+    link: "mailto:rakeshjillella.com",
   },
   {
     title: "LinkedIn",
     value: "linkedin.com/in/rakeshjillella",
-    link: "https://linkedin.com/in/rakeshjillella",
+    link: "https://linkedin.com/in/rakesh-jillella",
   },
   {
     title: "GitHub",

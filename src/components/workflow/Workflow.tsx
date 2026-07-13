@@ -3,7 +3,7 @@ import WorkflowPipeline from "./pipeline/WorkflowPipeline";
 
 export default function Workflow() {
   return (
-    <section className="py-24 bg-slate-50 dark:bg-slate-950">
+    <section className="py-32 bg-slate-50 dark:bg-slate-950">
 
       <Container>
 

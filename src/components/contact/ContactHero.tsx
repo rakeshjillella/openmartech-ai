@@ -7,7 +7,7 @@ export default function ContactHero() {
         from-blue-700
         via-indigo-700
         to-slate-900
-        p-14
+        px-10 py-20 lg:px-16 lg:py-24
         text-white
       "
     >
@@ -15,11 +15,11 @@ export default function ContactHero() {
         Contact
       </span>
 
-      <h1 className="mt-8 text-6xl font-black">
+      <h1 className="mt-8 text-5xl lg:text-6xl font-black">
         Let&apos;s Build Enterprise AI Together
       </h1>
 
-      <p className="mt-8 max-w-4xl text-xl leading-9 text-blue-100">
+      <p className="mt-8 max-w-3xl text-xl leading-9 text-blue-100">
         Open to opportunities in Data Engineering,
         AI Platform Engineering,
         Machine Learning,

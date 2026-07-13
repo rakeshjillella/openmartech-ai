@@ -36,7 +36,7 @@ const pipeline = [
 
 export default function WorkflowPipeline() {
   return (
-    <section className="overflow-x-auto py-12">
+    <section className="overflow-x-auto py-10">
 
       <div className="flex min-w-max items-center gap-8 px-4">
 

@@ -34,61 +34,122 @@ const navigation = [
 
 export default function DesktopMenu() {
   return (
-    <nav className="hidden items-center gap-2 lg:flex">
+    <nav
+  className="
+    hidden
+    h-full
+
+    items-center
+    justify-center
+
+    gap-2
+
+    whitespace-nowrap
+
+    lg:flex
+  "
+>
       {navigation.map((item) => {
-        // ---------- Mega Menu ----------
+        /* ---------------------------------------------------- */
+        /* Mega Menu                                             */
+        /* ---------------------------------------------------- */
+
         if ("mega" in item) {
           return (
             <div
-              key={item.title}
-              className="group relative"
-            >
+  key={item.title}
+  className="
+    group
+    relative
+    flex
+    h-full
+    items-center
+  "
+>
               <button
+                type="button"
+                aria-haspopup="true"
+                aria-expanded="false"
+
                 className="
                   flex
+                  h-11
+                  shrink-0
                   items-center
-                  gap-1
+                  gap-2
+
                   rounded-xl
+
                   px-4
-                  py-3
-                  font-medium
+
+                  text-sm
+                  font-semibold
+
                   text-slate-700
-                  transition
-                  hover:bg-slate-100
+
+                  transition-all
+                  duration-300
+
+                  hover:-translate-y-0.5
+                  hover:bg-blue-50
                   hover:text-blue-600
-                "
+
+                  dark:text-slate-300
+                  dark:hover:bg-slate-800
+                  dark:hover:text-blue-400
+"
               >
-                {item.title}
+                <span>{item.title}</span>
 
                 <ChevronDown
                   size={16}
                   className="
                     transition-transform
-                    duration-200
+                    duration-300
+
                     group-hover:rotate-180
                   "
                 />
               </button>
 
-              <MegaMenu items={item.mega ?? []} />
+              <MegaMenu items={item.mega!} />
             </div>
           );
         }
 
-        // ---------- Standard Link ----------
+        /* ---------------------------------------------------- */
+        /* Standard Link                                         */
+        /* ---------------------------------------------------- */
+
         return (
           <Link
             key={item.title}
-            href={item.href!}
+            href={item.href}
             className="
+              flex
+              h-11
+              shrink-0
+              items-center
+
               rounded-xl
+              
               px-4
-              py-3
-              font-medium
+
+              text-sm
+              font-semibold
+
               text-slate-700
-              transition
-              hover:bg-slate-100
+
+              transition-all
+              duration-300
+
+              hover:-translate-y-0.5
+              hover:bg-blue-50
               hover:text-blue-600
+
+              dark:text-slate-300
+              dark:hover:bg-slate-800
+              dark:hover:text-blue-400
             "
           >
             {item.title}

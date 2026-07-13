@@ -8,12 +8,60 @@ export default function StatisticCard({
   label,
 }: Props) {
   return (
-    <div className="rounded-2xl bg-blue-600 p-8 text-center text-white shadow-lg">
-      <h3 className="text-5xl font-bold">
+    <div
+      className="
+        group
+        rounded-3xl
+        border
+        border-slate-700
+        bg-white/5
+        p-10
+        text-center
+        backdrop-blur-sm
+        transition-all
+        duration-300
+        hover:-translate-y-2
+        hover:border-blue-400
+        hover:bg-white/10
+        hover:shadow-2xl
+      "
+    >
+      <h3
+        className="
+          text-5xl
+          font-black
+          text-white
+          transition-colors
+          duration-300
+          group-hover:text-blue-300
+        "
+      >
         {number}
       </h3>
 
-      <p className="mt-3 text-lg text-blue-100">
+      <div
+        className="
+          mx-auto
+          my-6
+          h-1
+          w-16
+          rounded-full
+          bg-blue-500
+          transition-all
+          duration-300
+          group-hover:w-24
+        "
+      />
+
+      <p
+        className="
+          text-sm
+          font-semibold
+          uppercase
+          tracking-[0.25em]
+          text-slate-300
+        "
+      >
         {label}
       </p>
     </div>

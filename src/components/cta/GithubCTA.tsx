@@ -8,7 +8,7 @@ export default function GithubCTA() {
         bg-gradient-to-r
         from-slate-900
         to-slate-800
-        p-14
+        p-34
         text-center
         text-white
       "

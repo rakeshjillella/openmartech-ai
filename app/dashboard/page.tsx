@@ -1,26 +1,29 @@
 import Container from "@/components/ui/Container";
 
-import DashboardHero from "@/components/dashboard/DashboardHero";
-import KPICards from "@/components/dashboard/KPICards";
-import SystemStatus from "@/components/dashboard/SystemStatus";
-import ResponsibleAIStatus from "@/components/dashboard/ResponsibleAIStatus";
+import DashboardExplorer from "@/components/dashboard/DashboardExplorer";
 
 export default function DashboardPage() {
   return (
-    <Container>
+    <main
+      className="
+        min-h-screen
 
-      <div className="space-y-10 py-20">
+        bg-gradient-to-b
+        from-white
+        via-slate-50
+        to-white
 
-        <DashboardHero />
+        transition-colors
+        duration-300
 
-        <KPICards />
-
-        <SystemStatus />
-
-        <ResponsibleAIStatus />
-
-      </div>
-
-    </Container>
+        dark:from-slate-950
+        dark:via-slate-900
+        dark:to-slate-950
+      "
+    >
+      <Container className="py-24 lg:py-32">
+        <DashboardExplorer />
+      </Container>
+    </main>
   );
 }

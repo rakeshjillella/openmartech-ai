@@ -1,29 +1,86 @@
-// Lucide (UI Icons)
+// ======================================================
+// Lucide Icons
+// ======================================================
+
 export {
+  // Navigation
   Menu,
   X,
   House,
+
+  // Layout
   Boxes,
-  Cpu,
-  ShieldCheck,
-  BrainCircuit,
   LayoutDashboard,
-  Search,
-  Mail,
+
+  // AI / Data
+  BrainCircuit,
+  Cpu,
+  Database,
+  Workflow,
+  Server,
+  Activity,
+  Sparkles,
+  GitBranch,
+
+  // Security
+  ShieldCheck,
+  ShieldAlert,
+  Eye,
+  Lock,
+  BadgeCheck,
+  Scale,
+
+  // Monitoring
+  Gauge,
+  Bell,
+  TrendingUp,
+
+  // Files
   FileText,
-  ExternalLink,
+  ClipboardCheck,
+  FileSearch,
+
+  // Users
+  Users,
+
+  // Search
+  Search,
+
+  // Status
+  CheckCircle2,
+
+  // Navigation
+  ArrowRight,
   ChevronRight,
   ChevronDown,
-  ArrowRight,
+
+  // External
+  ExternalLink,
+
+  // Theme
+  Moon,
+  Sun,
+
+  // Settings
   Settings,
-  Database,
-  Server,
-  Workflow,
-  Moon, // Added
-  Sun,  // Added
+
+  // Misc
+  RotateCcw,
+
+  // Contact
+  Mail,
+
+  // Charts
+  BarChart3,
+
+  // Maximize
+  Maximize,
 } from "lucide-react";
 
-// Brand Icons
+// ======================================================
+// Font Awesome
+// ======================================================
+
 export {
   FaGithub,
   FaLinkedin,
@@ -33,16 +90,16 @@ export {
   FaMicrosoft,
 } from "react-icons/fa";
 
+// ======================================================
+// Simple Icons
+// ======================================================
+
 export {
+  SiApacheairflow,
   SiApachekafka,
   SiApachespark,
-  SiApacheairflow,
   SiDatabricks,
   SiSnowflake,
   SiPostgresql,
   SiGooglecloud,
 } from "react-icons/si";
-
-export {
-  RotateCcw,
-} from "lucide-react";

@@ -17,57 +17,158 @@ export default function Navbar() {
   const [scrolled, setScrolled] = useState(false);
 
   useEffect(() => {
-    const handleScroll = () => {
-      setScrolled(window.scrollY > 10);
-    };
+    const onScroll = () => setScrolled(window.scrollY > 12);
 
-    handleScroll();
+    onScroll();
 
-    window.addEventListener("scroll", handleScroll);
+    window.addEventListener("scroll", onScroll);
 
-    return () =>
-      window.removeEventListener(
-        "scroll",
-        handleScroll
-      );
+    return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
   return (
     <header
-      className={`sticky top-0 z-50 transition-all duration-300 ${
-        scrolled
-          ? "border-b border-slate-200 bg-white/90 shadow-lg backdrop-blur-xl"
-          : "bg-white/70 backdrop-blur-md"
-      }`}
-    >
-      <div className="mx-auto flex h-20 max-w-7xl items-center justify-between px-6">
+      className={`
+        fixed
+        inset-x-0
+        top-0
+        z-50
+        transition-all
+        duration-300
 
-        {/* Logo */}
+        ${
+          scrolled
+            ? `
+              border-b
+              border-slate-200
+              bg-white/90
+              shadow-lg
+              backdrop-blur-xl
+
+              dark:border-slate-800
+              dark:bg-slate-950/90
+            `
+            : `
+              bg-white/75
+              backdrop-blur-lg
+
+              dark:bg-slate-950/75
+            `
+        }
+      `}
+    >
+      <div
+  className="
+    mx-auto
+    flex
+    h-20
+    w-full
+    max-w-[1600px]
+
+    items-center
+    justify-between
+
+    px-6
+    xl:px-12
+  "
+>
+        {/* ---------------- Logo ---------------- */}
+
         <Link
-          href="/"
-          className="flex items-center gap-3"
-        >
-          <div className="flex h-12 w-12 items-center justify-center rounded-2xl bg-gradient-to-br from-blue-600 to-indigo-600 text-white shadow-lg">
+  href="/"
+  className="
+    group
+    flex
+    shrink-0
+    items-center
+    gap-3
+  "
+>
+          <div
+            className="
+              flex
+              h-12
+              w-12
+              items-center
+              justify-center
+              rounded-2xl
+              bg-gradient-to-br
+              from-blue-600
+              to-indigo-600
+              text-white
+              shadow-lg
+              transition-transform
+              duration-300
+
+              group-hover:scale-105
+              group-hover:rotate-3
+            "
+          >
             <BrainCircuit size={24} />
           </div>
 
-          <div>
-            <h1 className="text-xl font-black tracking-tight">
+          <div className="hidden sm:block">
+            <h1
+              className="
+                text-xl
+                font-black
+                tracking-tight
+                text-slate-900
+
+                dark:text-white
+              "
+            >
               OpenMarTech
             </h1>
-            <p className="-mt-1 text-xs text-slate-500">
+
+            <p
+              className="
+                text-xs
+                font-medium
+                text-slate-500
+
+                dark:text-slate-400
+              "
+            >
               Enterprise AI Platform
             </p>
           </div>
         </Link>
 
-        {/* Main Desktop Navigation */}
-        <DesktopMenu />
+        {/* ---------------- Desktop Navigation ---------------- */}
 
-        {/* Right Side Controls */}
-        <div className="hidden items-center gap-3 lg:flex">
+        {/* Desktop Navigation */}
+
+<div
+  className="
+    hidden
+    flex-1
+    items-center
+    justify-center
+
+    lg:flex
+  "
+>
+  <DesktopMenu />
+</div>
+
+        {/* ---------------- Right Controls ---------------- */}
+
+        <div
+  className="
+    hidden
+    shrink-0
+    items-center
+    gap-3
+
+    lg:flex
+  "
+>
           {/* Search */}
+
           <button
+            aria-label="Search"
+
             className="
               flex
               h-11
@@ -78,21 +179,38 @@ export default function Navbar() {
               border
               border-slate-200
               bg-white
-              transition
-              hover:border-blue-300
+              text-slate-600
+              shadow-sm
+              transition-all
+              duration-300
+
+              hover:-translate-y-0.5
+              hover:border-blue-500
               hover:text-blue-600
+              hover:shadow-lg
+
+              dark:border-slate-700
+              dark:bg-slate-900
+              dark:text-slate-300
+
+              dark:hover:border-blue-400
+              dark:hover:text-blue-400
             "
           >
             <Search size={18} />
           </button>
 
           {/* GitHub */}
+
           <Link
             href="https://github.com/rakeshjillella/openmartech-ai"
             target="_blank"
             rel="noopener noreferrer"
+
             className="
               flex
+              h-11
+              shrink-0
               items-center
               gap-2
               rounded-xl
@@ -101,23 +219,35 @@ export default function Navbar() {
               py-3
               font-semibold
               text-white
-              transition
+              shadow-lg
+              transition-all
+              duration-300
+
+              hover:-translate-y-1
               hover:bg-black
+              hover:shadow-xl
+
+              dark:bg-white
+              dark:text-slate-900
+
+              dark:hover:bg-slate-200
             "
           >
             <FaGithub size={18} />
+
             GitHub
           </Link>
 
-          {/* Theme Switcher Only */}
+          {/* Theme */}
+
           <ThemeToggle />
         </div>
 
-        {/* Mobile Navigation */}
+        {/* ---------------- Mobile ---------------- */}
+
         <div className="lg:hidden">
           <MobileMenu />
         </div>
-
       </div>
     </header>
   );

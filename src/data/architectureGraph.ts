@@ -6,7 +6,7 @@ import {
 export const architectureNodes: ArchitectureFlowNode[] = [
   {
     id: "airflow",
-    position: { x: 250, y: 0 },
+    position: { x: 42, y: 20 },
     data: {
       title: "Apache Airflow",
       subtitle: "Orchestration",
@@ -17,7 +17,7 @@ export const architectureNodes: ArchitectureFlowNode[] = [
 
   {
     id: "kafka",
-    position: { x: 250, y: 150 },
+    position: { x: 420, y: 200 },
     data: {
       title: "Apache Kafka",
       subtitle: "Streaming",
@@ -28,7 +28,7 @@ export const architectureNodes: ArchitectureFlowNode[] = [
 
   {
     id: "spark",
-    position: { x: 250, y: 320 },
+    position: { x: 420, y: 380 },
     data: {
       title: "Apache Spark",
       subtitle: "Processing",
@@ -39,7 +39,7 @@ export const architectureNodes: ArchitectureFlowNode[] = [
 
   {
     id: "iceberg",
-    position: { x: 50, y: 520 },
+    position: { x: 120, y: 620 },
     data: {
       title: "Apache Iceberg",
       subtitle: "Lakehouse",
@@ -50,7 +50,7 @@ export const architectureNodes: ArchitectureFlowNode[] = [
 
   {
     id: "mlflow",
-    position: { x: 450, y: 520 },
+    position: { x: 700, y: 620 },
     data: {
       title: "MLflow",
       subtitle: "Experiment Tracking",
@@ -61,7 +61,7 @@ export const architectureNodes: ArchitectureFlowNode[] = [
 
   {
     id: "rai",
-    position: { x: 450, y: 720 },
+    position: { x: 700, y: 840 },
     data: {
       title: "Responsible AI",
       subtitle: "Governance",
@@ -72,7 +72,7 @@ export const architectureNodes: ArchitectureFlowNode[] = [
 
   {
     id: "powerbi",
-    position: { x: 250, y: 920 },
+    position: { x: 420, y: 1080 },
     data: {
       title: "Power BI",
       subtitle: "Visualization",
