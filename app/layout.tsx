@@ -4,6 +4,8 @@ import { Geist, Geist_Mono } from "next/font/google";
 import Navbar from "@/components/layout/Navbar";
 import Footer from "@/components/layout/Footer";
 import ThemeProvider from "@/components/providers/ThemeProvider";
+import StructuredData from "@/components/seo/StructuredData";
+import ScrollToTop from "@/components/ui/ScrollToTop";
 
 import "./globals.css";
 
@@ -24,6 +26,19 @@ export const metadata: Metadata = {
     default: "OpenMarTech AI",
     template: "%s | OpenMarTech AI",
   },
+
+  manifest: "/manifest.json",
+
+themeColor: [
+  { media: "(prefers-color-scheme: light)", color: "#ffffff" },
+  { media: "(prefers-color-scheme: dark)", color: "#020617" },
+],
+
+appleWebApp: {
+  capable: true,
+  statusBarStyle: "black-translucent",
+  title: "OpenMarTech AI",
+},
 
   description:
     "Enterprise AI Platform showcasing Data Engineering, AI Platform Engineering, Responsible AI, Explainable AI, MLOps, Lakehouse Architecture, Streaming Analytics and Executive Decision Intelligence.",
@@ -74,18 +89,47 @@ export const metadata: Metadata = {
     ],
   },
 
+  alternates: {
+  canonical: "/",
+},
+
+category: "technology",
+
+formatDetection: {
+  email: false,
+  telephone: false,
+},
+
+referrer: "origin-when-cross-origin",
+
   twitter: {
-    card: "summary_large_image",
-    title: "OpenMarTech AI",
-    description:
-      "Enterprise Marketing Decision Intelligence Platform",
-    images: ["/og-image.png"],
-  },
+  card: "summary_large_image",
+
+  creator: "@rakeshjillella",
+
+  title: "OpenMarTech AI",
+
+  description:
+    "Enterprise AI Platform for Data Engineering, Responsible AI and Decision Intelligence.",
+
+  images: ["/og-image.png"],
+},
 
   robots: {
+  index: true,
+  follow: true,
+
+  nocache: false,
+
+  googleBot: {
     index: true,
     follow: true,
+    "max-image-preview": "large",
+    "max-video-preview": -1,
+    "max-snippet": -1,
   },
+},
+
 };
 
 export default function RootLayout({
@@ -112,7 +156,11 @@ export default function RootLayout({
           dark:text-slate-100
         "
       >
+        <ScrollToTop />
+        
         <ThemeProvider>
+
+        <StructuredData />
 
           <div className="flex min-h-screen flex-col">
 

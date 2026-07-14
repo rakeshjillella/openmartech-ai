@@ -4,12 +4,23 @@
    ROOT
 ========================================================== */
 
+:root {
+  color-scheme: light;
+}
+
+.dark {
+  color-scheme: dark;
+}
+
 html {
   scroll-behavior: smooth;
 }
 
 body {
-  @apply bg-slate-50 text-slate-900 antialiased transition-colors duration-300;
+  @apply bg-slate-50 text-slate-900 antialiased;
+  transition:
+    background-color 250ms ease,
+    color 250ms ease;
 }
 
 .dark body {
@@ -67,7 +78,13 @@ a:hover {
 ========================================================== */
 
 ::selection {
-  @apply bg-blue-600 text-white;
+  background: #2563eb;
+  color: white;
+}
+
+::-moz-selection {
+  background: #2563eb;
+  color: white;
 }
 
 /* ==========================================================
@@ -80,19 +97,35 @@ a:hover {
 }
 
 ::-webkit-scrollbar-track {
-  @apply bg-slate-200;
-}
-
-.dark ::-webkit-scrollbar-track {
-  @apply bg-slate-900;
+  background: transparent;
 }
 
 ::-webkit-scrollbar-thumb {
-  @apply rounded-full bg-blue-600;
+  background: rgb(148 163 184);
+  border-radius: 999px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  @apply bg-blue-500;
+  background: rgb(100 116 139);
+}
+
+.dark ::-webkit-scrollbar-thumb {
+  background: rgb(71 85 105);
+}
+
+.dark ::-webkit-scrollbar-thumb:hover {
+  background: rgb(100 116 139);
+}
+
+/* Firefox */
+
+* {
+  scrollbar-width: thin;
+  scrollbar-color: rgb(148 163 184) transparent;
+}
+
+.dark * {
+  scrollbar-color: rgb(71 85 105) transparent;
 }
 
 /* ==========================================================
@@ -132,7 +165,8 @@ section {
 ========================================================== */
 
 .card {
-  @apply rounded-3xl border border-slate-200 bg-white shadow-sm transition-all duration-300;
+  @apply rounded-3xl border border-slate-200 bg-white shadow-sm;
+  transition: all 250ms ease;
 }
 
 .card:hover {
@@ -152,7 +186,8 @@ section {
 ========================================================== */
 
 .btn-primary {
-  @apply rounded-2xl bg-blue-600 px-6 py-3 font-semibold text-white transition-all duration-300;
+  @apply rounded-2xl bg-blue-600 px-6 py-3 font-semibold text-white;
+  transition: all 250ms ease;
 }
 
 .btn-primary:hover {
@@ -160,7 +195,8 @@ section {
 }
 
 .btn-secondary {
-  @apply rounded-2xl border border-slate-300 bg-white px-6 py-3 font-semibold text-slate-700 transition-all duration-300;
+  @apply rounded-2xl border border-slate-300 bg-white px-6 py-3 font-semibold text-slate-700;
+  transition: all 250ms ease;
 }
 
 .btn-secondary:hover {
@@ -190,13 +226,14 @@ section {
 input,
 textarea,
 select {
-  @apply rounded-2xl border border-slate-300 bg-white text-slate-900 transition-all duration-300;
+  @apply rounded-2xl border border-slate-300 bg-white text-slate-900;
+  transition: all 250ms ease;
 }
 
 input:focus,
 textarea:focus,
 select:focus {
-  @apply border-blue-500 ring-4 ring-blue-100 outline-none;
+  @apply border-blue-500 outline-none ring-4 ring-blue-100;
 }
 
 .dark input,
@@ -212,15 +249,20 @@ select:focus {
 }
 
 /* ==========================================================
-   FOCUS
+   ACCESSIBILITY
 ========================================================== */
+
+:focus-visible {
+  outline: 2px solid #2563eb;
+  outline-offset: 3px;
+}
 
 button:focus-visible,
 a:focus-visible,
 input:focus-visible,
 textarea:focus-visible,
 select:focus-visible {
-  @apply rounded-md outline-none ring-4 ring-blue-200;
+  @apply rounded-md ring-4 ring-blue-200;
 }
 
 .dark button:focus-visible,
@@ -236,19 +278,26 @@ select:focus-visible {
 ========================================================== */
 
 img {
-  @apply transition-all duration-300;
+  display: block;
+  max-width: 100%;
+  height: auto;
 }
 
 /* ==========================================================
-   ANIMATIONS
+   GLOBAL TRANSITIONS
 ========================================================== */
 
-* {
-  @apply transition-colors duration-300;
+*,
+*::before,
+*::after {
+  transition:
+    color 250ms ease,
+    background-color 250ms ease,
+    border-color 250ms ease;
 }
 
 /* ==========================================================
-   RESPONSIVE
+   RESPONSIVE TYPOGRAPHY
 ========================================================== */
 
 @media (max-width: 768px) {
@@ -266,5 +315,23 @@ img {
 
   p {
     @apply text-base leading-7;
+  }
+}
+
+/* ==========================================================
+   LOADING ANIMATION
+========================================================== */
+
+@keyframes loading {
+  0% {
+    transform: translateX(-120%);
+  }
+
+  50% {
+    transform: translateX(60%);
+  }
+
+  100% {
+    transform: translateX(220%);
   }
 }
