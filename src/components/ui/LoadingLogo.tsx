@@ -1,6 +1,6 @@
 "use client";
 
-import { BrainCircuit } from "@/lib/icons";
+import Logo from "@/components/common/Logo";
 
 export default function LoadingLogo() {
   return (
@@ -31,10 +31,9 @@ export default function LoadingLogo() {
           "
         />
 
-        <BrainCircuit
-          size={42}
-          className="relative z-10 text-white"
-        />
+        <div className="relative z-10">
+          <Logo size={48} priority />
+        </div>
       </div>
 
       <h1

@@ -1,7 +1,8 @@
 "use client";
 
 import Link from "next/link";
-import { BrainCircuit, ArrowRight, Search } from "@/lib/icons";
+import { ArrowRight, Search } from "@/lib/icons";
+import Logo from "@/components/common/Logo";
 
 export default function NotFound() {
   return (
@@ -36,7 +37,7 @@ export default function NotFound() {
             shadow-2xl
           "
         >
-          <BrainCircuit size={42} />
+          <Logo size={48} priority />
         </div>
 
         {/* 404 */}
@@ -86,7 +87,7 @@ export default function NotFound() {
             dark:text-slate-400
           "
         >
-          The page you're looking for doesn't exist or may have
+          The page you&apos;re looking for doesn&apos;t exist or may have
           been moved.
 
           Continue exploring the OpenMarTech AI Enterprise

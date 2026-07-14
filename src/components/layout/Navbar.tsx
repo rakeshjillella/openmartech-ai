@@ -6,9 +6,9 @@ import { useEffect, useState } from "react";
 import DesktopMenu from "./DesktopMenu";
 import MobileMenu from "./MobileMenu";
 import ThemeToggle from "./ThemeToggle";
+import Image from "next/image";
 
 import {
-  BrainCircuit,
   Search,
   FaGithub,
 } from "@/lib/icons";
@@ -85,27 +85,23 @@ export default function Navbar() {
   "
 >
           <div
-            className="
-              flex
-              h-12
-              w-12
-              items-center
-              justify-center
-              rounded-2xl
-              bg-gradient-to-br
-              from-blue-600
-              to-indigo-600
-              text-white
-              shadow-lg
-              transition-transform
-              duration-300
-
-              group-hover:scale-105
-              group-hover:rotate-3
-            "
-          >
-            <BrainCircuit size={24} />
-          </div>
+  className="
+    relative
+    h-12
+    w-12
+    overflow-hidden
+    rounded-2xl
+    shadow-lg
+  "
+>
+  <Image
+    src="/logos/logo.png"
+    alt="OpenMarTech AI"
+    fill
+    className="object-contain"
+    priority
+  />
+</div>
 
           <div className="hidden sm:block">
             <h1

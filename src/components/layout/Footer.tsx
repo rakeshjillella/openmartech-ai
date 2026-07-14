@@ -2,8 +2,8 @@
 
 import Link from "next/link";
 import { MapPin } from "lucide-react";
+import Logo from "@/components/common/Logo";
 import {
-  BrainCircuit,
   Mail,
   FaGithub,
   FaLinkedin,
@@ -71,7 +71,7 @@ export default function Footer() {
                   shadow-xl
                 "
               >
-                <BrainCircuit size={28} />
+                <Logo size={48} priority />
               </div>
 
               <div>
