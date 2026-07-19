@@ -30,7 +30,6 @@ export const metadata: Metadata = {
     "Enterprise AI Platform showcasing Data Engineering, AI Platform Engineering, Responsible AI, Explainable AI, MLOps, Lakehouse Architecture, Streaming Analytics and Executive Decision Intelligence.",
 
   applicationName: "OpenMarTech AI",
-
   manifest: "/manifest.json",
 
   keywords: [
@@ -54,26 +53,13 @@ export const metadata: Metadata = {
     "Enterprise Architecture",
   ],
 
-  authors: [
-    {
-      name: "Rakesh Jillella",
-      url: "https://openmartech.ai",
-    },
-  ],
-
+  authors: [{ name: "Rakesh Jillella", url: "https://openmartech.ai" }],
   creator: "Rakesh Jillella",
-
   publisher: "OpenMarTech AI",
-
   category: "technology",
-
   referrer: "origin-when-cross-origin",
 
-  formatDetection: {
-    email: false,
-    telephone: false,
-    address: false,
-  },
+  formatDetection: { email: false, telephone: false, address: false },
 
   alternates: {
     canonical: "/",
@@ -90,12 +76,9 @@ export const metadata: Metadata = {
     locale: "en_US",
     url: "https://openmartech.ai",
     siteName: "OpenMarTech AI",
-
     title: "OpenMarTech AI",
-
     description:
       "Enterprise Marketing Decision Intelligence Platform powered by modern Data Engineering, AI Platform Engineering and Responsible AI.",
-
     images: [
       {
         url: "/og-image.png",
@@ -108,21 +91,16 @@ export const metadata: Metadata = {
 
   twitter: {
     card: "summary_large_image",
-
     creator: "@rakeshjillella",
-
     title: "OpenMarTech AI",
-
     description:
       "Enterprise AI Platform for Data Engineering, Responsible AI and Decision Intelligence.",
-
     images: ["/og-image.png"],
   },
 
   robots: {
     index: true,
     follow: true,
-
     googleBot: {
       index: true,
       follow: true,
@@ -135,21 +113,27 @@ export const metadata: Metadata = {
 
 export const viewport: Viewport = {
   width: "device-width",
-
   initialScale: 1,
-
   maximumScale: 5,
-
   themeColor: [
-    {
-      media: "(prefers-color-scheme: light)",
-      color: "#ffffff",
-    },
-    {
-      media: "(prefers-color-scheme: dark)",
-      color: "#020617",
-    },
+    { media: "(prefers-color-scheme: light)", color: "#ffffff" },
+    { media: "(prefers-color-scheme: dark)", color: "#020617" },
   ],
+};
+
+// JSON-LD Structured Data for SEO
+const jsonLd = {
+  "@context": "https://schema.org",
+  "@type": "SoftwareApplication",
+  name: "OpenMarTech AI",
+  applicationCategory: "EnterpriseAI",
+  operatingSystem: "Web",
+  description: "Enterprise Marketing Decision Intelligence Platform powered by modern Data Engineering, AI Platform Engineering and Responsible AI.",
+  author: {
+    "@type": "Person",
+    name: "Rakesh Jillella",
+    url: "https://openmartech.ai",
+  },
 };
 
 export default function RootLayout({
@@ -171,28 +155,24 @@ export default function RootLayout({
           antialiased
           transition-colors
           duration-300
-
           dark:bg-slate-950
           dark:text-slate-100
         "
       >
+        {/* Inject structured data for search engines */}
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+        />
+
         <ScrollToTop />
 
         <ThemeProvider>
           <div className="flex min-h-screen flex-col">
             <Navbar />
-
-            <main
-              className="
-                flex-1
-                pt-20
-                transition-colors
-                duration-300
-              "
-            >
+            <main className="flex-1 pt-20 transition-colors duration-300">
               {children}
             </main>
-
             <Footer />
           </div>
         </ThemeProvider>

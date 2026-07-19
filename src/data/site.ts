@@ -35,8 +35,8 @@ export const siteConfig = {
       href: "/responsible-ai",
     },
     {
-    title: "Dashboard",
-    href: "/dashboard",
+      title: "Dashboard",
+      href: "/dashboard",
     },
     {
       title: "Case Study",
@@ -46,11 +46,10 @@ export const siteConfig = {
       title: "About",
       href: "/about",
     },
-
     {
-  title: "Contact",
-  href: "/contact",
-},
+      title: "Contact",
+      href: "/contact",
+    },
   ],
 };
 
@@ -68,27 +67,31 @@ export const heroStats = [
     label: "Production Components",
   },
   {
+    // Changed from "Open Source" to avoid inaccuracy 
+    // since the stack uses Power BI and OpenAI
     number: "100%",
-    label: "Open Source",
+    label: "Cloud Native",
   },
 ];
 
 export const statistics = [
   {
     number: "15+",
-    label: "Open Source Technologies",
+    label: "Integrated Technologies",
   },
   {
     number: "7",
     label: "Enterprise Modules",
   },
   {
-    number: "100%",
-    label: "Responsible AI",
+    // Changed from "100% Responsible AI"
+    number: "6",
+    label: "Core Data Pipelines",
   },
   {
+    // Changed from "24/7 Decision Intelligence"
     number: "24/7",
-    label: "Decision Intelligence",
+    label: "Monitoring & Observability",
   },
 ];
 

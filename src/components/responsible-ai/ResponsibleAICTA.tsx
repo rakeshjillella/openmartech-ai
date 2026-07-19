@@ -3,6 +3,9 @@ import Link from "next/link";
 import {
   ArrowRight,
   ShieldCheck,
+  BrainCircuit,
+  FaGithub,
+  Mail,
 } from "@/lib/icons";
 
 export default function ResponsibleAICTA() {
